@@ -25,6 +25,9 @@ export interface BlogListQuery_allMdx_edges_node_frontmatter_image {
    * Copy file to static directory and return public url to it
    */
   publicURL: string | null;
+  /**
+   * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
+   */
   childImageSharp: BlogListQuery_allMdx_edges_node_frontmatter_image_childImageSharp | null;
 }
 

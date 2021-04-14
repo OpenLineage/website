@@ -19,7 +19,7 @@ export default function blogList({ data, pageContext, location }: PageProps<Blog
         >
             <div className="container mx-auto py-12">
                 <div className="title py-12 text-center">
-                    <h2 className="font-black text-5xl text-color-1">
+                    <h2 className="text-5xl text-color-1">
                         Blog
                     </h2>
                 </div>

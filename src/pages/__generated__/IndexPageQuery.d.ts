@@ -51,6 +51,9 @@ export interface IndexPageQuery_portfolio_edges_node_frontmatter_image_childImag
 }
 
 export interface IndexPageQuery_portfolio_edges_node_frontmatter_image {
+  /**
+   * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
+   */
   childImageSharp: IndexPageQuery_portfolio_edges_node_frontmatter_image_childImageSharp | null;
 }
 
@@ -91,6 +94,9 @@ export interface IndexPageQuery_blog_edges_node_frontmatter_image_childImageShar
 }
 
 export interface IndexPageQuery_blog_edges_node_frontmatter_image {
+  /**
+   * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
+   */
   childImageSharp: IndexPageQuery_blog_edges_node_frontmatter_image_childImageSharp | null;
 }
 

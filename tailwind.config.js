@@ -23,32 +23,32 @@ module.exports = {
         }),
         themes: {
             dark: {
-                bg: "#111",
+                bg: "#3e3e3e",
                 bgalt: "#000",
-                "color-default": "#eee",
-                "color-1": "#c35fde",
-                "color-2": "#adbfef",
+                "color-default": "#a8a8aa",
+                "color-1": "#f8f8f8",
                 border: "#718096",
-                primary: "#f55555",
+                primary: "#f8f8f8",
+                secondary: "#fff",
                 medium: "#222"
             },
         },
         colors: {
-            bg: "#fff",
-            bgalt: "#f5f5f5",
-            "color-default": "#333",
-            "color-1": "#8e24aa",
-            "color-2": "#673ab7",
-            "color-3": "#aeb4c5",
-            primary: "#f55555",
-            secondary: "#6888df",
-            link: "#0a71c5",
+            bg: "#f8f8f8",
+            bgalt: "#fff",
+            "color-default": "#3e3e3e",
+            "color-1": "#47576e",
+            "color-2": "#74a4bc",
+            "color-3": "#fbb03b",
+            primary: "#47576e",
+            secondary: "#3e3e3e",
+            link: "#f26522",
             medium: "#cfd8dc",
             white: "#fff",
             black: "#000",
             transparent: "rgba(0,0,0,0)",
-            error: "#ef5350",
-            success: "#8bc34a"
+            error: "#f25522",
+            success: "#fbb03b"
         },
         extend: {
             fontSize: {

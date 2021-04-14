@@ -12,7 +12,7 @@ export default ({ location }: PageProps<{}, {}>) => {
         >
             <div className="container mx-auto py-12">
                 <div className="title py-12 text-center">
-                    <h2 className="font-black text-7xl text-color-1">
+                    <h2 className="text-7xl text-color-1">
                         4<span className="text-primary">0</span>4
                     </h2>
                 </div>

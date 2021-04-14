@@ -3,7 +3,7 @@
 @import "tailwindcss/components";
 
 body {
-    font-family: "Raleway", sans-serif;
+    font-family: "Didact Gothic", sans-serif;
 }
 
 p {
@@ -62,7 +62,7 @@ p {
 }
 
 .title h1{
-    @apply text-color-1 font-black;
+    @apply text-color-1;
 }
 
 
@@ -193,7 +193,7 @@ p {
 }
 
 .post-content h1, h2, h3, h4, h5, h6 {
-    @apply font-black text-color-2 my-4;
+    @apply text-color-2 my-4;
 }
 
 .post-content h1 {

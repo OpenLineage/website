@@ -25,6 +25,9 @@ export interface BlogQuery_mdx_frontmatter_banner {
    * Copy file to static directory and return public url to it
    */
   publicURL: string | null;
+  /**
+   * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
+   */
   childImageSharp: BlogQuery_mdx_frontmatter_banner_childImageSharp | null;
 }
 

@@ -104,7 +104,7 @@ const Head = ({ data }) => {
                 type="image/png"
             />
             <link
-                href="https://fonts.googleapis.com/css?family=Raleway:500,800&display=swap"
+                href="https://fonts.googleapis.com/css?family=Didact%20;Gothic:400&amp;display=swap"
                 rel="stylesheet"
             />
         </Helmet>

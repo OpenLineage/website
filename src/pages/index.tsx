@@ -39,11 +39,7 @@ export default ({ data, location }: PageProps<IndexPageQuery>) => {
         >
             <Wall data={siteData} />
             {siteData.about !== "" && <About data={siteData.about} />}
-            <div className="px-4 lg:px-0" id="portfolio">
-                {portfolioList}
-            </div>
             <Blog>{blogList}</Blog>
-            <Contact data={siteData.contact} />
         </Layout>
     )
 }
@@ -145,10 +141,11 @@ const About = ({ data }) => {
     return (
         <div className="boxed">
             <div className="px-4 py-20 text-center lg:py-40 lg:px-0">
-                <h2 className="text-color-1 font-black text-5xl lg:text-6xl">
+                <h2 className="text-color-1 text-5xl lg:text-6xl">
                     About
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
+                <img src="/images/stack.png" className="lg:w-full" />
             </div>
         </div>
     )
@@ -158,7 +155,7 @@ const Blog = ({ children }) => {
     return (
         <div className="container mx-auto px-0">
             <div className="pt-20 pb-10 text-center lg:pt-40 lg:pb-20">
-                <h2 className="text-color-1 font-black text-5xl lg:text-6xl">
+                <h2 className="text-color-1 text-5xl lg:text-6xl">
                     Blog
                 </h2>
             </div>
@@ -172,7 +169,7 @@ const Contact = ({ data }) => {
     return (
         <div className="container mx-auto">
             <div className="pt-20 pb-10 lg:pt-40 lg:pb-20 text-center">
-                <h2 className="text-color-1 font-black text-5xl lg:text-6xl">
+                <h2 className="text-color-1 text-5xl lg:text-6xl">
                     Contact
                 </h2>
             </div>

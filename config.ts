@@ -1,52 +1,58 @@
 const siteMetadata = {
-    title: `Elemental`,
+    title: `OpenLineage`,
     siteUrl: `http://localhost`,
     capitalizeTitleOnHome: false,
     logo: `/images/logo.png`,
     icon: `/images/icon.png`,
-    titleImage: `/images/wall.png`,
-    ogImage: `/images/wall.png`,
+    titleImage: `/images/galaxy.jpg`,
+    ogImage: `/images/galaxy.jpg`,
     twoColumnWall: true,
     cookiePolicy: true,
-    introTag: `PHOTOGRAPHER | VIDEOGRAPHER`,
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
+    introTag: `An open platform for data lineage collection and analysis`,
+    description: `Your data is an expanding and always-changing galaxy of interrelated jobs and datasets. But that doesn't mean you can't understand everything that's going on.`,
     about:
         "Cras accumsan a lectus at tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus elementum dapibus dictum. Mauris auctor quam nec est tincidunt hendrerit. Donec pulvinar lobortis mauris. Cras vulputate ullamcorper ligula a rhoncus. Nunc venenatis elementum ligula in semper. Mauris malesuada purus nunc, et ultricies leo aliquam ac. Ut sit amet nunc id magna accumsan hendrerit in eget metus.",
-    author: `@_akzhy`,
+    author: `@openlineage`,
     blogItemsPerPage: 10,
     portfolioItemsPerPage: 10,
-    darkmode: true,
+    darkmode: false,
     switchTheme: true,
     navLinks: [
         {
-            name: "HOME",
+            name: "Home",
             url: "/",
         },
         {
-            name: "ABOUT",
-            url: "/about",
+            name: "Getting Started",
+            url: "/getting-started",
         },
+
         {
-            name: "BLOG",
-            url: "/blog",
-        },
-        {
-            name: "PORTFOLIO",
+            name: "Integrations",
             url: "/portfolio",
         },
         {
-            name: "CONTACT",
-            url: "/contact",
+            name: "Blog",
+            url: "/blog",
         },
+        {
+            name: "About",
+            url: "/about",
+        },
+
     ],
     footerLinks: [
         {
-            name: "PRIVACY POLICY",
+            name: "Twitter",
+            url: "/privacy-policy",
+        },
+        {
+            name: "Slack",
             url: "/privacy-policy",
         },
         {
             name: "GitHub",
-            url: "https://github.com/akzhy/gatsby-starter-elemental",
+            url: "/foo",
         },
     ],
     social: [
@@ -73,13 +79,13 @@ const siteMetadata = {
     ],
     contact: {
         // leave empty ('') or false to hide form
-        api_url: "https://getform.io/f/f227a36e-096a-4c6a-9963-9f1918a85bb3",
+        api_url: "",
         description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
         mail: "hi@akzhy.com",
         phone: "000-000-0000",
         address: "1234 \nLocation \nLocation",
     },
-    disqus: "elemental-netlify-com",
+    disqus: "",
 }
 
 const beforeContactFormSubmit = data => {

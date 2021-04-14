@@ -23,7 +23,7 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps}> = ({ data }) => {
                         />
                     </div>
                     <div className="p-4 py-3">
-                        <h4 className="text-color-2 font-black text-3xl pt-1">
+                        <h4 className="text-color-2 text-3xl pt-1">
                             {data.frontmatter.title}
                         </h4>
                         <div className="flex items-center text-secondary">

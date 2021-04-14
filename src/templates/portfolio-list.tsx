@@ -19,14 +19,14 @@ export default function portfolioList({ data, pageContext, location }: PageProps
     return (
         <Layout
             seo={{
-                title: "Portfolio",
+                title: "Integrations",
             }}
             location={location}
         >
             <div className="py-12 px-4 lg:px-0">
                 <div className="title py-8 text-center">
-                    <h2 className="font-black text-5xl text-color-1">
-                        Portfolio
+                    <h2 className="text-5xl text-color-1">
+                        Integrations
                     </h2>
                 </div>
                 <div className="flex flex-wrap">{portfolioItems}</div>
