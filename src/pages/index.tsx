@@ -91,7 +91,7 @@ const Wall = ({ data }) => {
             <p className="text-lg lg:text-xl text-color-2 pt-4 lg:pt-0">
                 {data.introTag}
             </p>
-            <p className="text-base lg:text-lg mt-4">{data.description}</p>
+            <p className="text-base boxed lg:text-lg mt-4">{data.description}</p>
             <ScrollIntoView selector="#portfolio">
                 <Button
                     title="Get Started"
@@ -142,12 +142,16 @@ const Wall = ({ data }) => {
 const About = ({ data }) => {
     return (
         <div className="boxed">
-            <div className="px-4 py-20 text-center lg:py-40 lg:px-0">
+            <div className="px-4 py-20 text-center lg:py-24 lg:px-0">
                 <h2 className="text-color-1 text-5xl lg:text-6xl">
                     About
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
-                <img src="/images/stack.png" className="lg:w-full" />
+                <img
+                        src="/images/stack.png"
+                        alt=""
+                        className="h-full w-auto max-w-none lg:h-auto lg:w-full pt-6"
+                />
             </div>
         </div>
     )
@@ -155,8 +159,8 @@ const About = ({ data }) => {
 
 const Blog = ({ children }) => {
     return (
-        <div className="container mx-auto px-0">
-            <div className="pt-20 pb-10 text-center lg:pt-40 lg:pb-20">
+        <div className="container mx-auto px-0 pb-40">
+            <div className="px-4 py-20 text-center lg:py-24 lg:px-0">
                 <h2 className="text-color-1 text-5xl lg:text-6xl">
                     Blog
                 </h2>
