@@ -71,19 +71,20 @@ const Wall = ({ data }) => {
     if (!twoColumnWall && data.titleImage) {
         spanAttrs.style = {
             backgroundImage: `url('${data.titleImage}')`,
+            height: '40em',
         }
 
     }
 
     const innerComponents = (
         <React.Fragment>
-            <div className="title bg-bg">
+            <div className="title">
                 <h1
                     className={`text-6xl relative lg:text-7xl ${
                         data.capitalizeTitleOnHome ? "uppercase" : ""
                     }`}
                 >
-                    <span {...spanAttrs}></span>
+                    <span></span>
                     {data.title}
                 </h1>
             </div>
@@ -93,7 +94,7 @@ const Wall = ({ data }) => {
             <p className="text-base lg:text-lg mt-4">{data.description}</p>
             <ScrollIntoView selector="#portfolio">
                 <Button
-                    title="SEE WORKS"
+                    title="Get Started"
                     type="button"
                     iconRight={<ArrowRight />}
                 />
@@ -129,7 +130,8 @@ const Wall = ({ data }) => {
 
     return (
         <div
-            className="wall h-screen flex flex-col justify-center items-center text-center"
+            className="wall flex flex-col justify-center items-center text-center"
+            {...spanAttrs}
             ref={wall}
         >
             {innerComponents}

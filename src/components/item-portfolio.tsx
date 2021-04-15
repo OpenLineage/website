@@ -88,8 +88,8 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
                             </p>
                             <Button
                                 to={data.fields.slug}
-                                label={`View ${data.frontmatter.title}`}
-                                title={"View"}
+                                label={`Read more about ${data.frontmatter.title}`}
+                                title={"Read More"}
                                 iconRight={<ArrowRight />}
                             />
                         </div>
