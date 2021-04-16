@@ -44,8 +44,8 @@ p {
     transition: width .25s, height .25s;
 }
 
-.nav .nav-links li.active:before ,.nav .nav-links li:hover:before {
-    @apply w-8 h-8;
+.nav .nav-links li.active a ,.nav .nav-links li:hover a {
+    color: #f26522;
 }
 
 .nav .nav-links .theme-switcher:before{
@@ -139,7 +139,7 @@ p {
     left: 0;
 }
 
-.portfolio-item .image {
+.integration-item .image {
     clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
     transition: clip-path 0.50s;
     transition-timing-function: ease-in-out;
@@ -147,25 +147,25 @@ p {
     transform: translateY(0);
 }
 
-.portfolio-item.even .image {
+.integration-item.even .image {
     clip-path: polygon(100% 0, 100% 0, 100% 99%, 100% 100%);
 }
 
 
-.portfolio-item.begin-animation .image{
+.integration-item.begin-animation .image{
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-.portfolio-item .to-up {
+.integration-item .to-up {
     transform: translate(0, 50px);
     transition: transform 0.25s;
 }
 
-.portfolio-item .to-up:nth-child(2){
+.integration-item .to-up:nth-child(2){
     transition-delay: 0.2s;
 }
 
-.portfolio-item.begin-animation .to-up {
+.integration-item.begin-animation .to-up {
     transform: translate(0, 0px);
 }
 

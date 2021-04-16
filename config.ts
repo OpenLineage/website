@@ -14,7 +14,7 @@ const siteMetadata = {
         "Cras accumsan a lectus at tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus elementum dapibus dictum. Mauris auctor quam nec est tincidunt hendrerit. Donec pulvinar lobortis mauris. Cras vulputate ullamcorper ligula a rhoncus. Nunc venenatis elementum ligula in semper. Mauris malesuada purus nunc, et ultricies leo aliquam ac. Ut sit amet nunc id magna accumsan hendrerit in eget metus.",
     author: `@openlineage`,
     blogItemsPerPage: 10,
-    portfolioItemsPerPage: 10,
+    integrationItemsPerPage: 10,
     darkmode: false,
     switchTheme: true,
     navLinks: [
@@ -29,7 +29,7 @@ const siteMetadata = {
 
         {
             name: "Integrations",
-            url: "/portfolio",
+            url: "/integration",
         },
         {
             name: "Blog",

@@ -46,7 +46,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
                     }
                 }
             }
-            portfolio: allMdx(filter: { fields: { sourceName: { eq: "portfolio" } } }) {
+            integration: allMdx(filter: { fields: { sourceName: { eq: "integration" } } }) {
                 edges {
                     node {
                         id
@@ -56,7 +56,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
             limitPost: site {
                 siteMetadata {
                     blogItemsPerPage
-                    portfolioItemsPerPage
+                    integrationItemsPerPage
                 }
             }
         }
@@ -91,19 +91,19 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
         })
 
 
-        const portfolioItems = result.data.portfolio.edges
-        const portfolioItemsPerPage =
-            result.data.limitPost.siteMetadata.portfolioItemsPerPage
-        const numPortfolioItems = Math.ceil(portfolioItems.length / portfolioItemsPerPage)
+        const integrationItems = result.data.integration.edges
+        const integrationItemsPerPage =
+            result.data.limitPost.siteMetadata.integrationItemsPerPage
+        const numIntegrationItems = Math.ceil(integrationItems.length / integrationItemsPerPage)
 
-        Array.from({ length: numPortfolioItems }).forEach((_, i) => {
+        Array.from({ length: numIntegrationItems }).forEach((_, i) => {
             createPage({
-                path: i === 0 ? `/portfolio` : `/portfolio/${i + 1}`,
-                component: path.resolve("./src/templates/portfolio-list.tsx"),
+                path: i === 0 ? `/integration` : `/integration/${i + 1}`,
+                component: path.resolve("./src/templates/integration-list.tsx"),
                 context: {
-                    limit: portfolioItemsPerPage,
-                    skip: i * portfolioItemsPerPage,
-                    numPages: numPortfolioItems,
+                    limit: integrationItemsPerPage,
+                    skip: i * integrationItemsPerPage,
+                    numPages: numIntegrationItems,
                     currentPage: i + 1,
                 },
             })

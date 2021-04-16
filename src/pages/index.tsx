@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { graphql, PageProps } from "gatsby"
+import { Link } from "gatsby"
 
 import { ArrowRight } from "react-feather"
 import ScrollIntoView from "react-scroll-into-view"
@@ -7,7 +8,7 @@ import ScrollIntoView from "react-scroll-into-view"
 import Layout from "../components/layout"
 import { Button } from "../components/ui"
 
-import ItemPortfolio from "../components/item-portfolio"
+import ItemIntegration from "../components/item-integration"
 import ItemBlog from "../components/item-blog"
 import { Form, Description as ContactDescription } from "../components/contact"
 import { IndexPageQuery } from "./__generated__/IndexPageQuery"
@@ -15,8 +16,8 @@ import { IndexPageQuery } from "./__generated__/IndexPageQuery"
 export default ({ data, location }: PageProps<IndexPageQuery>) => {
     const siteData = data.site.siteMetadata
 
-    const portfolioList = data.portfolio.edges.map((item, _) => (
-        <ItemPortfolio
+    const integrationList = data.integration.edges.map((item, _) => (
+        <ItemIntegration
             data={item.node}
             key={`p-item-index-${item.node.id}`}
             even={(_ + 1) % 2 === 0}
@@ -72,6 +73,8 @@ const Wall = ({ data }) => {
         spanAttrs.style = {
             backgroundImage: `url('${data.titleImage}')`,
             height: '40em',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
         }
 
     }
@@ -80,7 +83,7 @@ const Wall = ({ data }) => {
         <React.Fragment>
             <div className="title">
                 <h1
-                    className={`text-6xl relative lg:text-7xl ${
+                    className={`text-6xl relative mt-20 lg:text-7xl ${
                         data.capitalizeTitleOnHome ? "uppercase" : ""
                     }`}
                 >
@@ -92,13 +95,11 @@ const Wall = ({ data }) => {
                 {data.introTag}
             </p>
             <p className="text-base boxed lg:text-lg mt-4">{data.description}</p>
-            <ScrollIntoView selector="#portfolio">
-                <Button
-                    title="Get Started"
-                    type="button"
-                    iconRight={<ArrowRight />}
-                />
-            </ScrollIntoView>
+            <Link to='/getting-started'><Button
+                title="Get Started"
+                type="button"
+                iconRight={<ArrowRight />}
+            /></Link>
         </React.Fragment>
     )
 
@@ -142,9 +143,9 @@ const Wall = ({ data }) => {
 const About = ({ data }) => {
     return (
         <div className="boxed">
-            <div className="px-4 py-20 text-center lg:py-24 lg:px-0">
+            <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
                 <h2 className="text-color-1 text-5xl lg:text-6xl">
-                    About
+                    About the Platform
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
                 <img
@@ -160,7 +161,7 @@ const About = ({ data }) => {
 const Blog = ({ children }) => {
     return (
         <div className="container mx-auto px-0 pb-40">
-            <div className="px-4 py-20 text-center lg:py-24 lg:px-0">
+            <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
                 <h2 className="text-color-1 text-5xl lg:text-6xl">
                     Blog
                 </h2>
@@ -224,8 +225,8 @@ export const query = graphql`
                 }
             }
         }
-        portfolio: allMdx(
-            filter: { fields: { sourceName: { eq: "portfolio" } } }
+        integration: allMdx(
+            filter: { fields: { sourceName: { eq: "integration" } } }
             limit: 6
         ) {
             edges {

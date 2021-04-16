@@ -1,19 +1,19 @@
 import React, { useEffect } from "react"
 import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
-import PortfolioItem from "../components/item-portfolio"
+import IntegrationItem from "../components/item-integration"
 import Pagination from "../components/pagination"
-import { PortfolioListQuery } from "./__generated__/PortfolioListQuery"
+import { IntegrationListQuery } from "./__generated__/IntegrationListQuery"
 
-export default function portfolioList({ data, pageContext, location }: PageProps<PortfolioListQuery, {}>) {
+export default function integrationList({ data, pageContext, location }: PageProps<IntegrationListQuery, {}>) {
 
 
     useEffect(() => {
         window.dispatchEvent(new CustomEvent('scroll'))
     }, [])
 
-    const portfolioItems = data.allMdx.edges.map((item, i) => (
-        <PortfolioItem data={item.node} key={item.node.id} even={(i + 1) % 2 === 0}/>
+    const integrationItems = data.allMdx.edges.map((item, i) => (
+        <IntegrationItem data={item.node} key={item.node.id} even={(i + 1) % 2 === 0}/>
     ))
 
     return (
@@ -29,9 +29,9 @@ export default function portfolioList({ data, pageContext, location }: PageProps
                         Integrations
                     </h2>
                 </div>
-                <div className="flex flex-wrap">{portfolioItems}</div>
+                <div className="flex flex-wrap">{integrationItems}</div>
                 <div className="mt-8 lg:mt-24">
-                    <Pagination pageContext={pageContext} type="portfolio" />
+                    <Pagination pageContext={pageContext} type="integration" />
                 </div>
             </div>
         </Layout>
@@ -39,9 +39,9 @@ export default function portfolioList({ data, pageContext, location }: PageProps
 }
 
 export const query = graphql`
-    query PortfolioListQuery($skip: Int!, $limit: Int!) {
+    query IntegrationListQuery($skip: Int!, $limit: Int!) {
         allMdx(
-            filter: { fields: { sourceName: { eq: "portfolio" } } }
+            filter: { fields: { sourceName: { eq: "integration" } } }
             sort: { fields: [frontmatter___date], order: DESC }
             limit: $limit
             skip: $skip
