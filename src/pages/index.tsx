@@ -92,7 +92,7 @@ const Wall = ({ data }) => {
                     {data.title}
                 </h1>
             </div>
-            <p className="text-lg lg:text-xl text-color-2 pt-4 lg:pt-0">
+            <p className="text-lg lg:text-xl text-color-3 uppercase pt-4 lg:pt-0">
                 {data.introTag}
             </p>
             <p className="text-base boxed lg:text-lg mt-4">{data.description}</p>
