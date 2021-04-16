@@ -29,7 +29,7 @@ export default function() {
             <div className="container mx-auto text-center">
                 <div className="flex justify-center my-3 mb-6">
                     <Link to="/" title={query.site.siteMetadata.title}>
-                        <Logo className="w-12"/>
+                        <Logo className="w-40"/>
                     </Link>
                 </div>
                 <div className="text-color-2 my-3 footer-links animated-link-parent">

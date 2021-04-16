@@ -2,7 +2,7 @@ const siteMetadata = {
     title: `OpenLineage`,
     siteUrl: `http://localhost`,
     capitalizeTitleOnHome: false,
-    logo: `/images/logo.png`,
+    logo: `/images/ol-logo.png`,
     icon: `/images/icon.png`,
     titleImage: `/images/background.svg`,
     ogImage: `/images/galaxy.jpg`,
