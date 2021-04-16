@@ -150,7 +150,7 @@ const Wall = ({ data }) => {
 
     return (
         <div
-            className="wall flex flex-col justify-center items-center text-center"
+            className="wall flex flex-col justify-center items-center text-center mb-12"
             {...spanAttrs}
             ref={wall}
         >
@@ -162,15 +162,21 @@ const Wall = ({ data }) => {
 const About = ({ data }) => {
     return (
         <div className="boxed">
-            <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
+            <div className="px-4 py-12 text-center items-center lg:py-14 lg:px-0">
                 <h2 className="text-color-1 text-5xl lg:text-6xl">
                     About the Platform
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
-                <img
+                <center><img
                         src="/images/stack.png"
                         alt=""
-                        className="h-full w-auto max-w-none lg:h-auto lg:w-full pt-6"
+                        className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 pt-6 mb-6"
+                /></center>
+                <Button
+                    title="Read the Docs"
+                    to='/docs'
+                    type="link"
+                    iconRight={<ArrowRight />}
                 />
             </div>
         </div>
