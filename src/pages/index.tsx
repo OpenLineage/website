@@ -3,6 +3,8 @@ import { graphql, PageProps } from "gatsby"
 import { Link } from "gatsby"
 
 import { ArrowRight } from "react-feather"
+import { GitHub } from "react-feather"
+import { Slack } from "react-feather"
 import ScrollIntoView from "react-scroll-into-view"
 
 import Layout from "../components/layout"
@@ -10,7 +12,6 @@ import { Button } from "../components/ui"
 
 import ItemIntegration from "../components/item-integration"
 import ItemBlog from "../components/item-blog"
-import { Form, Description as ContactDescription } from "../components/contact"
 import { IndexPageQuery } from "./__generated__/IndexPageQuery"
 
 export default ({ data, location }: PageProps<IndexPageQuery>) => {
@@ -95,11 +96,29 @@ const Wall = ({ data }) => {
                 {data.introTag}
             </p>
             <p className="text-base boxed lg:text-lg mt-4">{data.description}</p>
-            <Link to='/getting-started'><Button
-                title="Get Started"
-                type="button"
-                iconRight={<ArrowRight />}
-            /></Link>
+            <span className="py-5">
+                <Button
+                    title="Get Started"
+                    to='/getting-started'
+                    type="link"
+                    iconRight={<ArrowRight />}
+                    className="mx-5"
+                />
+                <Button
+                    title="GitHub"
+                    to='/github'
+                    type="link"
+                    iconRight={<GitHub />}
+                    className="mx-5"
+                />
+                <Button
+                    title="Slack"
+                    to='/slack'
+                    type="link"
+                    iconRight={<Slack />}
+                    className="mx-5"
+                />
+            </span>
         </React.Fragment>
     )
 
@@ -167,33 +186,6 @@ const Blog = ({ children }) => {
                 </h2>
             </div>
             <div className="flex flex-wrap">{children}</div>
-        </div>
-    )
-}
-
-const Contact = ({ data }) => {
-    const hasContactForm = data.api_url
-    return (
-        <div className="container mx-auto">
-            <div className="pt-20 pb-10 lg:pt-40 lg:pb-20 text-center">
-                <h2 className="text-color-1 text-5xl lg:text-6xl">
-                    Contact
-                </h2>
-            </div>
-            <div className="flex flex-wrap pb-40">
-                {hasContactForm && (
-                    <div className="w-full lg:w-1/2 px-4 lg:pl-2 lg:pr-6">
-                        <Form api={data.api_url} />
-                    </div>
-                )}
-                <div
-                    className={`w-full ${
-                        hasContactForm ? "lg:w-1/2" : "lg:w-2/3 mx-auto"
-                    } px-6 pt-8`}
-                >
-                    <ContactDescription data={data} />
-                </div>
-            </div>
         </div>
     )
 }

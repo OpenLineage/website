@@ -11,7 +11,7 @@ p {
 }
 
 .boxed {
-    @apply max-w-screen-lg w-full mx-auto;
+    @apply max-w-screen-lg w-full mx-auto px-4;
 }
 
 .large-container {
