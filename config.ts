@@ -1,17 +1,17 @@
 const siteMetadata = {
     title: `OpenLineage`,
-    siteUrl: `http://localhost`,
+    siteUrl: `https://openlineage.io`,
     capitalizeTitleOnHome: false,
-    logo: `/images/ol-logo.png`,
+    logo: `/images/ol-logo.svg`,
     icon: `/images/icon.png`,
     titleImage: `/images/background.svg`,
     ogImage: `/images/galaxy.jpg`,
     twoColumnWall: false,
     cookiePolicy: true,
     introTag: `An open platform for data lineage collection and analysis`,
-    description: `Your data is an expanding and always-changing galaxy of interrelated jobs and datasets. But that doesn't mean you can't understand everything that's going on.`,
+    description: `Your data pipeline is an expanding, always-changing collection of interrelated jobs and datasets. But you can still track everything that happens.`,
     about:
-        "Cras accumsan a lectus at tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus elementum dapibus dictum. Mauris auctor quam nec est tincidunt hendrerit. Donec pulvinar lobortis mauris. Cras vulputate ullamcorper ligula a rhoncus. Nunc venenatis elementum ligula in semper. Mauris malesuada purus nunc, et ultricies leo aliquam ac. Ut sit amet nunc id magna accumsan hendrerit in eget metus.",
+        "OpenLineage is an open platform for collection and analysis of data lineage. It tracks metadata about datasets, jobs, and runs, giving users the information required to identify the root cause of complex issues. OpenLineage contains an open standard for lineage data collection, a metadata repository reference implementation (marquez), libraries for common languages, and integrations with data pipeline tools.",
     author: `@openlineage`,
     blogItemsPerPage: 10,
     integrationItemsPerPage: 10,
@@ -35,24 +35,19 @@ const siteMetadata = {
             name: "Blog",
             url: "/blog",
         },
-        {
-            name: "About",
-            url: "/about",
-        },
-
     ],
     footerLinks: [
         {
             name: "Twitter",
-            url: "/privacy-policy",
+            url: "https://twitter.com/OpenLineage",
         },
         {
             name: "Slack",
-            url: "/privacy-policy",
+            url: "http://bit.ly/OpenLineageSlack",
         },
         {
             name: "GitHub",
-            url: "/foo",
+            url: "https://github.com/OpenLineage",
         },
     ],
     social: [

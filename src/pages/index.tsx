@@ -75,6 +75,7 @@ const Wall = ({ data }) => {
             backgroundImage: `url('${data.titleImage}')`,
             height: '40em',
             backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
             backgroundSize: 'cover',
         }
 
@@ -95,7 +96,7 @@ const Wall = ({ data }) => {
             <p className="text-lg lg:text-xl text-color-3 uppercase pt-4 lg:pt-0">
                 {data.introTag}
             </p>
-            <p className="text-base boxed lg:text-lg mt-4">{data.description}</p>
+            <p className="text-base text-color-4 boxed lg:text-lg mt-4">{data.description}</p>
             <span className="py-5">
                 <Button
                     title="Get Started"
@@ -106,15 +107,15 @@ const Wall = ({ data }) => {
                 />
                 <Button
                     title="GitHub"
-                    to='/github'
-                    type="link"
+                    to='https://github.com/OpenLineage'
+                    type="extbutton"
                     iconRight={<GitHub />}
                     className="mx-5"
                 />
                 <Button
                     title="Slack"
-                    to='/slack'
-                    type="link"
+                    to='http://bit.ly/OpenLineageSlack'
+                    type="extbutton"
                     iconRight={<Slack />}
                     className="mx-5"
                 />
@@ -160,18 +161,25 @@ const Wall = ({ data }) => {
 }
 
 const About = ({ data }) => {
+    let spanAttrs: Partial<{ style: unknown }> = {}
+
+    spanAttrs.style = {
+        margin: '0 auto',
+    }
+
     return (
         <div className="boxed">
-            <div className="px-4 py-12 text-center items-center lg:py-14 lg:px-0">
+            <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
                 <h2 className="text-color-1 text-5xl lg:text-6xl">
                     About the Platform
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
-                <center><img
+                <img
                         src="/images/stack.png"
                         alt=""
+                        {...spanAttrs}
                         className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 pt-6 mb-6"
-                /></center>
+                />
                 <Button
                     title="Read the Docs"
                     to='/docs'

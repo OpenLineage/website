@@ -25,6 +25,13 @@ const Button: React.FC<ButtonProps> = props => {
         if (b[0] === "button") {
             return <button type={t} disabled={dis} className={`btn btn-primary${dis ? ' disabled' : ''}${props.className ? ' ' + props.className : ''}`}>{innerComponents}</button>
         }
+        if (b[0] === "extbutton") {
+            return (
+                <Link to={to}>
+                    <button type={t} disabled={dis} className={`btn btn-primary${dis ? ' disabled' : ''}${props.className ? ' ' + props.className : ''}`}>{innerComponents}</button>
+                </Link>
+            )
+        }
     }
     return (
         <Link to={to} className={`btn btn-primary${props.className ? ' ' + props.className : ''}`} title={label || title}>

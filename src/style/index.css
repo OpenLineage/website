@@ -66,32 +66,6 @@ p {
 }
 
 
-.supports-blend .title h1 {
-    color: #000;
-    background: #fff;
-    mix-blend-mode: multiply;
-}
-
-.supports-blend .title h1 span {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    @apply bg-gradient-primary;
-    mix-blend-mode: screen;
-}
-
-.theme-dark .supports-blend .title h1 {
-    color: #fff;
-    background: #000;
-    mix-blend-mode: lighten;
-}
-
-.theme-dark .supports-blend .title h1 span {
-    mix-blend-mode: multiply;
-}
 
 .btn {
     @apply h-12 px-6 outline-none inline-flex relative overflow-hidden items-center;
