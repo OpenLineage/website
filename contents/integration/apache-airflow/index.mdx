@@ -1,38 +1,38 @@
 ---
 title: Apache Airflow
-description: Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum nisi ut ea commodo at eros.
-date: 2019-06-28
+description: Airflow, a common tool used for workflow management, is the foundation of many data pipelines. Enabling OpenLineage in Apache Airflow automatically tracks metadata about jobs and datasets as DAGs execute.
+date: 2020-04-01
 image: ./stack.png
-banner: ./banner.jpg
+banner: ./airflow-bg.png
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+**Apache Airflow** is a lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Users of Airflow manage jobs as a flat list of DAGs, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<Row>
-<Col>
+To learn more about Apache Airflow, visit <a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">the Airflow documentation</a>.
 
-![image](./b1.jpg)
+## What does this integration do?
 
-</Col>
-<Col>
+Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue.
 
-![image](./b2.jpg)
+![image](./af-schematic.png)
 
-</Col>
-</Row>
+Maecenas faucibus mollis interdum. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla.
 
+## How do I use it?
 
-<Row>
-<Col>
+Adding OpenLineage metadata collection to existing AirFlow DAGs was designed to be a straightforward process. This integration was implemented as an extension of the `airflow` Python module. The new module, `marquez-airflow`, can be used in the same way as the original. It can be enabled with this one line change to many DAGs:
 
-![image](./l2.jpg)
-Text
+```diff
+- from airflow import DAG
++ from marquez_airflow import DAG
+```
 
-</Col>
-<Col>
+There are also key environment variables that must be passed to Airflow. See the <a href="https://github.com/MarquezProject/marquez/tree/main/integrations/airflow">project page</a> for more information.
 
-![image](./l1.jpg)
-Text
+## Where can I find out more?
 
-</Col>
-</Row>
+Maecenas sed diam eget risus varius blandit sit amet non magna. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum.
+
+There is an example that nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum.
+
+<a href="https://github.com/MarquezProject/marquez/tree/main/examples/airflow">View the Example</a>

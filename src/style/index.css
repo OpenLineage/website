@@ -273,3 +273,7 @@ p {
         font-size: 15px;
     }
 }
+
+.post-content a {
+    @apply text-color-2 my-4;
+}
