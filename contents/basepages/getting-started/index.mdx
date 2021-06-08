@@ -58,15 +58,15 @@ Below, we illustrate the challenges of collecting lineage metadata from multiple
 ![image](./with-openlineage.png)
 
 * Integration efforts are shared _across_ projects!
-* Integrations can be pushed to the underlying scheduler and/or data processing framework; no need to play catch up and ensure compatibility.
+* Integrations can be _pushed_ to the underlying scheduler and/or data processing framework; no need to play catch up and ensure compatibility!
 
-#### CORE MODEL DESIGN:
+#### DESIGN:
 
 OpenLineage is an _Open Standard_ for lineage metadata collection designed to record metadata for a _job_ in execution. The standard defines a generic model of _dataset_, _job_, and _run_ entities uniquely identified using consistent naming strategies. The core model is highly extensible via facets. A **facet** is user-defined metadata and enables entity enrichment. We encourage you to familiarize yourself with the core model below:
 
 ![image](./model.png)
 
-#### CORE MODEL BENEFITS:
+#### BENEFITS:
 
 * An **open standard** with a specification for collecting **lineage** metadata.
 * Focuses on **job-level** execution.
@@ -116,7 +116,7 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
 
 #### STEP 2: COMPLETE A RUN
 
-Use `d46e465b-d358-4d32-83d4-df660ff614dd` to **complete** the run for `my-job` with `my-output` as the output dataset. We also specify the [schema facet](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.md#dataset-facets) to collect the schema for `my-output` before marking the run as completed. Note, you don't have to specify the input dataset `my-input` again since it already has been associated with the run ID:
+Use `d46e465b-d358-4d32-83d4-df660ff614dd` to **complete** the run for `my-job` with `my-output` as the output dataset. We also specify the [schema](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.md#dataset-facets) **facet** to collect the schema for `my-output` before marking the run as completed. Note, you don't have to specify the input dataset `my-input` again for the run since it already has been associated with the run ID:
 
 ##### REQUEST
 
