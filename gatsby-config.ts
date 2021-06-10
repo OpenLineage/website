@@ -55,6 +55,17 @@ const plugins = [
           ],
         },
       },
+    {
+        resolve: `gatsby-transformer-remark`,
+        options: {
+            plugins: [
+                {
+                    resolve: `gatsby-remark-prismjs`,
+                    options: {}
+                }
+            ]
+        }
+    },
 ]
 
 if (siteMetadata.disqus) {
