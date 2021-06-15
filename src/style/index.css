@@ -199,7 +199,7 @@ p {
 }
 
 .post-content ul {
-    list-style: disc
+    list-style: disc;
 }
 
 .post-content ol {
@@ -216,6 +216,7 @@ p {
 
 .post-content li {
     @apply my-2;
+    margin-left: 1.5rem;
 }
 
 .post-content table {
@@ -237,6 +238,8 @@ p {
 
 .post-content blockquote{
     @apply border-l-4 border-primary p-3;
+    padding: 0rem 0.75rem;
+    margin: 1.5rem 0;
 }
 
 .post-content iframe {
@@ -276,4 +279,11 @@ p {
 
 .post-content a {
     @apply text-color-2 my-4;
+}
+
+.post-content pre {
+    overflow: scroll;
+    color: #fff;
+    background-color: #333;
+    padding: 1rem;
 }
