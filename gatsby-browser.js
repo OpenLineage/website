@@ -1,6 +1,9 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
+
+import nightOwl from 'prism-react-renderer/themes/nightOwl';
+
 /* eslint-disable */
 const component = {
   pre: props => {
@@ -10,6 +13,7 @@ const component = {
       <Highlight
         {...defaultProps}
         code={props.children.props.children}
+        theme={nightOwl}
         language={
           matches && matches.groups && matches.groups.lang
             ? matches.groups.lang
