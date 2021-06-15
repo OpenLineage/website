@@ -16,7 +16,7 @@ const siteMetadata = {
     blogItemsPerPage: 10,
     integrationItemsPerPage: 10,
     darkmode: false,
-    switchTheme: true,
+    switchTheme: false,
     navLinks: [
         {
             name: "Home",
