@@ -22,25 +22,18 @@ Before you begin, make sure you have installed:
 
 > **Note:** In this guide, we'll be using Marquez as the OpenLineage HTTP backend and running the HTTP server via Docker.
 
-#### GET MARQUEZ
+#### RUN MARQUEZ WITH [DOCKER](https://github.com/MarquezProject/marquez/blob/main/Dockerfile)
 
-To checkout the Marquez source code, run:
+The easiest way to get up and running with Marquez is Docker. Check out the Marquez source code and run the `./docker/up.sh` script:
 
-```
+```bash
 $ git clone git@github.com:MarquezProject/marquez.git && cd marquez
-```
-
-#### RUNNING MARQUEZ WITH [DOCKER](https://github.com/MarquezProject/marquez/blob/main/Dockerfile)
-
-The easiest way to get up and running with Marquez is Docker. From the base of the Marquez repository, run:
-
-```
 $ ./docker/up.sh
 ```
 
-> **Tip:** Use the `--build` flag to build images from source, or `--pull` to pull a tagged image.
+> **Tip:** Pass the `--build` flag to the script to build images from source, or `--pull` to pull a tagged image.
 
-To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more!
+To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.
 
 ## OpenLineage Core Model
 
@@ -57,7 +50,7 @@ Below, we illustrate the challenges of collecting lineage metadata from multiple
 
 ![image](./with-openlineage.png)
 
-* Integration efforts are shared _across_ projects!
+* Integration efforts are shared _across_ projects.
 * Integrations can be _pushed_ to the underlying scheduler and/or data processing framework; no need to play catch up and ensure compatibility!
 
 #### DESIGN:
@@ -187,4 +180,4 @@ In this simple example, we showed you how to use Marquez to collect dataset and 
 
 ## Feedback
 
-What did you think of this guide? You can reach out to us on [slack](http://bit.ly/OpenLineageSlack) and leave us feedback!  
+What did you think of this guide? We would love to hear feedback, and we can be found on the [OpenLineage Slack](http://bit.ly/OpenLineageSlack).
