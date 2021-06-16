@@ -181,7 +181,7 @@ const About = ({ data }) => {
                         className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 py-3 pt-6 mb-6"
                 />
                 <p className="mt-5 text-lg py-3">
-                    At the core of OpenLineage is a common API standard for capturing lineage events. Pipeline tools like schedulers can easily be extended to send data about runs, jobs, and datasets to a compatible OpenLineage backend for further study.
+                    At the core of OpenLineage is a standard API for capturing lineage events. Pipeline components - like schedulers, warehouses, analysis tools, and SQL engines - can use this API to send data about runs, jobs, and datasets to a compatible OpenLineage backend for further study.
                 </p>
 
                 <Button

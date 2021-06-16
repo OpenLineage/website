@@ -8,8 +8,8 @@ const siteMetadata = {
     ogImage: `/images/galaxy.jpg`,
     twoColumnWall: false,
     cookiePolicy: true,
-    introTag: `An open platform for data lineage collection and analysis`,
-    description: `Your data pipeline is an expanding, always-changing collection of interrelated jobs and datasets. But you can still track everything that happens.`,
+    introTag: `An open framework for data lineage collection and analysis`,
+    description: `Data lineage is the foundation for a new generation of powerful, context-aware data tools and best practices. OpenLineage enables consistent collection of lineage metadata, creating a deeper understanding of how data is produced and used.`,
     about:
         "OpenLineage is an open platform for collection and analysis of data lineage. It tracks metadata about datasets, jobs, and runs, giving users the information required to identify the root cause of complex issues. OpenLineage contains an open standard for lineage data collection, a metadata repository reference implementation (marquez), libraries for common languages, and integrations with data pipeline tools.",
     author: `@openlineage`,
