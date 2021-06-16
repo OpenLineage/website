@@ -43,8 +43,7 @@ export default function() {
                     </ul>
                 </div>
                 <p className="text-color-default text-lg">
-                    Copyright &copy; Datakin, Inc. {" "}
-                    {new Date().getFullYear()}
+                    Copyright &copy; {new Date().getFullYear()} The Linux Foundation®. All rights reserved.      
                 </p>
             </div>
         </footer>
