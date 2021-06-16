@@ -291,3 +291,7 @@ p {
 .post-content img {
     margin: 3rem;
 }
+
+.int-title {
+    color: #fff !important;
+}

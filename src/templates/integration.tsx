@@ -21,15 +21,12 @@ export default function porfolio ({ location, data }: PageProps<IntegrationQuery
         >
             <div className="md:px-4 mt-12 py-6 md:w-11/12 mx-auto post-content">
                 <div className="mx-auto relative">
-                    <Img
-                        fluid={
-                            data.mdx.frontmatter.banner.childImageSharp.fluid
-                        }
-                    />
+                    {data.mdx.frontmatter.banner.publicURL.endsWith('.svg') ?
+                    <img src={data.mdx.frontmatter.banner.publicURL} alt="''"/> :
+                    <Img fluid={data.mdx.frontmatter.banner.childImageSharp.fluid}/>}
                     <div className="flex items-center justify-center relative lg:absolute w-full h-full top-0 left-0">
-                        <div className="hidden lg:block absolute w-full h-full bg-black opacity-50"></div>
                         <div className="px-4 py-8 lg:p-0 relative z-10 text-center text-color-default lg:text-white bg-bgalt lg:bg-transparent">
-                            <h1 className="text-5xl font-bold text-color-1 lg:text-white">
+                            <h1 className="int-title text-5xl font-bold text-color-2">
                                 {data.mdx.frontmatter.title}
                             </h1>
                             <p className="mt-3 md:w-3/4 mx-auto">
