@@ -287,3 +287,7 @@ p {
     background-color: #333;
     padding: 1rem;
 }
+
+.post-content img {
+    margin: 3rem;
+}
