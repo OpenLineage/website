@@ -186,7 +186,7 @@ const About = ({ data }) => {
 
                 <Button
                     title="Read the API Docs"
-                    to='/docs'
+                    to='/docs/javadoc'
                     type="link"
                     iconRight={<ArrowRight />}
                 />
