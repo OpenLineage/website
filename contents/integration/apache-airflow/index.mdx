@@ -14,7 +14,7 @@ banner: ./airflow-bg.png
 
 Understanding complex inter-DAG dependencies and providing up-to-date runtime visibility into DAG execution can be challenging. OpenLineage integrates with Airflow to collect DAG lineage metadata so that inter-DAG dependencies are easily maintained and viewable via a lineage graph, while also keeping a catalog of historical runs of DAGs.
 
-![image](./af-schematic.png)
+<img class="m-12" src="./af-schematic.svg" />
 
 The integration is implemented using the [marquez-airflow](https://pypi.org/project/marquez-airflow)  integration library, which sends OpenLineage events to [Marquez](https://marquezproject.ai). The DAG metadata collected can answer questions like:
 
