@@ -73,7 +73,7 @@ const Wall = ({ data }) => {
     if (!twoColumnWall && data.titleImage) {
         spanAttrs.style = {
             backgroundImage: `url('${data.titleImage}')`,
-            height: '40em',
+            height: '35em',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
@@ -170,18 +170,22 @@ const About = ({ data }) => {
     return (
         <div className="boxed">
             <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
-                <h2 className="text-color-1 text-5xl lg:text-6xl">
-                    About the Platform
+                <h2 className="text-color-1 text-3xl lg:text-4xl">
+                    About the Project
                 </h2>
                 <p className="mt-5 text-lg">{data}</p>
                 <img
-                        src="/images/stack.png"
+                        src="/images/ol-stack.svg"
                         alt=""
                         {...spanAttrs}
-                        className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 pt-6 mb-6"
+                        className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 py-3 pt-6 mb-6"
                 />
+                <p className="mt-5 text-lg py-3">
+                    At the core of OpenLineage is a common API standard for capturing lineage events. Pipeline tools like schedulers can easily be extended to send data about runs, jobs, and datasets to a compatible OpenLineage backend for further study.
+                </p>
+
                 <Button
-                    title="Read the Docs"
+                    title="Read the API Docs"
                     to='/docs'
                     type="link"
                     iconRight={<ArrowRight />}
