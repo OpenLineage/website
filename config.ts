@@ -7,7 +7,7 @@ const siteMetadata = {
     titleImage: `/images/background.svg`,
     ogImage: `/images/galaxy.jpg`,
     twoColumnWall: false,
-    cookiePolicy: true,
+    cookiePolicy: false,
     introTag: `An open framework for data lineage collection and analysis`,
     description: `Data lineage is the foundation for a new generation of powerful, context-aware data tools and best practices. OpenLineage enables consistent collection of lineage metadata, creating a deeper understanding of how data is produced and used.`,
     about:
