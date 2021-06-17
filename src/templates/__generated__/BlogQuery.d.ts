@@ -35,6 +35,7 @@ export interface BlogQuery_mdx_frontmatter {
   title: string;
   date: any | null;
   description: string | null;
+  author: string | null;
   banner: BlogQuery_mdx_frontmatter_banner | null;
 }
 

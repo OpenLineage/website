@@ -32,7 +32,7 @@ export default function porfolio ({ location, data }: PageProps<IntegrationQuery
                     </div>
                     {data.mdx.frontmatter.banner.publicURL.endsWith('.svg') ?
                     <img src={data.mdx.frontmatter.banner.publicURL} alt="''"/> :
-                    <Img fluid={data.mdx.frontmatter.banner.childImageSharp.fluid}/>}
+                    <Img fluid={data.mdx.frontmatter.banner.childImageSharp?.fluid}/>}
                 </div>
                 <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mt-4 md:mt-6 mx-auto lg:mt-12 post-content">
                     <MDXProvider components={{ Row, Col }}>

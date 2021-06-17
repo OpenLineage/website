@@ -271,6 +271,7 @@ export const query = graphql`
                         description
                         date(formatString: "DD MMMM YYYY")
                         image {
+                            publicURL
                             childImageSharp {
                                 fluid(maxWidth: 1000) {
                                     ...GatsbyImageSharpFluid

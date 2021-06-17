@@ -16,11 +16,9 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps}> = ({ data }) => {
             <div className={`transition-all duration-300 hover:shadow-2xl shadow ${focused && 'focused'}`}>
                 <Link to={data.fields.slug} title={data.frontmatter.title} onFocus={() => changeFocused(true)} onBlur={() => changeFocused(false)}>
                     <div className="image">
-                        <Img
-                            fluid={data.frontmatter.image.childImageSharp.fluid}
-                            alt={data.frontmatter.title}
-                            className="w-full"
-                        />
+                        {data.frontmatter.image.publicURL.endsWith('.svg') ?
+                        <img src={data.frontmatter.image.publicURL} alt={data.frontmatter.title} className="w-full" /> :
+                        <Img fluid={data.frontmatter.image.childImageSharp?.fluid} alt={data.frontmatter.title} className="w-full" />}
                     </div>
                     <div className="p-4 py-3">
                         <h4 className="text-color-2 text-3xl pt-1">
@@ -28,7 +26,7 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps}> = ({ data }) => {
                         </h4>
                         <div className="flex items-center text-secondary">
                             <Calendar className="stroke-current"/>
-                            <p className="pl-2 text-color-default font-sans">{data.frontmatter.date}</p>
+                            <p className="pl-2 text-color-default font-sans">{data.frontmatter.date} by {data.frontmatter.author}</p>
                         </div>
                         <p className="pt-3 text-color-default">
                             {data.frontmatter.description}

@@ -56,7 +56,13 @@ const plugins = [
           ],
         },
       },
-
+    {
+        resolve: `gatsby-plugin-google-analytics`,
+        options: {
+          trackingId: "UA-199717351-1",
+          head: true,
+        },
+    },
 ]
 
 if (siteMetadata.disqus) {
