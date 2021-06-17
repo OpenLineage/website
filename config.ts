@@ -3,7 +3,7 @@ const siteMetadata = {
     siteUrl: `https://openlineage.io`,
     capitalizeTitleOnHome: false,
     logo: `/images/ol-logo.svg`,
-    icon: `/images/icon.png`,
+    icon: `/images/icon.svg`,
     titleImage: `/images/background.svg`,
     ogImage: `/images/galaxy.jpg`,
     twoColumnWall: false,
