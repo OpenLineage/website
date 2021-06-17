@@ -185,8 +185,17 @@ const About = ({ data }) => {
                 </p>
 
                 <Button
-                    title="Read the API Docs"
+                    title="Read the javadoc"
+                    className="mx-3"
                     to='/docs/javadoc'
+                    type="link"
+                    iconRight={<ArrowRight />}
+                />
+
+                <Button
+                    title="Read the openapi doc"
+                    className="mx-3"
+                    to='/docs/openapi'
                     type="link"
                     iconRight={<ArrowRight />}
                 />
@@ -269,6 +278,7 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
+                        author
                         date(formatString: "DD MMMM YYYY")
                         image {
                             publicURL
