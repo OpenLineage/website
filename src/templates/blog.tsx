@@ -23,11 +23,9 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
         >
             <div className="md:px-4 mt-12 py-6 md:w-11/12 mx-auto">
                 <div className="mx-auto relative">
-                    <Img
-                        fluid={
-                            data.mdx.frontmatter.banner.childImageSharp.fluid
-                        }
-                    />
+                    {data.mdx.frontmatter.banner.publicURL.endsWith('.svg') ?
+                    <img src={data.mdx.frontmatter.banner.publicURL} alt="''"/> :
+                    <Img fluid={data.mdx.frontmatter.banner.childImageSharp.fluid}/>}
                     <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 box-border lg:box-content mx-auto bg-bg text-color-default blog-wall-content shadow-xl md:-mt-16 ">
                         <div className="p-3">
                             <h1 className="text-5xl font-bold text-primary">
