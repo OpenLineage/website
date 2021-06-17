@@ -36,7 +36,7 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                             <p className="mt-1 flex">
                                 <Calendar />{" "}
                                 <span className="ml-2">
-                                    {data.mdx.frontmatter.date}
+                                    {data.mdx.frontmatter.date} by {data.mdx.frontmatter.author}
                                 </span>
                             </p>
                             <p className="mt-3">
@@ -66,6 +66,7 @@ export const query = graphql`
                 title
                 date(formatString: "DD MMMM YYYY")
                 description
+                author
                 banner {
                     publicURL
                     childImageSharp {

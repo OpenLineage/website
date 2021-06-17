@@ -43,6 +43,7 @@ export const query = graphql`
                     id
                     frontmatter {
                         title
+                        author
                         description
                         date(formatString: "DD MMMM YYYY")
                         image {

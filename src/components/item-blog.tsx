@@ -28,7 +28,7 @@ export const ItemBlog: React.FC<{ data: ItemBlogProps}> = ({ data }) => {
                         </h4>
                         <div className="flex items-center text-secondary">
                             <Calendar className="stroke-current"/>
-                            <p className="pl-2 text-color-default font-sans">{data.frontmatter.date}</p>
+                            <p className="pl-2 text-color-default font-sans">{data.frontmatter.date} by {data.frontmatter.author}</p>
                         </div>
                         <p className="pt-3 text-color-default">
                             {data.frontmatter.description}
