@@ -48,7 +48,6 @@ export const query = graphql`
                         date(formatString: "DD MMMM YYYY")
                         image {
                             publicURL
-                            extension
                             childImageSharp {
                                 fluid(maxWidth: 1920) {
                                     srcSet
