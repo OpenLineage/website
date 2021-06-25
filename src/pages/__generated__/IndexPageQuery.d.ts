@@ -107,6 +107,7 @@ export interface IndexPageQuery_blog_edges_node_frontmatter_image {
 export interface IndexPageQuery_blog_edges_node_frontmatter {
   title: string;
   description: string | null;
+  author: string | null;
   date: any | null;
   image: IndexPageQuery_blog_edges_node_frontmatter_image | null;
 }
