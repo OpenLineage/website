@@ -10,18 +10,26 @@ description: Explore lineage history via marquez
 Managing a data pipeline means tracking changes. Sometimes changes to your code, sometimes changes to
 somebody else’s schema, sometimes to the contents of the data itself. Sometimes you need to
 trace the root cause of a problem- somebody changed an int to a string and all the downstream consumers
-broke. Sometimes you want to make a change and see how your consumers were affected- do all the jobs
-run significantly faster after you filter out “unused” records? Or did somebody [rely on those
-"unused" records](https://www.hyrumslaw.com/) to be present in the data? Do the recommendation models
-perform better after you "improved" the data cleaning job upstream? Can you be certain it was your
-change that improved the performance? Sometimes the data itself just looks wrong and you need a way
-to verify that nothing has broken. Why was there a huge drop in traffic to the food delivery site
-yesterday? Was there an outage you didn't hear about? Competitors outbidding your ads? Or did the
-website developers simply stop logging some critical event corrupting every table in your data
-warehouse?
+broke.
 
-Typically, we think of data lineage in static terms- Job A produces Dataset X, which is consumed by
-Job B which joins it with Dataset Y and produces Dataset Z, which is consumed by&#8230; It’s a map
+Sometimes you want to make a change and see how your consumers were affected- do all the jobs
+run significantly faster after you filter out &ldquo;unused&rdquo; records? Or did somebody [rely on those
+&ldquo;unused&rdquo; records](https://www.hyrumslaw.com/) to be present in the data?
+
+Do the recommendation models perform better after you "improved" the data cleaning job upstream? Can
+you be certain it was your change that improved the performance?
+
+Sometimes the data itself just looks wrong and you need a way to verify that nothing has broken. Why
+was there a huge drop in traffic to the food delivery site yesterday? Was there an outage you didn't
+hear about? Competitors outbidding your ads? Or did the website developers simply stop logging some
+critical event, corrupting every table in your data warehouse?
+
+Typically, we think of data lineage in static terms-
+
+> Job A produces Dataset X, which is consumed by Job B which joins it with Dataset Y and produces
+Dataset Z, which is consumed by&#8230;
+
+It’s a map
 that we use to get our heads around the dependencies that exist between the datasets we use to make
 good decisions (how much inventory should I stock in the warehouse to ensure customers get timely
 deliveries?) or to make technical features our customers will love (how can I compile the perfect
@@ -38,12 +46,15 @@ the impact of code changes on downstream dependents.
 To get started, we need a running instance of Marquez with a little bit of seed data. For these
 exercises, we'll assume you have a terminal with the following programs installed
 
-* git
-* curl
-* jq
-* less
+* [docker](https://www.docker.com/products/docker-desktop)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [curl](https://curl.se/download.html)
+* [jq](https://stedolan.github.io/jq/download/)
+* less (optional)
 
-Check out the Marquez repository from Github and run the docker image locally:
+Download and install any dependencies you don't already have. You'll need the docker daemon running
+(see the docs for your platform to get that started). Then check out the Marquez repository
+from Github and run the docker image locally:
 
 ```bash
 git clone https://github.com/MarquezProject/marquez
