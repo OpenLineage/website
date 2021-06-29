@@ -1,4 +1,8 @@
-# Backfilling Airflow DAGs using Marquez
+---
+title: Backfilling Airflow DAGs using Marquez
+date: 2021-06-28
+author: Willy Lulciuc
+---
 
 You've just deployed an Airflow [DAG](https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html#dags) that calculates the total sum of weekly food orders. You were able to identify what input tables to query, the frequency in which your DAG would run, and made sure analyst knew the resulting output table to use in their weekly food order trends report. The DAG only needs to run once a week, and with the DAG managed and scheduled via [Airflow](https://airflow.apache.org), you feel confident that the aggregated food order data will be available every Sunday morning for the weekly report.
 
