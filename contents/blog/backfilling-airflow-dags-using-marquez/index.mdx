@@ -6,7 +6,7 @@ author: Willy Lulciuc
 
 You've just deployed an Airflow [DAG](https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html#dags) that calculates the total sum of weekly food orders. You were able to identify what input tables to query, the frequency in which your DAG would run, and made sure analysts knew the resulting output table to use in their weekly food order trends report. The DAG only needs to run once a week, and with the DAG managed and scheduled via [Airflow](https://airflow.apache.org), you feel confident that the aggregated food order data will be available every Sunday morning for the weekly report.
 
-As a developer, you're monitoring your DAG for errors and after only a few DAG runs, you're alerted that your DAG suddenly started to fail! Before you begin troubleshooting the root cause of the DAG failure, you notify the analytics team that the food order data will be incorrect for the week. After viewing the DAG error logs and a few email exchanges, you eventually discover that an upstream DAG had failed to write food order data for a certain daily table partition. Now, backfilling the missing data can be a manual and tedious task. As you sip your morning coffee, you think to yourself, _there must be a better way_. Yes, there is and collecting DAG lineage metadata would be a great start.
+As a developer, you're monitoring your DAG for errors and after only a few DAG runs, you're alerted that your DAG suddenly started to fail! Before you begin troubleshooting the root cause of the DAG failure, you notify the analytics team that the food order data will be incorrect for the week. After viewing the DAG error logs and a few email exchanges, you eventually discover that an upstream DAG had failed to write food order data for certain daily table partitions. Now, backfilling the missing data can be a manual and tedious task. As you sip your morning coffee, you think to yourself, _there must be a better way_. Yes, there is and collecting DAG lineage metadata would be a great start.
 
 In this blog post, we'll briefly introduce you to how backfills are handled in Airflow, then discuss how lineage metadata can be used to backfill DAGs with more complex upstream and downstream dependencies.
 
@@ -193,6 +193,8 @@ lineage_graph=$(curl -s -X GET "http://localhost:5000/api/v1-beta/lineage?nodeId
 # (3) Run backfill
 backfill_downstream_of "${node_id}"
 ```
+
+When you run the script `backfill.sh`, it will output all backfilled DAGs to the console:
 
 ```bash
 $ ./backfill.sh 2021-06-06 2021-06-06 example.etl_orders
