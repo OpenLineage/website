@@ -1,7 +1,10 @@
 ---
 title: Backfilling Airflow DAGs using Marquez
-date: 2021-06-28
+date: 2021-06-30
 author: Willy Lulciuc
+image: ./image.svg
+banner: ./banner.svg
+description: In this blog post, we'll discuss how lineage metadata can be used to backfill DAGs with more complex upstream and downstream dependencies.
 ---
 
 You've just deployed an Airflow [DAG](https://airflow.apache.org/docs/apache-airflow/stable/concepts/dags.html#dags) that calculates the total sum of weekly food orders. You were able to identify what input tables to query, the frequency in which your DAG would run, and made sure analysts knew the resulting output table to use in their weekly food order trends report. The DAG only needs to run once a week, and with the DAG managed and scheduled via [Airflow](https://airflow.apache.org), you feel confident that the aggregated food order data will be available every Sunday morning for the weekly report.
@@ -205,4 +208,6 @@ backfilling example.delivery_times_7_days...
 
 ## 4. Conclusion
 
-In this blog post, we showed how easy it can be to automate backfilling DAGs downstream of a data quality issue using lineage metadata stored in Marquez. With only two steps, we were able to backfill missing daily table partitions, then automatically re-run failed DAGs downstream of the upstream DAG where the error originated. But, what measures can we put in place to detect low-quality data issues faster, therefore avoiding backfills altogether? Since Marquez collects DAG run metadata that can be viewed using the [Runs API](https://marquezproject.github.io/marquez/openapi.html#tag/Jobs/paths/~1jobs~1runs~1{id}/get), building automated processes that periodically check DAG run states and quickly notifying teams of upstream data quality issue (or missed SLAs) in a timely fashion is just one possible preventive measure. We encourge you to explore Marquez's opinionated [Metadata API](https://marquezproject.github.io/marquez/openapi.html) and define your own automated process(es) for analyzing lineage metadata! If you need help or have any questions, you can always join our [Slack](http://bit.ly/MarquezSlack) channel or reach out to us on [Twitter](https://twitter.com/MarquezProject).
+In this blog post, we showed how easy it can be to automate backfilling DAGs downstream of a data quality issue using lineage metadata stored in Marquez. With only two steps, we were able to backfill missing daily table partitions, then automatically re-run failed DAGs downstream of the upstream DAG where the error originated. But, what measures can we put in place to detect low-quality data issues faster, therefore avoiding backfills altogether? Since Marquez collects DAG run metadata that can be viewed using the [Runs API](https://marquezproject.github.io/marquez/openapi.html#tag/Jobs/paths/~1jobs~1runs~1{id}/get), building automated processes that periodically check DAG run states and quickly notifying teams of upstream data quality issue (or missed SLAs) in a timely fashion is just one possible preventive measure.
+
+We encourge you to explore Marquez's opinionated [Metadata API](https://marquezproject.github.io/marquez/openapi.html) and define your own automated process(es) for analyzing lineage metadata! If you need help or have any questions, you can always join our [Slack](http://bit.ly/MarquezSlack) channel or reach out to us on [Twitter](https://twitter.com/MarquezProject).
