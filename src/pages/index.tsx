@@ -270,6 +270,7 @@ export const query = graphql`
         }
         blog: allMdx(
             filter: { fields: { sourceName: { eq: "blog" } } }
+            sort: { fields: [frontmatter___date], order: DESC }
             limit: 6
         ) {
             edges {
