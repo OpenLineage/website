@@ -51,9 +51,9 @@ The listener can be enabled by adding the following configuration to a `spark-su
 
 ```bash
 spark-submit --conf "spark.extraListeners=marquez.spark.agent.SparkListener" \
-    --packages "io.github.marquezproject:marquez-spark:0.15.1" \
-    --conf "openlineage.host=http://<your_ol_endpoint>" \
-    --conf "openlineage.namespace=my_job_namespace" \
+    --packages "io.github.marquezproject:marquez-spark:0.16.+" \
+    --conf "spark.openlineage.host=http://<your_ol_endpoint>" \
+    --conf "spark.openlineage.namespace=my_job_namespace" \
     --class com.mycompany.MySparkApp my_application.jar
 ```
 
@@ -66,25 +66,25 @@ Additional configuration can be set if applicable
   <th>Default</th>
 </tr>
 <tr>
-  <td>openlineage.parentJobName</td>
+  <td>spark.openlineage.parentJobName</td>
   <td>The job name of the parent job that triggered this Spark application</td>
   <td></td>
 </tr>
 
 <tr>
-  <td>openlineage.parentRunId</td>
+  <td>spark.openlineage.parentRunId</td>
   <td>The RunId of the parent job Run that triggered this Spark application</td>
   <td>&nbsp;</td>
 </tr>
 
 <tr>
-  <td>openlineage.apiKey</td>
+  <td>spark.openlineage.apiKey</td>
   <td>The API Key used to authenticate with the OpenLineage server that collects events</td>
   <td>&nbsp;</td>
 </tr>
 
 <tr>
-  <td>openlineage.version</td>
+  <td>spark.openlineage.version</td>
   <td>The API version of the OpenLineage specification</td>
   <td>1</td>
 </tr>
@@ -98,13 +98,13 @@ cluster creation. Add the following key/value parameters to the `spark-defaults.
 ```
 spark.jars.packages    io.github.marquezproject:marquez-spark:0.15.1
 spark.extraListeners   marquez.spark.agent.SparkListener
-openlineage.host       http://<your_ol_endpoint>
-openlineage.namespace  my_job_namespace
+spark.openlineage.host       http://<your_ol_endpoint>
+spark.openlineage.namespace  my_job_namespace
 ```
 
 The optional keys defined above can also be added here. When the job is submitted, additional or
-overriding configuration values can be supplied. E.g., the `openlineage.host` and `openlineage.namespace`
-can be defined in the `spark-defaults.conf` file and the `openlineage.parentRunId` and `openlineage.parentJobName`
+overriding configuration values can be supplied. E.g., the `spark.openlineage.host` and `spark.openlineage.namespace`
+can be defined in the `spark-defaults.conf` file and the `spark.openlineage.parentRunId` and `spark.openlineage.parentJobName`
 configuration can be supplied when the job is submitted by the parent job.
 
 ### Javaagent
@@ -131,7 +131,7 @@ spark-submit --conf spark.driver.extraJavaOptions=-javaagent:<marquez-spark-jar-
 ### From Airflow
 The same parameters passed to `spark-submit` can be supplied from Airflow and other schedulers. If
 using the [marquez-airflow](../apache-airflow/) integration, each task in the DAG has its own Run id
-which can be connected to the Spark job run via the `openlineage.parentRunId` parameter. For example,
+which can be connected to the Spark job run via the `spark.openlineage.parentRunId` parameter. For example,
 here is an example of a `DataProcPySparkOperator` that submits a Pyspark application on Dataproc:
 
 ```python
@@ -146,7 +146,7 @@ t1 = DataProcPySparkOperator(
     dataproc_pyspark_properties={
       "spark.extraListeners": "marquez.spark.agent.SparkListener",
       "spark.jars.packages": "io.github.marquezproject:marquez-spark:0.15.+",
-      "openlineage.url": f"{marquez_url}/api/v1/namespaces/{marquez_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
+      "spark.openlineage.url": f"{marquez_url}/api/v1/namespaces/{marquez_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
     },
     dag=dag)
 ```
