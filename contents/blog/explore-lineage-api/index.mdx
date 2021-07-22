@@ -120,14 +120,14 @@ The output returned should look something like the following
           "name": "example.delivery_times_7_days",
           "version": "e9eafa5b-e334-358d-a3b4-61c8d3de75f3"
         },
-        "inputDatasetVersions": [
+        "inputVersions": [
           {
             "namespace": "food_delivery",
             "name": "public.delivery_7_days",
             "version": "a40ec54f-b8e1-35f7-b868-58b27383b5ff"
           }
         ],
-        "outputDatasetVersions": [],
+        "outputVersions": [],
         "context": {
           "sql": "INSERT INTO top_delivery_times (order_id, order_placed_on, order_dispatched_on, order_delivered_on, order_delivery_time,\n    customer_email, restaurant_id, driver_id)\n  SELECT order_id, order_placed_on, order_delivered_on, DATEDIFF(minute, order_placed_on, order_delivered_on) AS order_delivery_time,\n    customer_email, restaurant_id, driver_id\n    FROM delivery_7_days\nGROUP BY restaurant_id\nORDER BY order_delivery_time DESC\n   LIMIT 1;"
         },
@@ -188,22 +188,22 @@ of this job:
           "name": "example.delivery_times_7_days",
           "version": "e9eafa5b-e334-358d-a3b4-61c8d3de75f3"
         },
-        "inputDatasetVersions": [
+        "inputVersions": [
           {
             "namespace": "food_delivery",
             "name": "public.delivery_7_days",
             "version": "a40ec54f-b8e1-35f7-b868-58b27383b5ff"
           }
         ],
-        "outputDatasetVersions": [],
+        "outputVersions": [],
         "context": {
           "sql": "INSERT INTO top_delivery_times (order_id, order_placed_on, order_dispatched_on, order_delivered_on, order_delivery_time,\n    customer_email, restaurant_id, driver_id)\n  SELECT order_id, order_placed_on, order_delivered_on, DATEDIFF(minute, order_placed_on, order_delivered_on) AS order_delivery_time,\n    customer_email, restaurant_id, driver_id\n    FROM delivery_7_days\nGROUP BY restaurant_id\nORDER BY order_delivery_time DESC\n   LIMIT 1;"
         },
         "facets": {}
       },
 ```
-Here, we see explicit version information in the `jobVersion`, the `inputDatasetVersions`, and the
-`outputDatasetVersions` fields. This is included because every Run is tied to exactly one immutable
+Here, we see explicit version information in the `jobVersion`, the `inputVersions`, and the
+`outputVersions` fields. This is included because every Run is tied to exactly one immutable
 version of a job and one immutable version of each input dataset and each output dataset (it's worth
 noting that a Run can be tied to one version of a dataset as its input and another version of the
 same dataset as its output- a SQL `MERGE` statement is one common use case supported by this).
@@ -269,22 +269,22 @@ API doesn't require a namespace or a job name. We can get the failed job run wit
 curl "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq | less
 ```
 The output is the same as the `latestRun` field of the `JobVersions` API. Recall the output of that
-API includes these three important fields: the `jobVersion`, the `inputDatasetVersions`
-and the `outputDatasetVersions`.
+API includes these three important fields: the `jobVersion`, the `inputVersions`
+and the `outputVersions`.
 ```json
         "jobVersion": {
           "namespace": "food_delivery",
           "name": "example.delivery_times_7_days",
           "version": "e9eafa5b-e334-358d-a3b4-61c8d3de75f3"
         },
-        "inputDatasetVersions": [
+        "inputVersions": [
           {
             "namespace": "food_delivery",
             "name": "public.delivery_7_days",
             "version": "a40ec54f-b8e1-35f7-b868-58b27383b5ff"
           }
         ],
-        "outputDatasetVersions": [],
+        "outputVersions": [],
 ```
 These fields give us what we need to trace the lineage of the specific job runs we want to compare.
 
@@ -345,14 +345,14 @@ like this where a job run failed before we had a chance to discover the output d
 So what gives? The job code didn't actually change! So what caused the failure?
 
 Here's where the lineage tracking becomes useful. Recall again, the run output gave us
-3 interesting fields: the `jobVersion`, the `inputDatasetVersions`, and the `outputDatasetVersions`.
-We already know that the `outputDatasetVersions` is empty because the latest failed run didn't have
+3 interesting fields: the `jobVersion`, the `inputVersions`, and the `outputVersions`.
+We already know that the `outputVersions` is empty because the latest failed run didn't have
 a chance to determine the outputs. But we can take a look at the input datasets.
 
 ### Dataset Versions
 ```bash
-diff <(curl -s "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq -r '.inputDatasetVersions') \
-     <(curl -s "http://localhost:5000/api/v1/jobs/runs/$SUCCESSFUL_RUN_ID" | jq -r '.inputDatasetVersions')
+diff <(curl -s "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq -r '.inputVersions') \
+     <(curl -s "http://localhost:5000/api/v1/jobs/runs/$SUCCESSFUL_RUN_ID" | jq -r '.inputVersions')
 5c5
 <     "version": "a40ec54f-b8e1-35f7-b868-58b27383b5ff"
 ---
@@ -370,7 +370,7 @@ check multiple input datasets if needed.
 
 In this post, we omit the structure of the `datasetVersion`, but you can explore it yourself with the following:
 ```bash
-FAILED_DATASET_VERSION=$(curl -s "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq -r '.inputDatasetVersions[0].version')
+FAILED_DATASET_VERSION=$(curl -s "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq -r '.inputVersions[0].version')
 curl -s "http://localhost:5000/api/v1/namespaces/food_delivery/datasets/public.delivery_7_days/versions/$FAILED_DATASET_VERSION" | jq | less
 ```
 
@@ -378,8 +378,8 @@ As with the job versions, we'll omit some of the data we expect to be different 
 a useful diff:
 
 ```bash
-FAILED_DATASET_VERSION=$(curl -s "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq -r '.inputDatasetVersions[0].version')
-SUCCESSFUL_DATASET_VERSION=$(curl -s "http://localhost:5000/api/v1/jobs/runs/$SUCCESSFUL_RUN_ID" | jq -r '.inputDatasetVersions[0].version')
+FAILED_DATASET_VERSION=$(curl -s "http://localhost:5000/api/v1/jobs/runs/$FAILED_RUN_ID" | jq -r '.inputVersions[0].version')
+SUCCESSFUL_DATASET_VERSION=$(curl -s "http://localhost:5000/api/v1/jobs/runs/$SUCCESSFUL_RUN_ID" | jq -r '.inputVersions[0].version')
 
 diff <(curl -s "http://localhost:5000/api/v1/namespaces/food_delivery/datasets/public.delivery_7_days/versions/$FAILED_DATASET_VERSION" | \
       jq 'del(.["id", "version", "createdAt", "createdByRun"])') \
