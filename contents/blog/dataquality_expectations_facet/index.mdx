@@ -1,6 +1,6 @@
 ---
 title: Expecting Great Quality with OpenLineage Facets
-date: 2021-08-06
+date: 2021-08-10
 author: Michael Collado
 image: ./image.svg
 banner: ./banner.svg
@@ -389,7 +389,7 @@ Note the `facets` field contains several properties- `stats`, `dataSource`, `des
 Each of those describes some attribute about the dataset version. Some of the facets are attached at write-time, some
 are attached later- when the dataset is read.
 
-In our Datakin demo, we have a lot more assertions than what I included in the sample suite above and that can be seen
+In our [Datakin demo](https://demo.datakin.com), we have a lot more assertions than what I included in the sample suite above and that can be seen
 in this response. In addition to counting rows and columns, we also validate that id columns are unique and non-null,
 timestamps fall within specified ranges (did you know that if you accidentally write a timestamp too far in the future,
 certain JDBC drivers will overflow the Calendar instance they use for converting timezones?), and emails match expected
