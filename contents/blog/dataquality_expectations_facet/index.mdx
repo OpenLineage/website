@@ -233,7 +233,7 @@ jobs can also attach facets to the version of the dataset that exists at the sta
 In the OpenLineage Airflow integration, Great Expectations tasks, such as the one in our example DAG above, are
 evaluated after they run and the expectation results (as well as some other data quality metrics) are collected
 into a
-[DataQualityMetricsInputDatasetFacet](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json#L446-L499)
+[DataQuality Metrics Input Dataset Facet](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json#L446-L499)
 , which is reported to the server along with the rest of the lineage metadata. In Marquez, we recognize the version of
 the dataset that was read by the job run and the data quality metadata is permanently associated with that dataset
 version. The impact of this is that any job that reads that data, whether it happens before or after the dataset quality
@@ -385,15 +385,16 @@ $ curl "https://demo.datakin.com/api/v1/namespaces/food_delivery/datasets/public
   }
 }
 ```
-Note the `facets` field contains several properties- `stats`, `dataSource`, `description`, `dataQuality` and `greatExpectations_assertions`.
-Each of those describes some attribute about the dataset version. Some of the facets are attached at write-time, some
-are attached later- when the dataset is read.
 
-In our [Datakin demo](https://demo.datakin.com), we have a lot more assertions than what I included in the sample suite above and that can be seen
-in this response. In addition to counting rows and columns, we also validate that id columns are unique and non-null,
-timestamps fall within specified ranges (did you know that if you accidentally write a timestamp too far in the future,
-certain JDBC drivers will overflow the Calendar instance they use for converting timezones?), and emails match expected
-regular expressions.
+Note the `facets` field contains several properties- `stats`, `dataSource`, `description`, `dataQuality`
+and `greatExpectations_assertions`. Each of those describes some attribute about the dataset version. Some of the facets
+are attached at write-time, some are attached later- when the dataset is read.
+
+In our [Datakin demo](https://demo.datakin.com), we have a lot more assertions than what I included in the sample suite
+above and that can be seen in this response. In addition to counting rows and columns, we also validate that id columns
+are unique and non-null, timestamps fall within specified ranges (did you know that if you accidentally write a
+timestamp too far in the future, certain JDBC drivers will overflow the Calendar instance they use for converting
+timezones?), and emails match expected regular expressions.
 
 With the ability to attach data quality facets to dataset versions and the ability to trace the specific versions of
 datasets read by and written to by specific job runs, I can trust whether the data I’m looking at is good data or bad
