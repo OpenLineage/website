@@ -6,6 +6,9 @@ image: ./stack.png
 banner: ./banner.svg
 ---
 
+```toc
+```
+
 ## What is Apache Airflow?
 
 **Airflow** is a widely-used workflow automation and scheduling platform that can be used to author and manage data pipelines. Airflow uses workflows made of directed acyclic graphs (DAGs) of tasks. To learn more about Airflow, check out the Airflow [documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html).
@@ -25,11 +28,11 @@ The integration is implemented using the [marquez-airflow](https://pypi.org/proj
 
 ## How can I use this integration?
 
-#### PREREQUISITES
+### Prerequisites
 
 To use the OpenLineage Airflow integration, you'll need a running Airflow instance. You'll also need an OpenLineage compatible [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope). In this guide, we'll be using the `marquez-airflow` library to automatically send OpenLineage events to [Marquez](https://marquezproject.ai).
 
-#### INSTALLATION
+### Installation
 
 To download and install the latest `marquez-airflow` library, update the `requirements.txt` file of your running Airflow instance with: 
 
@@ -37,7 +40,7 @@ To download and install the latest `marquez-airflow` library, update the `requir
 marquez-airflow
 ```
 
-#### CONFIGURATION
+### Configuration
 
 Next, we'll need to specify where we want Airflow to send OpenLineage events. `marquez-airflow` will use the `MARQUEZ_URL` environment variable to send OpenLineage events to Marquez.
 
@@ -47,7 +50,7 @@ For example, to send OpenLineage events to a local instance of Marquez, use:
 MARQUEZ_URL=http://localhost:5000
 ```
 
-#### USAGE
+### Usage
 
 Finally, to begin collecting Airflow DAG metadata with Marquez, make the following change to your DAG:
 
