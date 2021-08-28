@@ -11,7 +11,7 @@ const siteMetadata = {
     introTag: `An open framework for data lineage collection and analysis`,
     description: `Data lineage is the foundation for a new generation of powerful, context-aware data tools and best practices. OpenLineage enables consistent collection of lineage metadata, creating a deeper understanding of how data is produced and used.`,
     about:
-        "OpenLineage is an open platform for collection and analysis of data lineage. It tracks metadata about datasets, jobs, and runs, giving users the information required to identify the root cause of complex issues. OpenLineage contains an open standard for lineage data collection, a metadata repository reference implementation (marquez), libraries for common languages, and integrations with data pipeline tools.",
+        "OpenLineage is an open platform for collection and analysis of data lineage. It tracks metadata about datasets, jobs, and runs, giving users the information required to identify the root cause of complex issues and understand the impact of changes. OpenLineage contains an open standard for lineage data collection, a metadata repository reference implementation (Marquez), libraries for common languages, and integrations with data pipeline tools.",
     author: `@openlineage`,
     blogItemsPerPage: 10,
     integrationItemsPerPage: 10,
@@ -26,10 +26,13 @@ const siteMetadata = {
             name: "Getting Started",
             url: "/getting-started",
         },
-
         {
             name: "Integrations",
             url: "/integration",
+        },
+        {
+            name: "Resources",
+            url: "/resources",
         },
         {
             name: "Blog",
@@ -47,7 +50,7 @@ const siteMetadata = {
         },
         {
             name: "GitHub",
-            url: "https://github.com/OpenLineage",
+            url: "https://github.com/OpenLineage/OpenLineage",
         },
     ],
     social: [
