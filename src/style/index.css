@@ -295,3 +295,32 @@ p {
 .int-title {
     color: #fff !important;
 }
+
+.table-of-contents {
+    padding: 10px 0;
+    margin: 10px 0px 10px 20px;
+    float: right;
+    background-color: #fff;
+}
+
+.table-of-contents ol {
+    counter-reset: tocnum;
+    padding-left: 10px;
+    margin-left: 0;
+    list-style: none;
+}
+
+.table-of-contents ol li {
+    counter-increment: tocnum;
+    line-height: 100%;
+    padding-left: 0;
+    padding-right: 10px;
+    margin-left: 10px;
+
+}
+.table-of-contents ol li:before {
+    content: counters(tocnum, '.') '. ';
+    /* Whatever custom styles you want here */
+    font-weight: bold;
+}
+

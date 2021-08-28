@@ -6,6 +6,10 @@ image: ./stack.png
 banner: ./banner.svg
 ---
 
+
+```toc
+```
+
 Spark jobs typically run on clusters of machines. A single machine hosts the "driver" application,
 which constructs a graph of jobs - e.g., reading data from a source, filtering, transforming, and
 joining records, and writing results to some sink- and manages execution of those jobs. Spark's
@@ -14,6 +18,7 @@ reads and modifications of records. While RDDs can be used directly, it is far m
 with Spark Datasets or Dataframes, which is an API that adds explicit schemas for better performance
 and the ability to interact with datasets using SQL. The Dataframe's declarative API enables Spark
 to optimize jobs by analyzing and manipulating an abstract query plan prior to execution.
+
 
 ## Collecting Lineage in Spark
 Collecting lineage requires hooking into Spark's `ListenerBus` in the driver application and

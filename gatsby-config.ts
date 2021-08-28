@@ -41,6 +41,23 @@ const plugins = [
                     },
                 },
                 `gatsby-remark-copy-linked-files`,
+                {
+                  resolve: `gatsby-remark-table-of-contents`,
+                  options: {
+                    exclude: "Table of Contents",
+                    tight: true,
+                    ordered: true,
+                    fromHeading: 1,
+                    toHeading: 6,
+                    className: "table-of-contents"
+                  },
+                },
+                {
+                  resolve: `gatsby-remark-autolink-headers`,
+                  options: {
+                    icon: false,
+                  },
+                },
             ],
         },
     },
