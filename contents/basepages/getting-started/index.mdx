@@ -6,29 +6,6 @@ template: basepage
 
 This guide covers how you can quickly get started collecting _dataset_, _job_, and _run_ metadata using OpenLineage. We'll first introduce you to OpenLineage's core model, show how to collect _run-level_ metadata as OpenLineage events using [Marquez](https://marquezproject.ai) as the [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope), then explore lineage metadata via the Marquez UI.
 
-#### PREREQUISITES
-
-Before you begin, make sure you have installed:
-
-* [Docker 17.05](https://docs.docker.com/install)+
-* [Docker Compose](https://docs.docker.com/compose/install)
-
-> **Note:** In this guide, we'll be using Marquez as the OpenLineage HTTP backend and running the HTTP server via Docker.
-
-#### RUN MARQUEZ WITH [DOCKER](https://github.com/MarquezProject/marquez/blob/main/Dockerfile)
-
-The easiest way to get up and running with Marquez is Docker. Check out the Marquez source code and run the `./docker/up.sh` script:
-
-```bash
-$ git clone git@github.com:MarquezProject/marquez.git && cd marquez
-
-$ ./docker/up.sh
-```
-
-> **Tip:** Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image.
-
-To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.
-
 ## OpenLineage Core Model
 
 Below, we illustrate the challenges of collecting lineage metadata from multiple sources, schedulers and/or data processing frameworks. We then outline the design benefits of defining an _Open Standard_ for lineage metadata collection.
@@ -61,6 +38,29 @@ OpenLineage is an _Open Standard_ for lineage metadata collection designed to re
   * Datasets
 * **Event-based** metadata collection.
 * **Extensible** model via **facets**.
+
+## PREREQUISITES
+
+Before you begin, make sure you have installed:
+
+* [Docker 17.05](https://docs.docker.com/install)+
+* [Docker Compose](https://docs.docker.com/compose/install)
+
+> **Note:** In this guide, we'll be using Marquez as the OpenLineage HTTP backend and running the HTTP server via Docker.
+
+#### RUN MARQUEZ WITH [DOCKER](https://github.com/MarquezProject/marquez/blob/main/Dockerfile)
+
+The easiest way to get up and running with Marquez is Docker. Check out the Marquez source code and run the `./docker/up.sh` script:
+
+```bash
+$ git clone git@github.com:MarquezProject/marquez.git && cd marquez
+
+$ ./docker/up.sh
+```
+
+> **Tip:** Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image.
+
+To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.
 
 ## Collect Run-Level Metadata using Marquez
 
