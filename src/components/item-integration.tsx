@@ -14,22 +14,22 @@ export const ItemIntegration: React.FC<ItemIntegrationProps> = ({ data, even }) 
         return (
             <tr className={`integration-item`}>
                 {index === 0 && (
-                    <td className="int-desc" rowspan={datasources.length}>
+                    <td className="int-desc" rowSpan={datasources.length}>
                         <h3 className="mt-0"><Link to={data.fields.slug} title={"Read More"}>{data.frontmatter.title}</Link></h3>
                         <p>{data.frontmatter.description}</p>
                     </td>
                 )}
   
                 {index === 0 && (
-                    <td rowspan={datasources.length}>
+                    <td rowSpan={datasources.length}>
                         <p>{data.frontmatter.version}</p>
                     </td>
                 )}
-                <td>
+                <td className="int-datasources">
                     <p>{datasource}</p>
                 </td>
                 {index === 0 && (
-                    <td rowspan={datasources.length}>
+                    <td rowSpan={datasources.length}>
                         <ul>
                             <li className="mb-2 text-color-2"><Link to={data.fields.slug} title={"Read More"}>Docs <ArrowRight className="inline-block" /></Link></li>
                             {data.frontmatter.github && (

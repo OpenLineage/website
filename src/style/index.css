@@ -297,20 +297,21 @@ p {
 }
 
 .integration-list {
-    border: 2px solid #000;
     width: 90%;
     margin: auto;
     margin-top: 30px;
+    background-color: #fff;
 }
 
 .integration-list td {
-    border: 1px solid #000;
+    border: 3px solid #f8f8f8;
     vertical-align: top;
-    padding: 10px;
+    padding: 8px 13px;
 }
 
 .integration-list th {
     padding: 10px;
+    border: 3px solid #f8f8f8;
 }
 
 .int-desc {
