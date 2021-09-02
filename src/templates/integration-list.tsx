@@ -2,7 +2,6 @@ import React, { useEffect } from "react"
 import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
 import IntegrationItem from "../components/item-integration"
-import Pagination from "../components/pagination"
 import { IntegrationListQuery } from "./__generated__/IntegrationListQuery"
 
 export default function integrationList({ data, pageContext, location }: PageProps<IntegrationListQuery, {}>) {
@@ -29,9 +28,25 @@ export default function integrationList({ data, pageContext, location }: PagePro
                         Integrations
                     </h2>
                 </div>
-                <div className="flex flex-wrap">{integrationItems}</div>
-                <div className="mt-8 lg:mt-24">
-                    <Pagination pageContext={pageContext} type="integration" />
+                <div className="boxed py-8">
+                    <p>OpenLineage connectors have been created for major job schedulers and data platforms. By using these connectors, the appropriate API calls will be made automatically each time your pipeline executes. They capture information about datasets, jobs, and runs, allowsing you to study lineage across multiple data sources.</p>
+                    <table className="integration-list">
+                        <tr>
+                            <th>
+                                Platform
+                            </th>
+                            <th>
+                                Version
+                            </th>
+                            <th>
+                                Data Sources
+                            </th>
+                            <th>
+                                Resources
+                            </th>
+                        </tr>
+                        {integrationItems}
+                    </table>
                 </div>
             </div>
         </Layout>
@@ -42,7 +57,7 @@ export const query = graphql`
     query IntegrationListQuery($skip: Int!, $limit: Int!) {
         allMdx(
             filter: { fields: { sourceName: { eq: "integration" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
+            sort: { fields: [frontmatter___title], order: ASC }
             limit: $limit
             skip: $skip
         ) {
@@ -52,6 +67,10 @@ export const query = graphql`
                     frontmatter {
                         title
                         description
+                        version
+                        datasources
+                        github
+                        blog
                         image {
                             publicURL
                             childImageSharp {

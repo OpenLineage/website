@@ -107,7 +107,7 @@ const Wall = ({ data }) => {
                 />
                 <Button
                     title="GitHub"
-                    to='https://github.com/OpenLineage'
+                    to='https://github.com/OpenLineage/OpenLineage'
                     type="extbutton"
                     iconRight={<GitHub />}
                     className="mx-5"
