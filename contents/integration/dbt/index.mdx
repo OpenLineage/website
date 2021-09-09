@@ -13,11 +13,12 @@ github: https://github.com/OpenLineage/OpenLineage/tree/main/integration/dbt
 
 ## What is dbt?
 
-dbt (data build tool) is a powerful transformation engine. It operates on data already within a warehouse, making it easy for data engineers to build complex pipelines from the comfort of their laptops. While it doesn’t perform extraction and loading of data, it’s extremely powerful at  transformations.
+dbt (data build tool) is a powerful transformation engine. It operates on data already within a warehouse, making it easy for data engineers to build complex pipelines from the comfort of their laptops. While it doesn’t perform extraction and loading of data, it’s extremely powerful at transformations.
 
 To learn more about dbt, visit the [documentation site](https://docs.getdbt.com) or run through the [getting started tutorial](https://docs.getdbt.com/tutorial/setting-up).
 
 ## How does dbt work with OpenLineage?
+
 Fortunately, dbt already collects a lot of the data required to create and emit OpenLineage events. When it runs, it creates a `target/manifest.json` file containing information about jobs and the datasets they affect, and a `target/run_results.json` file containing information about the run-cycle. These files can be used to trace lineage and job performance. In addition, by using the `create catalog` command, a user can instruct dbt to create a `target/catalog.json` file containing information about dataset schemas.
 
 These files contain everything needed to trace lineage. However, the `target/manifest.json` and `target/run_results.json` files are only populated with comprehensive metadata after completion of a run-cycle. 
@@ -32,16 +33,16 @@ First, we need to install the integration:
 pip3 install openlineage-dbt
 ```
 
-Next, we specify where we want dbt to send OpenLineage events. `dbt-ol` will use the `OPENLINEAGE_URL` environment variable to send OpenLineage events to Marquez. For example, to send OpenLineage events to a local instance of Marquez, use:
+Next, we specify where we want dbt to send OpenLineage events. `dbt-ol` will use the `OPENLINEAGE_URL` environment variable to know where to send OpenLineage events. For example, to send OpenLineage events to a local instance of Marquez, use:
 
 ```bash
 OPENLINEAGE_URL=http://localhost:5000
 ```
 
-Finally, we need to specify a namespace where the lineage events will be stored. For example, to use the namespace "performance":
+Finally, we need to specify a namespace where the lineage events will be stored. For example, to use the namespace "dev":
 
 ```bash
-OPENLINEAGE_NAMESPACE=performance
+OPENLINEAGE_NAMESPACE=dev
 ```
 
 ## Running dbt with OpenLineage
@@ -52,7 +53,7 @@ To run your dbt project with OpenLineage collection, simply replace `dbt` with `
 dbt-ol run
 ```
 
-Once the run has completed, you will see output containing the number of events sent via the OpenLineage API:
+The `dbt-ol` wrapper supports all of the standard `dbt` subcommands, and is safe to use as a substitutuon (i.e., in an alias). Once the run has completed, you will see output containing the number of events sent via the OpenLineage API:
 
 ```bash
 Completed successfully
