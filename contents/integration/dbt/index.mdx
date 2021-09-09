@@ -33,7 +33,7 @@ First, we need to install the integration:
 pip3 install openlineage-dbt
 ```
 
-Next, we specify where we want dbt to send OpenLineage events. `dbt-ol` will use the `OPENLINEAGE_URL` environment variable to know where to send OpenLineage events. For example, to send OpenLineage events to a local instance of Marquez, use:
+Next, we specify where we want dbt to send OpenLineage events by setting the `OPENLINEAGE_URL` environment variable. For example, to send OpenLineage events to a local instance of Marquez, use:
 
 ```bash
 OPENLINEAGE_URL=http://localhost:5000
