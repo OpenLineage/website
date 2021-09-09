@@ -18,7 +18,7 @@ export default function porfolio ({ location, data }: PageProps<IntegrationQuery
             }}
             location={location}
         >
-            <div className="py-6 md:w-full mx-auto">
+            <div className="md:w-full mx-auto">
                 <div className="mx-auto h-64 relative bg-cover" style ={ { backgroundImage: "url("+data.mdx.frontmatter.banner.publicURL+")" } }>
                     <div className="flex items-center justify-center absolute w-full h-full top-0 left-0">
                         <div className="px-4 my-8 relative z-10 text-center text-white">
