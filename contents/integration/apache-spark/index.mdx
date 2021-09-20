@@ -1,10 +1,16 @@
 ---
 title: Apache Spark
-description: Spark is a popular, distributed data processing framework used for large dataset analytics and machine learning. Enabling OpenLineage in Spark jobs enables tracking lineage of jobs and datasets across Spark jobs, as well as giving visibility into the dependencies within a Spark application.
-date: 2019-06-28
+description: OpenLineage can automatically track lineage of jobs and datasets across Spark jobs.
 image: ./stack.png
 banner: ./banner.svg
+version: 2.4+
+datasources: JDBC, HDFS, Google Cloud Storage, Google BigQuery, Amazon S3
+github: https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark
 ---
+
+
+```toc
+```
 
 Spark jobs typically run on clusters of machines. A single machine hosts the "driver" application,
 which constructs a graph of jobs - e.g., reading data from a source, filtering, transforming, and
@@ -14,6 +20,7 @@ reads and modifications of records. While RDDs can be used directly, it is far m
 with Spark Datasets or Dataframes, which is an API that adds explicit schemas for better performance
 and the ability to interact with datasets using SQL. The Dataframe's declarative API enables Spark
 to optimize jobs by analyzing and manipulating an abstract query plan prior to execution.
+
 
 ## Collecting Lineage in Spark
 Collecting lineage requires hooking into Spark's `ListenerBus` in the driver application and

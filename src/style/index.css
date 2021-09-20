@@ -286,6 +286,7 @@ p {
     color: #fff;
     background-color: #333;
     padding: 1rem;
+    margin: 2rem;
 }
 
 .post-content img {
@@ -295,3 +296,53 @@ p {
 .int-title {
     color: #fff !important;
 }
+
+.integration-list {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    background-color: #fff;
+}
+
+.integration-list td {
+    border: 3px solid #f8f8f8;
+    vertical-align: top;
+    padding: 8px 13px;
+}
+
+.integration-list th {
+    padding: 10px;
+    border: 3px solid #f8f8f8;
+}
+
+.int-desc {
+    width: 50%;
+}
+.table-of-contents {
+    padding: 10px 0;
+    margin: 10px 0px 10px 20px;
+    float: right;
+    background-color: #fff;
+}
+
+.table-of-contents ol {
+    counter-reset: tocnum;
+    padding-left: 10px;
+    margin-left: 0;
+    list-style: none;
+}
+
+.table-of-contents ol li {
+    counter-increment: tocnum;
+    line-height: 100%;
+    padding-left: 0;
+    padding-right: 10px;
+    margin-left: 10px;
+
+}
+.table-of-contents ol li:before {
+    content: counters(tocnum, '.') '. ';
+    /* Whatever custom styles you want here */
+    font-weight: bold;
+}
+

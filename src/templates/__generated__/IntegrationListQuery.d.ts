@@ -34,6 +34,10 @@ export interface IntegrationListQuery_allMdx_edges_node_frontmatter_image {
 export interface IntegrationListQuery_allMdx_edges_node_frontmatter {
   title: string;
   description: string | null;
+  version: string | null;
+  datasources: string | null;
+  github: string | null;
+  blog: string | null;
   image: IntegrationListQuery_allMdx_edges_node_frontmatter_image | null;
 }
 

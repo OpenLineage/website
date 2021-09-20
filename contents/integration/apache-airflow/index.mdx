@@ -1,10 +1,16 @@
 ---
 title: Apache Airflow
-description: Airflow, a common tool used for workflow management, is the foundation of many data pipelines. Enabling OpenLineage in Apache Airflow automatically tracks metadata about jobs and datasets as DAGs execute.
-date: 2020-04-01
+description: Enabling OpenLineage in Apache Airflow automatically tracks metadata about jobs and datasets as DAGs execute.
 image: ./stack.png
 banner: ./banner.svg
+version: 1.10+
+datasources: PostgreSQL, Snowflake, Amazon Redshift, Google BigQuery, Great Expectations
+github: https://github.com/OpenLineage/OpenLineage/tree/main/integration/airflow
+blog: https://openlineage.io/blog/backfilling-airflow-dags-using-marquez/
 ---
+
+```toc
+```
 
 ## What is Apache Airflow?
 
@@ -25,11 +31,11 @@ The integration is implemented using the [marquez-airflow](https://pypi.org/proj
 
 ## How can I use this integration?
 
-#### PREREQUISITES
+### Prerequisites
 
 To use the OpenLineage Airflow integration, you'll need a running Airflow instance. You'll also need an OpenLineage compatible [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope). In this guide, we'll be using the `marquez-airflow` library to automatically send OpenLineage events to [Marquez](https://marquezproject.ai).
 
-#### INSTALLATION
+### Installation
 
 To download and install the latest `marquez-airflow` library, update the `requirements.txt` file of your running Airflow instance with: 
 
@@ -37,7 +43,7 @@ To download and install the latest `marquez-airflow` library, update the `requir
 marquez-airflow
 ```
 
-#### CONFIGURATION
+### Configuration
 
 Next, we'll need to specify where we want Airflow to send OpenLineage events. `marquez-airflow` will use the `MARQUEZ_URL` environment variable to send OpenLineage events to Marquez.
 
@@ -47,7 +53,7 @@ For example, to send OpenLineage events to a local instance of Marquez, use:
 MARQUEZ_URL=http://localhost:5000
 ```
 
-#### USAGE
+### Usage
 
 Finally, to begin collecting Airflow DAG metadata with Marquez, make the following change to your DAG:
 
