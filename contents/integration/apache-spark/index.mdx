@@ -57,8 +57,8 @@ and reported in this way.
 The listener can be enabled by adding the following configuration to a `spark-submit` command:
 
 ```bash
-spark-submit --conf "spark.extraListeners=marquez.spark.agent.SparkListener" \
-    --packages "io.github.marquezproject:marquez-spark:0.16.+" \
+spark-submit --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
+    --packages "io.openlineage:openlineage-spark:0.2.+" \
     --conf "spark.openlineage.host=http://<your_ol_endpoint>" \
     --conf "spark.openlineage.namespace=my_job_namespace" \
     --class com.mycompany.MySparkApp my_application.jar
@@ -103,8 +103,8 @@ Alternatively, the same configuration parameters can be added to the `spark-defa
 cluster creation. Add the following key/value parameters to the `spark-defaults.conf` file:
 
 ```
-spark.jars.packages    io.github.marquezproject:marquez-spark:0.15.1
-spark.extraListeners   marquez.spark.agent.SparkListener
+spark.jars.packages    io.openlineage:openlineage-spark:0.2.+
+spark.extraListeners   io.openlineage.spark.agent.OpenLineageSparkListener
 spark.openlineage.host       http://<your_ol_endpoint>
 spark.openlineage.namespace  my_job_namespace
 ```
@@ -119,25 +119,25 @@ The Javaagent approach is the earliest approach to adding lineage events. It was
 instrumenting Spark code directly by manipulating bytecode at runtime. In the case of Dataframe or
 RDD code that doesn't expose the underlying datasource directly, the javaagent approach will allow
 injecting bytecode at runtime to expose the required information. This approach requires being able
-to add the `marquez-spark` jar on the driver host and adding the correct JVM startup parameters. This
+to add the `openlineage-spark` jar on the driver host and adding the correct JVM startup parameters. This
 may not be possible, e.g., on a serverless Spark platform, such as AWS Glue.
 
 #### spark-submit
 The following configuration must be added to the `spark-submit` command when the job is submitted:
 
 ```bash
-spark-submit --conf spark.driver.extraJavaOptions=-javaagent:<marquez-spark-jar-location>=http://<your_ol_endpoint>/api/v1/namespaces/<your_job_namespace>/?api_key=<optional_api_key>
+spark-submit --conf spark.driver.extraJavaOptions=-javaagent:<openlineage-spark-jar-location>=http://<your_ol_endpoint>/api/v1/namespaces/<your_job_namespace>/?api_key=<optional_api_key>
 ```
 
 If a parent job run is triggering the Spark job run, the parent job's name and Run id can be included as such:
 
 ```bash
-spark-submit --conf spark.driver.extraJavaOptions=-javaagent:<marquez-spark-jar-location>=http://<your_ol_endpoint>/api/v1/namespaces/<your_job_namespace>/jobs/<parent_job_name>/runs/<parent_run_id>?api_key=<optional_api_key>
+spark-submit --conf spark.driver.extraJavaOptions=-javaagent:<openlineage-spark-jar-location>=http://<your_ol_endpoint>/api/v1/namespaces/<your_job_namespace>/jobs/<parent_job_name>/runs/<parent_run_id>?api_key=<optional_api_key>
 ```
 
 ### From Airflow
 The same parameters passed to `spark-submit` can be supplied from Airflow and other schedulers. If
-using the [marquez-airflow](../apache-airflow/) integration, each task in the DAG has its own Run id
+using the [openlineage-airflow](../apache-airflow/) integration, each task in the DAG has its own Run id
 which can be connected to the Spark job run via the `spark.openlineage.parentRunId` parameter. For example,
 here is an example of a `DataProcPySparkOperator` that submits a Pyspark application on Dataproc:
 
@@ -151,9 +151,9 @@ t1 = DataProcPySparkOperator(
     main='gs://bucket/your-prog.py',
     job_name=job_name,
     dataproc_pyspark_properties={
-      "spark.extraListeners": "marquez.spark.agent.SparkListener",
-      "spark.jars.packages": "io.github.marquezproject:marquez-spark:0.15.+",
-      "spark.openlineage.url": f"{marquez_url}/api/v1/namespaces/{marquez_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
+      "spark.extraListeners": "io.openlineage.spark.agent.OpenLineageSparkListener",
+      "spark.jars.packages": "io.openlineage:openlineage-spark:0.2.+",
+      "spark.openlineage.url": f"{openlineage_url}/api/v1/namespaces/{openlineage_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
     },
     dag=dag)
 ```
@@ -170,7 +170,7 @@ t1 = DataProcPySparkOperator(
     job_name=job_name,
     dataproc_pyspark_properties={
       'spark.driver.extraJavaOptions':
-        f"-javaagent:marquez-spark-0.15.0.jar={marquez_url}/api/v1/namespaces/{marquez_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
-    files="https://repo1.maven.org/maven2/io/github/marquezproject/marquez-spark/0.15.0/marquez-spark-0.15.0.jar",
+        f"-javaagent:openlineage-spark-0.2.2.jar={openlineage_url}/api/v1/namespaces/{openlineage_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
+    files="https://repo1.maven.org/maven2/io/openlineage/openlineage-spark/0.2.2/openlineage-spark-0.2.2.jar",
     dag=dag)
 ```
