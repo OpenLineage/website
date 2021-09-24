@@ -967,26 +967,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "port",
-                  "description": "",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "IntQueryOperatorInput",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "host",
-                  "description": "",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "StringQueryOperatorInput",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "polyfill",
                   "description": "",
                   "type": {
@@ -3803,6 +3783,46 @@
             },
             {
               "name": "description",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "version",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "datasources",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "github",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "blog",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -8816,6 +8836,54 @@
               "deprecationReason": null
             },
             {
+              "name": "version",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "datasources",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "github",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "blog",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -10857,6 +10925,30 @@
               "deprecationReason": null
             },
             {
+              "name": "childrenMdx___frontmatter___version",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childrenMdx___frontmatter___datasources",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childrenMdx___frontmatter___github",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childrenMdx___frontmatter___blog",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "childrenMdx___frontmatter___template",
               "description": null,
               "isDeprecated": false,
@@ -11668,6 +11760,30 @@
             },
             {
               "name": "childMdx___frontmatter___description",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___version",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___datasources",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___github",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___blog",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -15933,30 +16049,6 @@
               "deprecationReason": null
             },
             {
-              "name": "port",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "host",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "polyfill",
               "description": null,
               "args": [],
@@ -16562,26 +16654,6 @@
               "defaultValue": null
             },
             {
-              "name": "port",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "IntQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "host",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "polyfill",
               "description": "",
               "type": {
@@ -16893,18 +16965,6 @@
             },
             {
               "name": "siteMetadata___disqus",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "port",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "host",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -23387,6 +23447,30 @@
             },
             {
               "name": "frontmatter___description",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___version",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___datasources",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___github",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___blog",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
