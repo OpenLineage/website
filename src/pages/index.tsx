@@ -5,7 +5,6 @@ import { Link } from "gatsby"
 import { ArrowRight } from "react-feather"
 import { GitHub } from "react-feather"
 import { Slack } from "react-feather"
-import ScrollIntoView from "react-scroll-into-view"
 
 import Layout from "../components/layout"
 import { Button } from "../components/ui"
