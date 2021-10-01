@@ -1,8 +1,9 @@
 # openlineage.io
 
 ```
-nvm install 12
-nvm use 12
-npm install -g gatsby
+nvm install 16
+nvm use 16
+npm install -g gatsby-cli
+npm ci
 gatsby develop
 ```

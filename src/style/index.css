@@ -2,6 +2,13 @@
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
 
+:root {
+    --deckgo-highlight-code-background: #333;
+    --deckgo-highlight-code-color: #efefef;
+    --deckgo-highlight-code-padding: 1rem;
+    --deckgo-highlight-code-container-width: 80%;
+}
+
 body {
     font-family: "Didact Gothic", sans-serif;
 }
@@ -342,7 +349,11 @@ p {
 }
 .table-of-contents ol li:before {
     content: counters(tocnum, '.') '. ';
-    /* Whatever custom styles you want here */
     font-weight: bold;
 }
 
+code {
+    background-color: #dedede;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+}
