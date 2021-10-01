@@ -4,7 +4,7 @@ date: 2021-09-21
 author: Ross Turk
 image: ./image.svg
 banner: ./banner.svg
-description: Each time dbt runs it generates a trove of metadata about datasets and the work it performs with them. In this post, I’d like to show you how to harvest this metadata and put it to good use.
+description: Each time dbt runs, it generates a trove of metadata about datasets and the work it performs with them. In this post, I’d like to show you how to harvest this metadata and put it to good use.
 ---
 
 ```toc
@@ -16,13 +16,13 @@ At the time, my defining question was “how can I make all of my most important
 
 Skip forward to the current day and here I am, building and running models from a cafe over pretty shaky wifi. **My, how things have changed.**
 
-Cloud data warehouses like [Google BigQuery](https://cloud.google.com/bigquery/), [Amazon Redshift](https://aws.amazon.com/redshift/), and [Snowflake](https://www.snowflake.com) have created a new economic and technological possibility: we can now pretty much just load everything - including our entire operational data stores - into a single warehouse. Once everything is in one place, data can be sliced up and analyzed much more quickly. This is where dbt shines, at making transformations within a cloud data warehouse easy. And we all know what happens when you make something easy: it finds a way to happen a lot. People are doing more complex transformations than ever before, and the need for lineage context is becoming greater than ever.
+Cloud data warehouses like [Google BigQuery](https://cloud.google.com/bigquery/), [Amazon Redshift](https://aws.amazon.com/redshift/), and [Snowflake](https://www.snowflake.com) have created a new economic and technological possibility: we can now pretty much just load everything - including our entire operational data stores - into a single warehouse. Once everything is in one place, data can be sliced up and analyzed much more quickly. This is where [dbt](https://www.getdbt.com) shines, at making transformations within a cloud data warehouse easy. And we all know what happens when you make something easy: it finds a way to happen a lot. People are doing more complex transformations than ever before, and the need for lineage context is becoming greater than ever.
 
 Fortunately, each time dbt runs it generates a trove of metadata about datasets and the work it performs with them. In this post, I’d like to show you how to harvest this metadata and put it to good use.
 
 # Our Example
 
-For our example, let’s choose the kind of experiment that I might run in my day-to-day life. I’m the head of marketing at Datakin, which means the metrics I’m most interested in are usually about some sort of human behavior.
+For our example, let’s choose the kind of experiment that I might run in my day-to-day life. I’m the head of marketing at [Datakin](https://datakin.com), which means the metrics I’m most interested in are usually about some sort of human behavior.
 
 I ask questions like:
 * Does [x] technology space matter, and to whom? Is it waxing or waning?
@@ -30,7 +30,7 @@ I ask questions like:
 * Who are the influencers in this space? Who are the major contributors?
 * What challenges are users facing? What does successful adoption look like?
 
-There are a lot of ways to try to answer these questions. None of them are any more reliable than human behavior itself, and every resulting metric requires analysis and judgment. But there are still some pretty fun things to discover. And what better data source to mine to understand technical audiences than [Stack Overflow](https://www.snowflake.com)?
+There are a lot of ways to try to answer these questions. None of them are any more reliable than human behavior itself, and every resulting metric requires analysis and judgment. But there are still some pretty fun things to discover. And what better data source to mine to understand technical audiences than [Stack Overflow](https://www.stackoverflow.com)?
 
 So let’s see what we can learn from the Stack Overflow [public data set in BigQuery](https://cloud.google.com/blog/topics/public-datasets/google-bigquery-public-datasets-now-include-stack-overflow-q-a). But not the whole thing; it is very large, so let’s study just a part of it. I created a [sample dbt project](http://github.com/rossturk/stackostudy/) that contains a handful of models to study all of the questions and answers we can find about the topic of ELT. These models:
 
@@ -38,7 +38,7 @@ So let’s see what we can learn from the Stack Overflow [public data set in Big
 * Augment these slices by performing some helpful calculations - in this case, the number of upvotes/downvotes per question.
 * Populate two summary tables for consumption by a BI system of some sort: a daily summary table that can be used to study trends and a user summary table that can be used to learn about the most influential contributors.
 
-This is exactly the kind of experiment I have run multiple times over the years, across numerous stacks. It’s usually pretty messy. But this time, after running all of these models, we will be rewarded with a gorgeous Marquez lineage graph. We’ll be able to see how everything fits together.
+This is exactly the kind of experiment I have run multiple times over the years, across numerous stacks. It’s usually pretty messy. But this time, after running all of these models, we will be rewarded with a gorgeous [Marquez](https://marquezproject.github.io/marquez/) lineage graph. We’ll be able to see how everything fits together.
 
 # Setting Everything Up
 
@@ -67,7 +67,7 @@ source virtualenv/bin/activate
 pip install dbt dbt-openlineage
 ```
 
-dbt learns how to connect to your BigQuery project by looking for a matching profile in `~/.dbt/profiles.yml`. Create or edit this file so it contains a section with your BigQuery connection details. You will need to point to the location of a file containing the JSON key for your service account. If you aren’t sure, you can follow this guide in the dbt documentation. My `profiles.yml` looked like this when I was done:
+dbt learns how to connect to your BigQuery project by looking for a matching profile in `~/.dbt/profiles.yml`. Create or edit this file so it contains a section with your BigQuery connection details. You will need to point to the location of a file containing the JSON key for your service account. If you aren’t sure, you can follow [this section](https://docs.getdbt.com/tutorial/create-a-project-dbt-cli#connect-to-bigquery) in the dbt documentation. My `profiles.yml` looked like this when I was done:
 
 ```yaml
 stackostudy:
@@ -208,6 +208,6 @@ If everything ran successfully you should be able to see a list of jobs when you
 
 Our set of models, previously represented by SQL inside text files, has become more easily digestible. The dependencies between datasets are now completely obvious. Data engineers can throw away their remaining whiteboards, hooray!
 
-There’s something satisfying about seeing my models represented like this. But more importantly, this integration allows us to capture the state of a dbt pipeline as it runs. Using a long-running instance of Marquez (or another OpenLineage-compatible metadata repository) this information can be studied as it changes over time.
+There’s something satisfying about seeing models represented in two-dimensional space. But more importantly, this integration allows us to capture the state of a dbt pipeline as it runs. Using a long-running instance of Marquez (or another OpenLineage-compatible metadata repository) this information can be studied as it changes over time.
 
-For more detail on the OpenLineage dbt integration, visit its GitHub repository.
+To see how the OpenLineage dbt integration works, visit its [GitHub repository](https://github.com/OpenLineage/OpenLineage/tree/main/integration/dbt).
