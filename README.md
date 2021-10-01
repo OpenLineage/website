@@ -4,6 +4,6 @@
 nvm install 16
 nvm use 16
 npm install -g gatsby-cli
-npm install
+npm ci
 gatsby develop
 ```
