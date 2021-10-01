@@ -8,7 +8,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import { Row, Col } from "../components/shortcodes/index"
 
-import Comments from "../components/comments"
 import { BlogQuery } from "./__generated__/BlogQuery"
 
 export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
@@ -47,9 +46,6 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                     <MDXProvider components={{ Row, Col }}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>
-                </div>
-                <div className="comments mt-8">
-                    <Comments title={data.mdx.frontmatter.title} location={location} />
                 </div>
             </div>
         </Layout>
