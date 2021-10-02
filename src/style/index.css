@@ -3,10 +3,10 @@
 @import "tailwindcss/components";
 
 :root {
-    --deckgo-highlight-code-background: #333;
-    --deckgo-highlight-code-color: #efefef;
-    --deckgo-highlight-code-padding: 1rem;
-    --deckgo-highlight-code-container-width: 80%;
+    --deckgo-highlight-code-carbon-toolbar-display: none;
+    --deckgo-highlight-code-carbon-overflow: scroll;
+    --deckgo-highlight-code-scroll: scroll;
+    --deckgo-highlight-code-width: max-content;
 }
 
 body {
