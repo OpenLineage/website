@@ -2,8 +2,8 @@
 
 ```
 nvm install 16
-nvm use 16
-npm install -g gatsby-cli
-npm ci
+npm install -g yarn
+yarn
+yarn global add gatsby-cli
 gatsby develop
 ```
