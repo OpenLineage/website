@@ -7,10 +7,12 @@
     --deckgo-highlight-code-carbon-overflow: scroll;
     --deckgo-highlight-code-scroll: scroll;
     --deckgo-highlight-code-width: max-content;
+    --deckgo-highlight-code-carbon-margin: 30px 20px;
 }
 
 body {
     font-family: "Didact Gothic", sans-serif;
+    font-size: 18px;
 }
 
 p {
@@ -174,7 +176,7 @@ p {
 }
 
 .post-content h1, h2, h3, h4, h5, h6 {
-    @apply text-color-2 my-4;
+    @apply text-color-2 my-8;
 }
 
 .post-content h1 {
@@ -356,4 +358,9 @@ code {
     background-color: #dedede;
     padding: 0.25rem 0.5rem;
     font-size: 0.85rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }

@@ -22,13 +22,13 @@ export default function integrationList({ data, pageContext, location }: PagePro
             }}
             location={location}
         >
-            <div className="py-12 px-4 lg:px-0">
-                <div className="title py-8 text-center">
+            <div className="boxed">
+                <div className="title px-4 py-12 text-center lg:py-14 lg:px-0">
                     <h2 className="text-5xl text-color-1">
                         Integrations
                     </h2>
                 </div>
-                <div className="boxed py-8">
+                <div className="px-4 py-12 lg:py-14 lg:px-0">
                     <p>OpenLineage connectors have been created for major job schedulers and data platforms. By using these connectors, the appropriate API calls will be made automatically each time your pipeline executes. They capture information about datasets, jobs, and runs, allowsing you to study lineage across multiple data sources.</p>
                     <table className="integration-list">
                         <tr>
