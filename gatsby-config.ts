@@ -61,8 +61,7 @@ const plugins = [
                 {
                   resolve: `gatsby-remark-highlight-code`,
                   options: {
-                    terminal: "none",
-                    theme: "night-owl"
+                    terminal: "carbon"
                   },
                 },            
             ],
