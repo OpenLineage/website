@@ -12,5 +12,7 @@ OR
 
 ```
 docker build -t openlineageio .
-docker run -v ~/output/:/app/public/:rw openlineageio
+docker run openlineageio develop
+
+docker run -v public/:/app/public/:rw openlineageio build
 ```

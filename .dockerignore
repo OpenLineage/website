@@ -1,3 +1,4 @@
-public
-node_modules
-__generated__
+__generated__/
+.cache/
+node_modules/
+public/
