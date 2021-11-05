@@ -1,10 +1,10 @@
 ---
 title: Tracing Data Lineage with OpenLineage and Apache Spark
-date: 2021-11-03
+date: 2021-11-05
 author: Michael Collado
 image: ./image.svg
 banner: ./banner.svg
-description: Spark ushered in a new age of data democratization... and left us with a mess of hidden dependencies, stale datasets, and failed jobs
+description: Spark ushered in a brand new age of data democratization... and left us with a mess of hidden dependencies, stale datasets, and failed jobs.
 ---
 ## The Age of Data Democratization
 
@@ -33,6 +33,7 @@ Of course, the natural consequence of this data democratization is that it becom
 using the data and for what purpose. Hidden dependencies and Hyrum’s Law suddenly meant that changes to the data schema
 would inadvertently break downstream processes or that stale, deprecated datasets were still being consumed, and that
 corrupted datasets would leak into unknown processes making recovery difficult or even impossible.
+
 [![XKCD 1172](./workflow.png)](https://xkcd.com/1172/)
 
 The goal of OpenLineage is to reduce issues and speed up recovery by exposing those hidden dependencies and informing
@@ -47,7 +48,7 @@ has had a SparkListener interface since before the 1.x days. OpenLineage integra
 interface and collecting information about jobs that are executed inside of a Spark application. To activate the
 listener, add the following property to your Spark configuration:
 ```
-spark.jars.packages	io.openlineage:openlineage-spark:0.3.+
+spark.jars.packages     io.openlineage:openlineage-spark:0.3.+
 spark.extraListeners	io.openlineage.spark.agent.OpenLineageSparkListener
 ```
 This can be added to your cluster’s spark-defaults.conf file, in which case it will record lineage for every job executed on the cluster, or added to specific jobs on submission via the spark-submit command. Once the listener is activated, it needs to know where to report lineage events, as well as the namespace of your jobs. Add the following additional configuration lines to your spark-defaults.conf file or your Spark submission script:
@@ -61,19 +62,19 @@ Trying out the Spark integration is super easy if you already have Docker Deskto
 with this demo, you’ll also need a Google Cloud account and a Service Account JSON key file for an account that has
 access to BigQuery and read/write access to your GCS bucket. I added mine to a file called bq-spark-demo.json.
 
-Check out the OpenLineage project into your workspace with
+Check out the OpenLineage project into your workspace with:
 ```bash
 git clone https://github.com/OpenLineage/OpenLineage
 ```
 
 Then cd into the integration/spark directory. Run `mkdir -p docker/notebooks/gcs` and copy your service account credentials
-file into that directory. Then run
+file into that directory. Then run:
 
 ```bash
 docker-compose up
 ```
 
-This launches a Jupyter notebook with Spark already installed as well as a Marquez API endpoint to report lineage. Once the notebook server is up and running, you should see something like the following text in the logs
+This launches a Jupyter notebook with Spark already installed as well as a Marquez API endpoint to report lineage. Once the notebook server is up and running, you should see something like the following text in the logs:
 ```
 notebook_1  | [I 21:43:39.014 NotebookApp] Jupyter Notebook 6.4.4 is running at:
 notebook_1  | [I 21:43:39.014 NotebookApp] http://082cb836f1ec:8888/?token=507af3cf9c22f627f6c5211d6861fe0804d9f7b19a93ca48
@@ -83,13 +84,16 @@ notebook_1  | [I 21:43:39.015 NotebookApp] Use Control-C to stop this server and
 
 Copy the URL with 127.0.0.1 as the hostname from your own log (the token will be different from mine) and paste it into
 your browser window. You should have a blank Jupyter notebook environment ready to go.
+
 ![Jupyter home screen](./jupyter_home.png)
+
 Once your notebook environment is ready, click on the notebooks directory, then click on the New button to create a new
 Python 3 notebook.
+
 ![Jupyter create new notebook](./jupyter_new_notebook.png)
 
 In the first cell in the window paste the following text. Update the GCP project and bucket names and the 
-service account credentials file, then run the code
+service account credentials file, then run the code:
 
 ```python
 from pyspark.sql import SparkSession
@@ -143,7 +147,8 @@ vaccination rates, current totals of confirmed cases, hospitalizations, deaths, 
 mask-wearing, contact tracing, and vaccination-mandates. Both datasets contain the county FIPS code for US counties,
 meaning we can join the two datasets and start exploring.
 
-Create a new cell in the notebook and paste the following code
+Create a new cell in the notebook and paste the following code:
+
 ```python
 from pyspark.sql.functions import expr, col
 
@@ -158,7 +163,7 @@ mask_use = spark.read.format('bigquery') \
 opendata = spark.read.format('bigquery') \
     .option('parentProject', project_id) \
     .option('table', 'bigquery-public-data.covid19_open_data.covid19_open_data') \
-    .load()\
+    .load() \
     .filter("country_name == 'United States of America'") \
     .filter("date == '2021-10-31'") \
     .select("location_key",
@@ -180,7 +185,8 @@ the `mask_use_by_county` data, I don't really care about the difference between 
 into a single number. I do the same for `frequently` and `always`. I join the few columns I want from the two datasets
 and store the combined result in GCS.
 
-Add one more cell to the notebook and paste the following
+Add one more cell to the notebook and paste the following:
+
 ```python
 spark.read.parquet(f'gs://{gcs_bucket}/demodata/covid_deaths_and_mask_usage/').count()
 ```
@@ -201,7 +207,8 @@ containers, run the following command in a new terminal:
 docker run --network spark_default -p 3000:3000 -e MARQUEZ_HOST=marquez-api -e MARQUEZ_PORT=5000 --link marquez-api:marquez-api marquezproject/marquez-web:0.19.1
 ```
 
-Now open a new browser tab and navigate to `http://localhost:3000`. You should see a screen like the following
+Now open a new browser tab and navigate to `http://localhost:3000`. You should see a screen like the following:
+
 ![Marquez home page](./marquez_home.png)
 
 Note the spark_integration namespace was found for us and automatically chosen, since there are no other namespaces
@@ -209,7 +216,8 @@ available. We can see three jobs listed on the jobs page of the UI. They all sta
 is the `appName` we passed to the SparkSession we were building in the first cell of the notebook. Each query execution
 or RDD action is represented as a distinct job and the name of the action is appended to the application name to form
 the name of the job. Clicking on the `openlineage_spark_test.execute_insert_into_hadoop_fs_relation_command` node, we
-can see the lineage graph for our notebook-
+can see the lineage graph for our notebook:
+
 ![Marquez job lineag](./marquez_job_graph.png)
 
 The graph shows the `openlineage_spark_test.execute_insert_into_hadoop_fs_relation_command` job reads from two input
@@ -220,6 +228,7 @@ and `bigquery-public-data.covid19_open_data.covid19_open_data`, and writes to a 
 
 Before clicking on the datasets, though, the bottom bar shows some really interesting data that was collected from the
 Spark job. Dragging the bar up expands the view so we can get a better look at that data.
+
 ![Marquez job facets](./marquez_job_facets.png)
 
 Two [facets](https://openlineage.io/blog/extending-with-facets/) that are always collected from Spark jobs are
@@ -231,12 +240,14 @@ The second facet is the serialized optimized `LogicalPlan` Spark reports when th
 can have dramatic effects on the execution time and efficiency of the query job. Tracking how query plans change over
 time can significantly aid in debugging slow queries or OutOfMemory errors in production.
 
-Clicking on the first BigQuery dataset gives us information about the data we read
+Clicking on the first BigQuery dataset gives us information about the data we read:
+
 ![Marquez dataset latest facet](./marquez_bigquery_dataset_latest.png)
 
 Here, we can see the schema of the dataset as well as the datasource- namely BigQuery.
 
-We can get similar information about the dataset written to in GCS
+We can get similar information about the dataset written to in GCS:
+
 ![Marquez output dataset latest facet](./marquez_output_dataset_latest.png)
 
 As in the BigQuery dataset, we can see the output schema and the datasource- here, the `gs://` scheme and the name of
@@ -251,6 +262,7 @@ statistics are actually recorded correctly- the API simply needs to start return
 You may have noticed the `VERSIONS` tab on the bottom bar. We can click it, but since the job has only ever run once,
 we’ll only see one version. Clicking on the version, we’ll see the same schema and statistics facets, but specific
 to the version we clicked.
+
 ![Marquez output dataset version info](./marquez_output_dataset_version.png)
 
 In production, this dataset would have many versions, as each time the job runs a new version of the dataset is created.
