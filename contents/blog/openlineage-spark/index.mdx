@@ -59,14 +59,14 @@ spark.openlineage.namespace	{your.openlineage.namespace}
 
 Trying out the Spark integration is super easy if you already have Docker Desktop and git installed. To follow along
 with this demo, you’ll also need a Google Cloud account and a Service Account JSON key file for an account that has
-access to BigQuery and some GCS bucket. I added mine to a file called bq-spark-demo.json.
+access to BigQuery and read/write access to your GCS bucket. I added mine to a file called bq-spark-demo.json.
 
 Check out the OpenLineage project into your workspace with
 ```bash
 git clone https://github.com/OpenLineage/OpenLineage
 ```
 
-Then cd into the integration/spark directory. Run `mkdir -p notebooks/gcs` and copy your service account credentials
+Then cd into the integration/spark directory. Run `mkdir -p docker/notebooks/gcs` and copy your service account credentials
 file into that directory. Then run
 
 ```bash
