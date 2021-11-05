@@ -23,9 +23,9 @@ software engineers to build custom tools for access, meaning the bottleneck had 
 needed to store and process the data to the humans who were supposed to tell us what systems to build.
 
 Then along came Apache Spark, which gave back to analysts the ability to use their beloved Python (and eventually SQL)
-tools to process raw data in object stores without the dependency on software engineers. A lot of folks were
+tools to process raw data in object stores without the dependency on software engineers. While others were
 attracted to its ability to perform multiple operations on data without the I/O overhead of alternatives, like Pig or
-Hive, and data scientists were thrilled to start piping that data through their NumPy and Pandas scripts. 
+Hive, data scientists were thrilled to start piping that data through their NumPy and Pandas scripts. 
 
 ## A Colossal Mess
 
@@ -43,9 +43,10 @@ some time, the recent OpenLineage 0.3 release has explicit support for Spark 3.1
 
 ## Getting Started
 
-Our approach to integrating with Spark is designed to be intuitive and uncomplicated to implement in your systems. Spark
-has had a SparkListener interface since before the 1.x days. OpenLineage integrates with Spark by implementing that
-interface and collecting information about jobs that are executed inside of a Spark application. To activate the
+Our approach to integrating with Spark is not super novel nor is it complicated to integrate into your own system. Spark
+has had a SparkListener interface since before the 1.x days. If you're a heavy Spark user, it's likely you're already
+familiar with it and how it's used in Spark applications. OpenLineage integrates with Spark by implementing that
+interface and collecting information about jobs that are executed inside a Spark application. To activate the
 listener, add the following properties to your Spark configuration:
 ```
 spark.jars.packages     io.openlineage:openlineage-spark:0.3.+
@@ -246,13 +247,13 @@ Clicking on the first BigQuery dataset gives us information about the data we re
 
 ![Marquez dataset latest facet](./marquez_bigquery_dataset_latest.png)
 
-Here, we can see the schema of the dataset as well as the datasource—namely BigQuery.
+Here, we can see the schema of the dataset as well as the datasource — namely BigQuery.
 
 We can get similar information about the dataset written to in GCS:
 
 ![Marquez output dataset latest facet](./marquez_output_dataset_latest.png)
 
-As in the BigQuery dataset, we can see the output schema and the datasource—here, the `gs://` scheme and the name of
+As in the BigQuery dataset, we can see the output schema and the datasource — here, the `gs://` scheme and the name of
 the bucket we wrote to. 
 
 In addition to the schema, we also see a `stats` facet, reporting the number of output records and bytes as -1. A 
