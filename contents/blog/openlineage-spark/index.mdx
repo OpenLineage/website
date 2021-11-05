@@ -10,22 +10,22 @@ description: Spark ushered in a brand new age of data democratization... and lef
 
 In 2015, Apache Spark seemed to be taking over the world. Many of us had spent the prior few years moving our large
 datasets out of the Data Warehouse into "Data Lakes"- repositories of structured and unstructured data in
-distributed file systems or object stores, like HDFS or S3. This had enabled us to build analytic systems that could
-handle traditional, table-structured data alongside flexible, unstructured, JSON blobs, giving us access to more data
-and moving faster than we’d previously been able to.
+distributed file systems or object stores, like HDFS or S3. This enabled us to build analytic systems that could
+handle traditional, table-structured data alongside flexible, unstructured JSON blobs, giving us access to more data
+and allowing us to move much faster than we’d previously been able to.
 
-The problem was that taking the data out of the Data Warehouses meant that the people who really needed access to the
+The problem was that taking the data out of Data Warehouses meant that the people who really needed access to the
 data, analysts and statisticians, could no longer use the tools they were comfortable with in order to read that data.
 Where previously, SQL and Python were all that was needed to start exploring and analyzing a dataset, now people needed
 to write Java or use specialized scripting languages, like Pig, to get at the data. Systems that did support SQL, such
 as Hive, were unbearably slow for any but the most basic operations. In many places, the statisticians were dependent on
-software engineers to build custom tools to provide access, meaning the bottleneck had moved from the systems that
+software engineers to build custom tools for access, meaning the bottleneck had moved from the systems that
 needed to store and process the data to the humans who were supposed to tell us what systems to build.
 
 Then along came Apache Spark, which gave back to analysts the ability to use their beloved Python (and eventually SQL)
-tools to process raw data in object stores without the dependency on software engineers. While a lot of folks were
+tools to process raw data in object stores without the dependency on software engineers. A lot of folks were
 attracted to its ability to perform multiple operations on data without the I/O overhead of alternatives, like Pig or
-Hive, data scientists were thrilled to start piping that data through their NumPy and Pandas scripts. 
+Hive, and data scientists were thrilled to start piping that data through their NumPy and Pandas scripts. 
 
 ## A Colossal Mess
 
@@ -43,15 +43,15 @@ some time, the recent OpenLineage 0.3 release has explicit support for Spark 3.1
 
 ## Getting Started
 
-The approach to integrating with Spark is not super novel nor is it complicated to integrate into your own system. Spark
+Our approach to integrating with Spark is designed to be intuitive and uncomplicated to implement in your systems. Spark
 has had a SparkListener interface since before the 1.x days. OpenLineage integrates with Spark by implementing that
 interface and collecting information about jobs that are executed inside of a Spark application. To activate the
-listener, add the following property to your Spark configuration:
+listener, add the following properties to your Spark configuration:
 ```
 spark.jars.packages     io.openlineage:openlineage-spark:0.3.+
 spark.extraListeners	io.openlineage.spark.agent.OpenLineageSparkListener
 ```
-This can be added to your cluster’s spark-defaults.conf file, in which case it will record lineage for every job executed on the cluster, or added to specific jobs on submission via the spark-submit command. Once the listener is activated, it needs to know where to report lineage events, as well as the namespace of your jobs. Add the following additional configuration lines to your spark-defaults.conf file or your Spark submission script:
+This can be added to your cluster’s `spark-defaults.conf` file, in which case it will record lineage for every job executed on the cluster, or added to specific jobs on submission via the `spark-submit` command. Once the listener is activated, it needs to know where to report lineage events, as well as the namespace of your jobs. Add the following additional configuration lines to your `spark-defaults.conf` file or your Spark submission script:
 ```
 spark.openlineage.host		{your.openlineage.host}
 spark.openlineage.namespace	{your.openlineage.namespace}
@@ -61,6 +61,8 @@ spark.openlineage.namespace	{your.openlineage.namespace}
 Trying out the Spark integration is super easy if you already have Docker Desktop and git installed. To follow along
 with this demo, you’ll also need a Google Cloud account and a Service Account JSON key file for an account that has
 access to BigQuery and read/write access to your GCS bucket. I added mine to a file called bq-spark-demo.json.
+
+Note: If you're on macOS Monterey (macOS 12) you'll have to release port 5000 before beginning by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332).
 
 Check out the OpenLineage project into your workspace with:
 ```bash
@@ -218,7 +220,7 @@ or RDD action is represented as a distinct job and the name of the action is app
 the name of the job. Clicking on the `openlineage_spark_test.execute_insert_into_hadoop_fs_relation_command` node, we
 can see the lineage graph for our notebook:
 
-![Marquez job lineag](./marquez_job_graph.png)
+![Marquez job lineage](./marquez_job_graph.png)
 
 The graph shows the `openlineage_spark_test.execute_insert_into_hadoop_fs_relation_command` job reads from two input
 datasets, `bigquery-public-data.covid19_nyt.mask_use_by_county`
@@ -244,13 +246,13 @@ Clicking on the first BigQuery dataset gives us information about the data we re
 
 ![Marquez dataset latest facet](./marquez_bigquery_dataset_latest.png)
 
-Here, we can see the schema of the dataset as well as the datasource- namely BigQuery.
+Here, we can see the schema of the dataset as well as the datasource—namely BigQuery.
 
 We can get similar information about the dataset written to in GCS:
 
 ![Marquez output dataset latest facet](./marquez_output_dataset_latest.png)
 
-As in the BigQuery dataset, we can see the output schema and the datasource- here, the `gs://` scheme and the name of
+As in the BigQuery dataset, we can see the output schema and the datasource—here, the `gs://` scheme and the name of
 the bucket we wrote to. 
 
 In addition to the schema, we also see a `stats` facet, reporting the number of output records and bytes as -1. A 
