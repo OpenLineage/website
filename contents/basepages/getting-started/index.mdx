@@ -19,14 +19,14 @@ Below, we illustrate the challenges of collecting lineage metadata from multiple
 
 #### BEFORE:
 
-<img src="./before-openlineage.svg" />
+<img src="./before-ol.svg" />
 
 * Each project has to instrument it's own custom metadata collection integration, therefore duplicating efforts.
 * Integrations are external and can break with new versions of the underlying scheduler and/or data processing framework, requiring projects to ensure _backwards_ compatibility.
 
 #### WITH OPENLINEAGE:
 
-<img src="./with-openlineage.svg" />
+<img src="./with-ol.svg" />
 
 * Integration efforts are shared _across_ projects.
 * Integrations can be _pushed_ to the underlying scheduler and/or data processing framework; no need to play catch up and ensure compatibility!
