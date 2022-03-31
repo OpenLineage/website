@@ -22,7 +22,7 @@ export const ItemIntegration: React.FC<ItemIntegrationProps> = ({ data, even }) 
   
                 {index === 0 && (
                     <td rowSpan={datasources.length}>
-                        <p>{data.frontmatter.version}</p>
+                        {data.frontmatter.version.split(',').map((item, i) => <p key={i}>{item}</p>)}
                     </td>
                 )}
                 <td className="int-datasources">
