@@ -117,7 +117,7 @@ with DAG('etl_openlineage',
         t1 = PythonOperator(task_id='ol_event', python_callable=send_ol_events)
 ```
 
-## Getting Started
+## Getting Started with an Example
 
 This example uses Airflow to run a collection of Snowflake queries for a fictional food delivery service. Lineage data for these queries will be recorded within Snowflake `ACCESS_HISTORY` and, using the OpenLineage Access History View, emitted to an OpenLineage backend.
  
