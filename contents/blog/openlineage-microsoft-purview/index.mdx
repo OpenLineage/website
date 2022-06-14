@@ -27,7 +27,7 @@ A new collaboration between Microsoft and OpenLineage is making lineage extracti
 - enable data curators to manage and secure your data estate.
 - empower data consumers to find valuable, trustworthy data.
 
-![]()
+![High-level overview](./high-level-overview.png)
 Figure 1. Microsoft Purview is an ambient data governance platform for an enterprise.
 
 Microsoft Purview automates data discovery by providing data scanning and classification as a service for assets across your data estate. Microsoft Purview integrates metadata and descriptions of discovered data assets into a holistic map of your data ecosystem. Layered on this map are purpose-built apps that create environments for data discovery, policy management, and insights into your data landscape.
@@ -40,7 +40,7 @@ Organizations need data to conduct business, and they need trustworthy data to p
 
 Microsoft Purview has native data lineage support for [20+ sources](https://docs.microsoft.com/en-us/azure/purview/catalog-lineage-user-guide#lineage-collection), many of which are integrated at engine runtimes. For example, data lineage is pushed from Azure Data Factory when pipelines are run. This deep integration allows Microsoft Purview to capture operational metadata such as job start/end times, the number of rows impacted, job run status and more. In addition to native support, the [open APIs](https://docs.microsoft.com/en-us/rest/api/purview/catalogdataplane/lineage) can be used to integrate with enterprise systems to support custom lineage.
 
-![]()
+![Native lineage in Microsoft Purview](./screenshot.gif)
 Figure 2. Native data lineage visualization in Microsoft Purview.
 
 ### OpenLineage + Microsoft
@@ -71,7 +71,7 @@ Lastly, OpenLineage benefits from Microsoft’s contributions as they will add h
 
 ### About the Solution
 
-![]()
+![Flow of metadata using OpenLineage](./purview-lineage.png)
 Figure 3. The flow of metadata from Azure Databricks to Microsoft Purview using OpenLineage.
 
 1. An Azure administrator deploys an Azure Function (serverless C# application) and an Event Hub (to store OpenLineage events) by running a deployment script.
