@@ -38,6 +38,7 @@ const plugins = [
                     resolve: `gatsby-remark-images`,
                     options: {
                         maxWidth: 1200,
+			wrapperStyle: 'margin: 3rem;',
                     },
                 },
                 `gatsby-remark-copy-linked-files`,
