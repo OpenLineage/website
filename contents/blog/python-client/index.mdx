@@ -1,0 +1,138 @@
+---
+title: The Python Client Supports the Pursuit of Lineage
+date: 2022-06-25
+authors: Michael Robinson & Ross Turk
+image: ../openlineage-snowflake/image.svg
+banner: ../openlineage-snowflake/banner.svg
+description: The Python client empowers users to create metatdata with Python code.
+---
+
+Thanks to the [OpenLineage](https://github.com/OpenLineage/OpenLineage) community’s active, ongoing work on [integrations](https://github.com/OpenLineage/OpenLineage/tree/main/integration), the pursuit of lineage is getting more efficient and effective all the time. And our growing list of partners and adapters makes OpenLineage plenty powerful out of the box. At the same time, the nature of the data engineering field means that lineage capture is an ongoing process – simply put, the work of lineage is never done.
+
+Hence, as lineage capture becomes integral to your pipelines, situations can arise that require you to create lineage metadata manually. Perhaps your team has recently adopted a tool that will require a custom extractor, but you haven’t been able to devote resources to writing one yet. How can you maintain a complete lineage graph in the meantime? 
+
+Enter the [Python client](https://github.com/OpenLineage/OpenLineage/tree/main/client/python), one of two built-in clients included in the project (the other being the Java client).    
+
+OpenLineage’s Python client enables you to create lineage metadata events manually with Python code. The methods currently offered by the client include `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, and `Transport`.
+
+These methods allow you to add new runs, jobs, and datasets to a new or existing lineage graph. To try it out, follow the steps below to install and explore OpenLineage, [Marquez](https://github.com/MarquezProject/marquez) (the reference implementation of OpenLineage), and the Python client. Then, the instructions will show you how to use these tools to add a run event and datasets to an existing namespace.
+
+### How to Use the Client
+
+#### Prerequisites
+Docker 17.05+
+Docker Compose 1.29.1+
+Git (preinstalled on most versions of MacOS; verify your version with `git version`)
+4 GB of available memory (the minimum for Docker — more is strongly recommended)
+
+#### Install OpenLineage and Marquez
+Clone the Marqez Github [repository](https://github.com/MarquezProject/marquez):
+```
+git clone https://github.com/MarquezProject/marquez.git
+```
+
+#### Install the Python client
+```pip install openlineage-python```
+
+#### Get started
+Start Docker Desktop
+Run Marquez with preloaded data:
+```
+cd marquez
+./docker/up.sh --seed
+```
+
+Marquez should be up and running at `http://localhost:3000`.
+
+Take a moment to explore Marquez to get a sense of how metadata is displayed in the UI. For example, you’ll see that namespaces – the global contexts for runs and datasets – can be found in the top right corner, and icons for jobs and runs can be found in a tray along the left side.
+
+Now let’s configure OpenLineage and add a script to our project that will generate a new job and new datasets within an existing namespace (in this case, we’ll use the `food_delivery` namespace that got passed to Marquez with the `–seed` argument we used earlier).
+
+Create a directory for your script:
+```
+..
+mkdir python_scripts && cd python_scripts
+```
+
+In the `python_scripts` directory, create a Python script (we used the name `generate_events.py` for ours) and an `openlineage.yml` file.
+
+In `openlineage.yml`, define a transport type and URL to tell OpenLineage where and how to send metadata:
+
+```
+Transport:
+	Type: “http”
+	Url: “http://localhost:5000”
+```
+
+In `generate_events.py`, import the Python client and the methods you’ll need to create a job and datasets. You’ll also need the `datetime` and `uuid` packages to create a run:
+
+```
+from openlineage.client.run import RunEvent, RunState, Run, Job, Dataset
+from openlineage.client.client import OpenLineageClient
+from datetime import datetime
+from uuid import uuid4
+```
+
+Then, in the same file, initialize the Python client:
+```client = OpenLineageClient.from_environment()```
+
+Specify the producer of the new lineage metadata with a string:
+```producer = “OpenLineage.io/website/blog”```
+
+Now you’re ready to create some basic dataset objects. These require a namespace and name:
+```
+inventory = Dataset(namespace=“food_delivery”, name=“public.inventory”)
+menus = Dataset(namespace=“food_delivery”, name=“public.menus_1”)
+orders = Dataset(namespace=“food_delivery”, name=“public.orders_1”)
+```
+
+You can also create a job object (we’ve borrowed this one from the existing `food_delivery` namespace):
+```job = Job(namespace=“food_delivery”, name=“example.order_data”)```
+
+To create a run object you’ll need to specify a unique ID:
+```run = Run(str(uuid4()))```
+
+a START run event:
+```
+client.emit(
+	RunEvent(
+		RunState.START,
+		datetime.now().isoformat(),
+		run, job, producer
+	)
+)
+```
+
+and, finally, a COMPLETE run event:
+```
+client.emit(
+	RunEvent(
+		RunState.COMPLETE,
+		datetime.now().isoformat(),
+		run, job, producer,
+		inputs=[inventory],
+		outputs=[menus, orders],
+	)
+)
+```
+
+Now you have a complete script for creating datasets and a run event! Execute it in the terminal to send the metadata to Marquez:
+```python3 generate_scripts.py```
+
+Marquez will update itself automatically, so the new job and datasets should now be visible in the UI. If you click on the jobs icon (the icon with the three interlocking gears), you’ll see the `example.order_data` job in the list of jobs:
+
+![Updated Jobs](./mqz_jobs.png)
+
+When you click on the job, you’ll see a new map displaying the job, input and outputs we created with our script:
+
+![Updated Lineage Map](./mqz_graph.png)
+
+### Additional Resources
+
+Check out the source code here: https://github.com/OpenLineage/OpenLineage/tree/main/client/python.
+
+Interested in contributing to the project? Read our guide for new contributors: https://github.com/MarquezProject/marquez/blob/main/CONTRIBUTING.md.
+
+Join us on Slack: http://bit.ly/MarquezSlack.
+
+Attend a community meeting: https://bit.ly/MarquezMeet.
