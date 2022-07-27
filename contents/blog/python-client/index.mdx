@@ -60,7 +60,7 @@ class RunEvent:
 
 At a high level, the [dbt integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/dbt) uses the Python client to push metadata to the OpenLineage backend. The metadata it makes available comprises the run lifecycle, including any dataset inputs and outputs accessed during a job run.
 
-In the `[dbt-ol](https://github.com/OpenLineage/OpenLineage/blob/main/integration/dbt/scripts/dbt-ol)` script, the integration uses the project’s `ParentRunMetadata` and `DbtArtifactProcessor` classes, both of which can be found in the OpenLineage common integration, to parse metadata from the dbt `manifest` and `run_result` in order to produce OpenLineage events:  
+In the `dbt-ol` [script](https://github.com/OpenLineage/OpenLineage/blob/main/integration/dbt/scripts/dbt-ol), the integration uses the project’s `ParentRunMetadata` and `DbtArtifactProcessor` classes, both of which can be found in the OpenLineage common integration, to parse metadata from the dbt `manifest` and `run_result` in order to produce OpenLineage events:  
 
 ```
 from openlineage.common.provider.dbt import DbtArtifactProcessor, ParentRunMetadata
