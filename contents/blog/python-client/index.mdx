@@ -1,131 +1,121 @@
 ---
-title: The Python Client Supports the Pursuit of Lineage
-date: 2022-06-25
-authors: Michael Robinson & Ross Turk
+title: The Python Client: the Foundation of OpenLineage Integrations
+date: 2022-06-27
+authors: Michael Robinson
 image: ../openlineage-snowflake/image.svg
 banner: ../openlineage-snowflake/banner.svg
-description: The Python client empowers users to create metatdata with Python code.
+description: The Python client enables users to create custom integrations.
 ---
 
-Thanks to the [OpenLineage](https://github.com/OpenLineage/OpenLineage) community’s active, ongoing work on [integrations](https://github.com/OpenLineage/OpenLineage/tree/main/integration), the pursuit of lineage is getting more efficient and effective all the time. And our growing list of partners and adapters makes OpenLineage plenty powerful out of the box. At the same time, the nature of the data engineering field means that lineage capture is an ongoing process – simply put, the work of lineage is never done.
+### Introduction
 
-Hence, as lineage capture becomes integral to your pipelines, situations can arise that require you to create lineage metadata manually. Perhaps your team has recently adopted a tool that will require a custom extractor, but you haven’t been able to devote resources to writing one yet. How can you maintain a complete lineage graph in the meantime? 
+Thanks to the [OpenLineage](https://github.com/OpenLineage/OpenLineage) community’s active work on [integrations](https://github.com/OpenLineage/OpenLineage/tree/main/integration), the pursuit of lineage is getting more efficient and effective all the time. And our growing list of partners and adapters makes OpenLineage plenty powerful out of the box. At the same time, the nature of the data engineering field means that lineage capture is an ongoing process – simply put, the work of lineage is never done.
 
-Enter the [Python client](https://github.com/OpenLineage/OpenLineage/tree/main/client/python), one of two built-in clients included in the project (the other being the Java client).    
+Hence, as lineage capture becomes integral to your pipelines, situations can arise that require new custom integrations. Enter the [Python client](https://github.com/OpenLineage/OpenLineage/tree/main/client/python), one of two built-in clients included in the project (the other being the [Java client](https://github.com/OpenLineage/OpenLineage/tree/main/client/java)). The OpenLineage spec is defined using JSON schema, but we have created these clients so that new integrations do not have to reinvent the wheel. 
 
-OpenLineage’s Python client enables you to create lineage metadata events manually with Python code. The methods currently offered by the client include `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, and `Transport`.
+OpenLineage’s Python client enables the creation of lineage metadata events with Python code. The core data structures currently offered by the client include the `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, and `Transport` classes. These either configure or collect data for the emission of lineage events.
 
-These methods allow you to add new runs, jobs, and datasets to a new or existing lineage graph. To try it out, follow the steps below to install and explore OpenLineage, [Marquez](https://github.com/MarquezProject/marquez) (the reference implementation of OpenLineage), and the Python client. Then, the instructions will show you how to use these tools to add a run event and datasets to an existing namespace.
+In the history of the project, the client has been useful in helping us avoid unnecessary duplication of code. It is also integral to OpenLineage’s existing integrations, serving as the basis of the Airflow and dbt integrations, for example. It could also act as the foundation of your own custom integration should you need to write one. (Another use case: tests for a new Airflow extractor.)
 
-### How to Use the Client
+For this reason, an existing integration can serve as a useful example of how to use the client to write a new integration (and, hopefully, [contribute it](https://github.com/OpenLineage/OpenLineage/blob/main/CONTRIBUTING.md) back to the project!). What follows is an overview of the Python client and the dbt integration, which uses the Python client. You’ll see how the client receives metadata from dbt to make it available to a consumer of OpenLineage such as Microsoft Purview, Amundsen, Astronomer, Egeria or Marquez.
 
-#### Prerequisites
-Docker 17.05+
-Docker Compose 1.29.1+
-Git (preinstalled on most versions of MacOS; verify your version with `git version`)
-4 GB of available memory (the minimum for Docker — more is strongly recommended)
+### Python Client Data Structures
 
-#### Install OpenLineage and Marquez
-Clone the Marqez Github [repository](https://github.com/MarquezProject/marquez):
-```
-git clone https://github.com/MarquezProject/marquez.git
-```
+The core structures of the client organize metadata about the foundational objects of the OpenLineage spec: runs, jobs and datasets.
 
-#### Install the Python client
-```pip install openlineage-python```
-
-#### Get started
-Start Docker Desktop
-Run Marquez with preloaded data:
-```
-cd marquez
-./docker/up.sh --seed
-```
-
-Marquez should be up and running at `http://localhost:3000`.
-
-Take a moment to explore Marquez to get a sense of how metadata is displayed in the UI. For example, you’ll see that namespaces – the global contexts for runs and datasets – can be found in the top right corner, and icons for jobs and runs can be found in a tray along the left side.
-
-Now let’s configure OpenLineage and add a script to our project that will generate a new job and new datasets within an existing namespace (in this case, we’ll use the `food_delivery` namespace that got passed to Marquez with the `–seed` argument we used earlier).
-
-Create a directory for your script:
-```
-..
-mkdir python_scripts && cd python_scripts
-```
-
-In the `python_scripts` directory, create a Python script (we used the name `generate_events.py` for ours) and an `openlineage.yml` file.
-
-In `openlineage.yml`, define a transport type and URL to tell OpenLineage where and how to send metadata:
+A `dataset` is a class consisting of a `name`, `namespace` and, optionally, `facets` array:
 
 ```
-Transport:
-	Type: “http”
-	Url: “http://localhost:5000”
+@attr.s
+class Dataset:
+	namespace: str = attr.ib()
+	name: str - attr.ib()
+	Facets: Dict = attr.ib(factory=dict)
 ```
 
-In `generate_events.py`, import the Python client and the methods you’ll need to create a job and datasets. You’ll also need the `datetime` and `uuid` packages to create a run:
+The same goes for a `job`:
 
 ```
-from openlineage.client.run import RunEvent, RunState, Run, Job, Dataset
-from openlineage.client.client import OpenLineageClient
-from datetime import datetime
-from uuid import uuid4
+@attr.s
+class Job:
+	namespace: str = attr.ib()
+	name: str - attr.ib()
+	Facets: Dict = attr.ib(factory=dict)
 ```
 
-Then, in the same file, initialize the Python client:
-```client = OpenLineageClient.from_environment()```
+A `RunEvent` sends the time, state, job, run, producer, input and output information needed to construct an OpenLineage job run event:
 
-Specify the producer of the new lineage metadata with a string:
-```producer = “OpenLineage.io/website/blog”```
-
-Now you’re ready to create some basic dataset objects. These require a namespace and name:
 ```
-inventory = Dataset(namespace=“food_delivery”, name=“public.inventory”)
-menus = Dataset(namespace=“food_delivery”, name=“public.menus_1”)
-orders = Dataset(namespace=“food_delivery”, name=“public.orders_1”)
+@attr.s 
+class RunEvent:
+	eventType: RunState = attr.ib(validator=attr.validators.in_(RunState))
+	eventTime: str = attr.ib()
+	run: Run = attr.ib()
+	job: Job = attr.ib()
+	producer: str = attr.ib()
+	inputs: Optional[List[Dataset]] = attr.ib(factory=list)
+	outputs: Optional[List[Dataset]] = attr.ib(factory=list)
 ```
+### The OpenLineage-dbt Integration
 
-You can also create a job object (we’ve borrowed this one from the existing `food_delivery` namespace):
-```job = Job(namespace=“food_delivery”, name=“example.order_data”)```
+At a high level, the [dbt integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/dbt) uses the Python client to push metadata to the OpenLineage backend. The metadata it makes available comprises the run lifecycle, including any dataset inputs and outputs accessed during a job run.
 
-To create a run object you’ll need to specify a unique ID:
-```run = Run(str(uuid4()))```
+In the `[dbt-ol](https://github.com/OpenLineage/OpenLineage/blob/main/integration/dbt/scripts/dbt-ol)` script, the integration uses the project’s `ParentRunMetadata` and `DbtArtifactProcessor` classes, both of which can be found in the OpenLineage common integration, to parse metadata from the dbt `manifest` and `run_result` in order to produce OpenLineage events:  
 
-a START run event:
 ```
-client.emit(
-	RunEvent(
-		RunState.START,
-		datetime.now().isoformat(),
-		run, job, producer
+from openlineage.common.provider.dbt import DbtArtifactProcessor, ParentRunMetadata
+
+#…
+
+if parent_id:
+	parent_namespace, parent_job_name, parent_run_id = parent_id.split(‘/’)
+	parent_run_metadata = ParentRunMetadata(
+		run_id=parent_run_id,
+		job_name=parent_job_name,
+		job_namespace=parent_namespace
 	)
+
+processor = DbtArtifactProcessor(
+producer=PRODUCER,
+target=target,
+job_namespace=job_namespace,
+project_dir=project_dir,
+profile_name=profile_name,
+logger=logger
 )
 ```
 
-and, finally, a COMPLETE run event:
+The integration uses a wrapper for dbt runs because start and complete events are not emitted until execution concludes:
+
 ```
-client.emit(
-	RunEvent(
-		RunState.COMPLETE,
-		datetime.now().isoformat(),
-		run, job, producer,
-		inputs=[inventory],
-		outputs=[menus, orders],
-	)
+dbt_run_event = dbt_run_event_start(
+	job_name=f“dbt-run-{processor.project[‘name’]}”,
+	job_namespace=job_namespace,
+	parent_run_metadata=parent_run_metadata
 )
+
+dbt_run_metadata = ParentRunMetadata(
+	run_id=dbt_run_event.run.runId,
+	job_name=dbt_run_event.job.name,
+	job_namespace=dbt_run_event.job.namespace
+)
+
+processor.dbt_run_metadata = dbt_run_metadata
 ```
 
-Now you have a complete script for creating datasets and a run event! Execute it in the terminal to send the metadata to Marquez:
-```python3 generate_scripts.py```
+After executing dbt, the script parses the metadata using the processor and emits a run event:
 
-Marquez will update itself automatically, so the new job and datasets should now be visible in the UI. If you click on the jobs icon (the icon with the three interlocking gears), you’ll see the `example.order_data` job in the list of jobs:
+```
+events = processor.parse().events()
 
-![Updated Jobs](./mqz_jobs.png)
-
-When you click on the job, you’ll see a new map displaying the job, input and outputs we created with our script:
-
-![Updated Lineage Map](./mqz_graph.png)
+client.emit(dbt_run_event_end(
+run_id=dbt_run_metadata.run_id,
+job_namespace=dbt_run_metadata.job_namespace,
+job_name=dbt_run_metadata.job_name,
+parent_run_metadata=parent_run_metadata
+))
+logger.info(f"Emitted {len(events) + 2} openlineage events")
+```
 
 ### Additional Resources
 
