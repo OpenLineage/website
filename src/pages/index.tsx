@@ -186,7 +186,7 @@ const About = ({ data }) => {
                 <Button
                     title="Read the javadoc"
                     className="mx-3"
-                    to='/docs/javadoc'
+                    to='/apidocs/javadoc'
                     type="link"
                     iconRight={<ArrowRight />}
                 />
@@ -194,7 +194,7 @@ const About = ({ data }) => {
                 <Button
                     title="Read the openapi doc"
                     className="mx-3"
-                    to='/docs/openapi'
+                    to='/apidocs/openapi'
                     type="link"
                     iconRight={<ArrowRight />}
                 />
