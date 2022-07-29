@@ -76,12 +76,12 @@ if parent_id:
 	)
 
 processor = DbtArtifactProcessor(
-producer=PRODUCER,
-target=target,
-job_namespace=job_namespace,
-project_dir=project_dir,
-profile_name=profile_name,
-logger=logger
+	producer=PRODUCER,
+	target=target,
+	job_namespace=job_namespace,
+	project_dir=project_dir,
+	profile_name=profile_name,
+	logger=logger
 )
 ```
 
@@ -109,11 +109,11 @@ After executing dbt, the script parses the metadata using the processor and emit
 events = processor.parse().events()
 
 client.emit(dbt_run_event_end(
-run_id=dbt_run_metadata.run_id,
-job_namespace=dbt_run_metadata.job_namespace,
-job_name=dbt_run_metadata.job_name,
-parent_run_metadata=parent_run_metadata
-))
+	run_id=dbt_run_metadata.run_id,
+	job_namespace=dbt_run_metadata.job_namespace,
+	job_name=dbt_run_metadata.job_name,
+	parent_run_metadata=parent_run_metadata
+	))
 logger.info(f"Emitted {len(events) + 2} openlineage events")
 ```
 
