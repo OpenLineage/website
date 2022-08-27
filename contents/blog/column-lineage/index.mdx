@@ -4,12 +4,12 @@ date: 2022-08-26
 author: Michael Robinson
 image: ./image.svg
 banner: ./banner.svg
-description: Column-level lineage helps organizations navigate the complex regulatory landscape.
+description: Column-level lineage helps organizations navigate a complex regulatory landscape.
 ---
 
 ### Overview & background
 
-Long one of our most requested new features, column-level lineage was added to the [Spark integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark) with the release of [OpenLineage 0.9.0](https://github.com/OpenLineage/OpenLineage/releases/tag/0.9.0). Project committer Paweł Leszczyński ([@pawel-big-lebowski](https://github.com/OpenLineage/OpenLineage/commits?author=pawel-big-lebowski)) authored the relevant pull requests ([#645](https://github.com/OpenLineage/OpenLineage/pull/645), [#698](https://github.com/OpenLineage/OpenLineage/pull/698), [#738](https://github.com/OpenLineage/OpenLineage/pull/738) and [#772](https://github.com/OpenLineage/OpenLineage/pull/772)). In its current form, column-level lineage in OpenLineage is limited to the Spark integration and not yet visible in the [Marquez](https://marquezproject.ai/) UI. But this is only the first step in a broader, ongoing project to implement the feature across the project, and we’d love your help. 
+Long one of our most requested new features, column-level lineage was added to the [Spark integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark) with the release of [OpenLineage 0.9.0](https://github.com/OpenLineage/OpenLineage/releases/tag/0.9.0). Project committer Paweł Leszczyński ([@pawel-big-lebowski](https://github.com/pawel-big-lebowski)) authored the relevant pull requests ([#645](https://github.com/OpenLineage/OpenLineage/pull/645), [#698](https://github.com/OpenLineage/OpenLineage/pull/698), [#738](https://github.com/OpenLineage/OpenLineage/pull/738) and [#772](https://github.com/OpenLineage/OpenLineage/pull/772)). In its current form, column-level lineage in OpenLineage is limited to the Spark integration and not yet visible in the [Marquez](https://marquezproject.ai/) UI. But this is only the first step in a broader, ongoing project to implement the feature across the project, and we’d love your help. 
 
 Column-level lineage is a worthy pursuit. It dramatically extends the reach of OpenLineage’s metadata capture, providing finely grained information about datasets' dependencies. Now, as Paweł and project lead Julien Le Dem ([@julienledem](https://github.com/julienledem)) wrote in the initial proposal, “not only can we know that a dependency exists, but we are also able to understand which input columns are used to produce output columns. This allows [for] answering questions like ‘Which root input columns are used to construct column x?’”
 
