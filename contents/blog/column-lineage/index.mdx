@@ -11,7 +11,7 @@ description: Column-level lineage helps organizations navigate a complex regulat
 
 Long one of our most requested new features, column-level lineage was added to the [Spark integration](https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark) with the release of [OpenLineage 0.9.0](https://github.com/OpenLineage/OpenLineage/releases/tag/0.9.0). Project committer Paweł Leszczyński ([@pawel-big-lebowski](https://github.com/pawel-big-lebowski)) authored the relevant pull requests ([#645](https://github.com/OpenLineage/OpenLineage/pull/645), [#698](https://github.com/OpenLineage/OpenLineage/pull/698), [#738](https://github.com/OpenLineage/OpenLineage/pull/738) and [#772](https://github.com/OpenLineage/OpenLineage/pull/772)). In its current form, column-level lineage in OpenLineage is limited to the Spark integration and not yet visible in the [Marquez](https://marquezproject.ai/) UI. But this is only the first step in a broader, ongoing project to implement the feature across the project, and we’d love your help. 
 
-Column-level lineage is a worthy pursuit. It dramatically extends the reach of OpenLineage’s metadata capture, providing finely grained information about datasets' dependencies. Now, as Paweł and project lead Julien Le Dem ([@julienledem](https://github.com/julienledem)) wrote in the initial proposal, “not only can we know that a dependency exists, but we are also able to understand which input columns are used to produce output columns. This allows [for] answering questions like ‘Which root input columns are used to construct column x?’”
+Column-level lineage is a worthy pursuit. It dramatically extends the reach of OpenLineage’s metadata capture, providing finely grained information about datasets' dependencies. As Paweł and project lead Julien Le Dem ([@julienledem](https://github.com/julienledem)) wrote in the initial proposal, “Not only can we know that a dependency exists, but we are also able to understand which input columns are used to produce output columns. This allows [for] answering questions like ‘Which root input columns are used to construct column x?’”
 
 Another reason to pursue column-level lineage: the demands of regulatory compliance. Bodies such as the [GDPR](https://gdpr-info.eu/), [HIPAA](https://www.hhs.gov/hipaa/index.html), [CCPA](https://oag.ca.gov/privacy/ccpa), [BCBS](https://www.bis.org/bcbs/) and [PCI](https://www.pcisecuritystandards.org/) have instituted requirements for data accuracy and integrity that compel companies and organizations to obtain deeper insight into their datasets and pipelines. 
 
@@ -21,7 +21,7 @@ As Julien and Paweł's proposal [suggests](https://github.com/OpenLineage/OpenLi
 
 ### A new facet in the spec 
 
-In the process of implementing column-level lineage, Paweł and Julien contributed a new facet schema, `ColumnLineageDatasetFacet`, to the OpenLineage spec. This facet uses fields to relay data points about dependencies. These are properties of items in the `InputField` property of the facet (`namespace`, `name` and `field`), as well as two human-readable string fields (`transformationDescription`, `transformationType`) for conveying information about dataset transformations. The last field, `transformationType`, may be especially useful for those whose companies or organizations must internally track the usage of sensitive personal information.
+In the process of implementing column-level lineage, Paweł and Julien contributed a new facet schema, `ColumnLineageDatasetFacet`, to the OpenLineage spec. This facet uses fields to relay data points about dependencies. These are properties of items in the `InputField` property of the facet (`namespace`, `name` and `field`), as well as two human-readable string fields (`transformationDescription`, `transformationType`) for conveying information about dataset transformations. The last field, `transformationType`, may be especially useful for those whose companies or organizations need to track the usage of sensitive personal information.
 
 An example of a `columnLineage` facet in the outputs array of a lineage event:
 
@@ -63,7 +63,7 @@ In PR [#698](https://github.com/OpenLineage/OpenLineage/pull/698), Paweł descri
 
 ### What’s next?
 
-Work on extending column-level lineage in the project is ongoing. For example, project committer Will Johnson ([@wjohnson](https://github.com/wjohnson)) has opened a PR ([#963](https://github.com/OpenLineage/OpenLineage/issues/963)) to add support for common dataframe operations not covered due to the initial focus on Spark. As Will writes in the PR description,
+Work on extending column-level lineage in the project is ongoing. For example, project committer Will Johnson ([@wjohnson](https://github.com/wjohnson)) has opened a PR ([#963](https://github.com/OpenLineage/OpenLineage/issues/963)) to add support for common dataframe operations not covered due to the initial focus on Spark. As Will writes in the PR,
 
 > Currently, the Column Lineage Input Field Collectors work mainly for Spark SQL operations and Data Source V2.
 > This leaves out normal dataframe operations like inserting into HDFS without the use of a Hive table.
