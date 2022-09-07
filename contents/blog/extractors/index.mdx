@@ -19,8 +19,6 @@ Built-in support for custom extractors makes OpenLineage a flexible, highly adap
 
 ### How it works 
 
-#### Interface 
-
 As we explain in the OpenLineage [docs](https://openlineage.io/docs/integrations/airflow/extractor), custom extractors must be derived from the `BaseExtractor` class (import it from `openlineage.airflow.extractors.base`).
 
 Extractors have methods they can implement: `extract`, `extract_on_complete` and `get_operator_classnames`. Either `extract` or `extract_on_complete` is required. The `get_operator_classnames` method, also required, is for providing a list of operators from which your extractor can get lineage.
@@ -54,8 +52,6 @@ The `run_facets` and `job_facets` are dictionaries of optional [`JobFacets`](htt
 Note: in order for a custom extractor to work, it must be registered first, so the OpenLineage integration can import it. You can read about how to use environment variables to do this [here](https://openlineage.io/docs/integrations/airflow/extractor#registering-custom-extractor).
 
 ### Example: the RedshiftDataExtractor
-
-#### Extract method
 
 In the `RedshiftDataExtractor`, the `extract_on_complete` method parses SQL, obtains task `stats` using the `get_facets` method of the `RedshiftDataDatasetsProvider` class, and returns a `TaskMetadata` instance. We can see usage of a SQL statement, and the connection is provided by an actual operator. 
 
