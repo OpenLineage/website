@@ -38,6 +38,10 @@ const siteMetadata = {
             name: "Blog",
             url: "/blog",
         },
+        {
+            name: "Ecosystem",
+            url: "/ecosystem",
+        },
     ],
     footerLinks: [
         {
