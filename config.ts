@@ -39,6 +39,10 @@ const siteMetadata = {
             url: "/blog",
         },
         {
+            name: "Ecosystem",
+            url: "/ecosystem",
+        },
+        {
             name: "Docs",
             url: "/docs"
         },
