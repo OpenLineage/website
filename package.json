@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn run build:docs && gatsby build",
-    "build:docs": "redoc-cli build --output static/apidocs/openapi/index.html static/spec/OpenLineage.yml --title 'OpenLineage API Docs'",
+    "build:docs": "scripts/build-docs.sh",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
