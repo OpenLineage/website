@@ -5,7 +5,8 @@
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "yarn run build:docs && gatsby build",
+    "build:docs": "scripts/build-docs.sh",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
@@ -42,6 +43,7 @@
     "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
     "react-helmet": "^6.1.0",
+    "redoc-cli": "^0.13.20",
     "tailwind-theme-switcher": "^1.0.2",
     "tailwindcss": "^2.2.16",
     "vegemite": "^1.0.0"
