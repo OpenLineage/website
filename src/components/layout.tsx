@@ -54,7 +54,7 @@ export default ({ children, front, seo, navPlaceholder=true, location }: LayoutP
     useEffect(() => {
         if(localStorage.getItem("theme")) {
             const t = Number(localStorage.getItem("theme"));
-            changeTheme(t);
+            changeTheme(t || 0);
         }
 
         if(localStorage.getItem("cookie-accept")) {
