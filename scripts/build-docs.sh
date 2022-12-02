@@ -7,7 +7,7 @@ APIDOC_DIR="static/apidocs"
 pushd $SPEC_DIR
 LATEST_VERSION=$(find . -maxdepth 1 | grep -v 'facets' | grep '[0-9]*-[0-9]-[0-9]' | sort -Vr | head -1)
 echo $LATEST_VERSION
-rm -f ./OpenLineage.json
+rm ./OpenLineage.json 2>/dev/null
 ln -sf "${LATEST_VERSION}/OpenLineage.json" "."
 perl -i -pe"s/version: [[:alnum:]\.-]*/version: ${LATEST_VERSION:2}/g" ./OpenLineage.yml
 popd
