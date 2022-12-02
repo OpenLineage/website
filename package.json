@@ -5,7 +5,7 @@
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "yarn run build:docs && gatsby build",
+    "build": "gatsby build",
     "build:docs": "scripts/build-docs.sh",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
