@@ -21,8 +21,6 @@ jobs:
         run: yarn run build:docs
       - name: Build Gatsby site
         run: yarn run build
-      - name: List files
-        run: find .
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

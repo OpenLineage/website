@@ -17,5 +17,9 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
+      - name: Build openapi docs
+        run: yarn run build:docs
+      - name: Build Gatsby site
+        run: yarn run build
+      - name: List files
+        run: find .
