@@ -15,8 +15,9 @@ for i in $(ls -d ./facets/* | sort); do cp $i/*.json ${LATEST_VERSION}/facets; d
 
 pushd $LATEST_VERSION
 ln -sf ../OpenLineage.yml .
-redoc-cli build --output "../../../${APIDOC_DIR}/openapi/index.html" "./OpenLineage.yml" --title 'OpenLineage API Docs'
+yarn run redoc-cli build --output "../../../${APIDOC_DIR}/openapi/index.html" "./OpenLineage.yml" --title 'OpenLineage API Docs'
 rm -rf facets
+rm OpenLineage.yml
 popd
 
 popd
