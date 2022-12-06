@@ -1,100 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 616.5 127.4" style="enable-background:new 0 0 616.5 127.4;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#697B92;}
-	.st1{fill:#AB8358;fill-opacity:0.5;}
-	.st2{filter:url(#g10);}
-	.st3{opacity:0.5;fill:#DEAD71;}
-	.st4{opacity:0.5;fill:#4C3C2B;}
-	.st5{fill:#2971CB;fill-opacity:0.5;}
-	.st6{opacity:0.5;fill:#0F0000;}
-	.st7{fill-opacity:0.5;}
-	.st8{opacity:0.5;fill:#478BD8;}
-	.st9{filter:url(#g1);}
-	.st10{opacity:0.5;fill:#246DC9;}
-	.st11{opacity:0.5;fill:#F5D3A5;}
-	.st12{opacity:0.5;fill:#745131;}
-	.st13{opacity:0.5;fill:#B19B81;}
-	.st14{opacity:0.5;fill:#FFE9C9;}
-	.st15{opacity:0.5;fill:#C4B29C;}
-	.st16{fill:#D9C2A1;fill-opacity:0.5;}
-	.st17{fill:#7A6451;fill-opacity:0.5;}
-	.st18{opacity:0.5;fill:#D2B690;}
-	.st19{opacity:0.5;fill:#BAB6AE;}
-	.st20{opacity:0.5;fill:#D0BDA5;}
-	.st21{opacity:0.5;fill:#110704;}
-	.st22{opacity:0.5;fill:#C1B3A1;}
-	.st23{opacity:0.5;}
-	.st24{opacity:0.5;fill:#514D50;}
-	.st25{opacity:0.5;fill:#4F3D34;}
-</style>
-<filter  id="g10">
-	<feGaussianBlur  stdDeviation="10"></feGaussianBlur>
-</filter>
-<filter  id="g1">
-	<feGaussianBlur  stdDeviation="1"></feGaussianBlur>
-</filter>
-<rect x="-200" y="0" class="st0" width="1030" height="330"/>
-<path class="st1" d="M87.9,63.2l251.2,303.6l279-232.7L366.8-168L87.9,63.2z"/>
-<g class="st2">
-	<polygon class="st3" points="115.6,43.2 -279,135.6 -184.9,530.2 208.1,437.7 	"/>
-</g>
-<g class="st2">
-	<polygon class="st4" points="599.5,55.5 536.4,86.3 590.3,191.1 653.5,160.3 	"/>
-</g>
-<path class="st5" d="M342.2,32.4l295.9-13.9L633.5-57L337.5-43.2L342.2,32.4z"/>
-<g class="st2">
-	<polygon class="st6" points="75.5,61.6 55.5,80.1 77.1,100.2 97.1,81.7 	"/>
-</g>
-<path class="st7" d="M323.7,97.1L80.1,334.5L242,497.8l243.5-237.4L323.7,97.1z"/>
-<g class="st2">
-	<polygon class="st8" points="530.2,38.5 655,114.1 789.1,-103.3 664.3,-178.8 	"/>
-</g>
-<g class="st9">
-	<polygon class="st10" points="183.4,9.2 510.2,17 513.2,-138.7 186.5,-146.4 	"/>
-</g>
-<g class="st2">
-	<polygon class="st11" points="181.9,115.6 302.1,359.1 357.6,331.4 237.4,87.9 	"/>
-</g>
-<g class="st2">
-	<polygon class="st12" points="485.5,13.9 283.6,23.1 283.6,44.7 485.5,35.4 	"/>
-</g>
-<g class="st9">
-	<polygon class="st13" points="57,67.8 337.5,101.7 343.7,47.8 63.2,13.9 	"/>
-</g>
-<path class="st7" d="M160.3,100.2l-106.3,74l206.5,288.2l106.3-74L160.3,100.2z"/>
-<g class="st9">
-	<polygon class="st14" points="363.7,32.4 351.4,38.5 405.3,138.7 417.7,132.5 	"/>
-</g>
-<g class="st9">
-	<polygon class="st15" points="480.9,44.7 205,43.2 203.4,70.9 479.3,72.4 	"/>
-</g>
-<path class="st16" d="M111,80.1l-257.4,84.8L-3.1,590.3l255.8-84.8L111,80.1z"/>
-<path class="st17" d="M214.2,53.9l-1.5,32.4l302.1,10.8l1.5-32.4L214.2,53.9z"/>
-<g class="st9">
-	<polygon class="st18" points="402.3,115.6 505.5,316 557.9,286.7 454.7,86.3 	"/>
-</g>
-<g class="st2">
-	<polygon class="st19" points="314.4,55.5 201.9,163.4 221.9,183.4 334.5,75.5 	"/>
-</g>
-<g class="st2">
-	<polygon class="st20" points="382.2,15.4 363.7,17 382.2,144.9 400.7,143.3 	"/>
-</g>
-<g class="st9">
-	<polygon class="st21" points="316,97.1 265.1,157.2 556.4,394.6 607.3,334.5 	"/>
-</g>
-<g class="st2">
-	<polygon class="st22" points="188,37 186.5,58.6 556.4,66.3 557.9,44.7 	"/>
-</g>
-<g class="st9">
-	<polygon class="st23" points="482.4,109.4 325.2,263.6 343.7,283.6 500.9,129.5 	"/>
-</g>
-<g class="st2">
-	<polygon class="st24" points="30.8,4.6 203.4,46.2 251.2,-155.7 78.6,-197.3 	"/>
-</g>
-<g class="st9">
-	<polygon class="st25" points="252.8,0 260.5,127.9 274.3,126.4 266.6,0 	"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 616.5 127.4" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<clipPath id="ArtboardFrame">
+<rect height="127.4" width="616.5" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Untitled" vectornator:layerName="Untitled">
+<path d="M-200 0L830 0L830 0L830 330L830 330L-200 330L-200 330L-200 0L-200 0Z" fill="#697b92" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M87.9 63.2L339.1 366.8L618.1 134.1L366.8-168L87.9 63.2Z" fill="#ab8358" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M115.6 43.2L-279 135.6L-184.9 530.2L208.1 437.7L115.6 43.2Z" fill="#dead71" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M599.5 55.5L536.4 86.3L590.3 191.1L653.5 160.3L599.5 55.5Z" fill="#4c3c2b" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M342.2 32.4L638.1 18.5L633.5-57L337.5-43.2L342.2 32.4Z" fill="#2971cb" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M75.5 61.6L55.5 80.1L77.1 100.2L97.1 81.7L75.5 61.6Z" fill="#0f0000" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M323.7 97.1L80.1 334.5L242 497.8L485.5 260.4L323.7 97.1Z" fill="#000000" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M530.2 38.5L655 114.1L789.1-103.3L664.3-178.8L530.2 38.5Z" fill="#478bd8" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M183.4 9.2L510.2 17L513.2-138.7L186.5-146.4L183.4 9.2Z" fill="#246dc9" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M181.9 115.6L302.1 359.1L357.6 331.4L237.4 87.9L181.9 115.6Z" fill="#f5d3a5" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M485.5 13.9L283.6 23.1L283.6 44.7L485.5 35.4L485.5 13.9Z" fill="#745131" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M57 67.8L337.5 101.7L343.7 47.8L63.2 13.9L57 67.8Z" fill="#b19b81" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M160.3 100.2L54 174.2L260.5 462.4L366.8 388.4L160.3 100.2Z" fill="#000000" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M363.7 32.4L351.4 38.5L405.3 138.7L417.7 132.5L363.7 32.4Z" fill="#ffe9c9" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M480.9 44.7L205 43.2L203.4 70.9L479.3 72.4L480.9 44.7Z" fill="#c4b29c" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M111 80.1L-146.4 164.9L-3.1 590.3L252.7 505.5L111 80.1Z" fill="#d9c2a1" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M214.2 53.9L212.7 86.3L514.8 97.1L516.3 64.7L214.2 53.9Z" fill="#7a6451" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M402.3 115.6L505.5 316L557.9 286.7L454.7 86.3L402.3 115.6Z" fill="#d2b690" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M314.4 55.5L201.9 163.4L221.9 183.4L334.5 75.5L314.4 55.5Z" fill="#bab6ae" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M382.2 15.4L363.7 17L382.2 144.9L400.7 143.3L382.2 15.4Z" fill="#d0bda5" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M316 97.1L265.1 157.2L556.4 394.6L607.3 334.5L316 97.1Z" fill="#110704" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M188 37L186.5 58.6L556.4 66.3L557.9 44.7L188 37Z" fill="#c1b3a1" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M482.4 109.4L325.2 263.6L343.7 283.6L500.9 129.5L482.4 109.4Z" fill="#000000" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M30.8 4.6L203.4 46.2L251.2-155.7L78.6-197.3L30.8 4.6Z" fill="#514d50" fill-rule="nonzero" opacity="0.5" stroke="none"/>
+<path d="M252.8 0L260.5 127.9L274.3 126.4L266.6 0L252.8 0Z" fill="#4f3d34" fill-rule="nonzero" opacity="0.5" stroke="none"/>
 </g>
 </svg>
