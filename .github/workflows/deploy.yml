@@ -28,3 +28,4 @@ jobs:
           external_repository: OpenLineage/OpenLineage.github.io
           publish_branch: gh-pages  # default: gh-pages
           publish_dir: ./public
+          cname: openlineage.io
