@@ -49,16 +49,24 @@ const siteMetadata = {
     ],
     footerLinks: [
         {
+            name: "Mastodon",
+            url: "https://fosstodon.org/@openlineage",
+            rel: "me",
+        },
+        {
             name: "Twitter",
             url: "https://twitter.com/OpenLineage",
+            rel: "",
         },
         {
             name: "Slack",
             url: "http://bit.ly/OpenLineageSlack",
+            rel: "",
         },
         {
             name: "GitHub",
             url: "https://github.com/OpenLineage/OpenLineage",
+            rel: "",
         },
     ],
     social: [
