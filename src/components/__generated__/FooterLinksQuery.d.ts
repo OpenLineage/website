@@ -10,6 +10,7 @@
 export interface FooterLinksQuery_site_siteMetadata_footerLinks {
   name: string | null;
   url: string | null;
+  rel: string | null;
 }
 
 export interface FooterLinksQuery_site_siteMetadata {

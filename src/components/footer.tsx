@@ -14,6 +14,7 @@ export default function() {
                     footerLinks {
                         name
                         url
+                        rel
                     }
                 }
             }
@@ -53,7 +54,7 @@ export default function() {
 const ListItem: React.FC<{ data: FooterLinksQuery_site_siteMetadata_footerLinks }> = ({ data }) => {
     return (
         <li className="inline-block mx-3 animated-link-parent">
-            <Link to={data.url} title={data.name}>
+            <Link to={data.url} title={data.name} rel={data.rel}>
                 <span>{data.name}</span>
             </Link>
         </li>
