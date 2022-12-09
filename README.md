@@ -86,7 +86,7 @@ To build the openapi docs using `redoc-cli`, run:
 ```
 
 ## Deploying the site
-The site is deployed using the [Gatsby Publish GitHub action)[https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) whenever a change is merged into `main`. 
+The site is deployed using the [Gatsby Publish GitHub action](https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) whenever a change is merged into `main`. 
 
 This GitHub Action will:
 * Execute `scripts/build-docs.sh`, which performs a build of the OpenAPI docs based on the latest version of the spec that has been published into `static/spec` by the [OpenLineage release script](https://github.com/OpenLineage/OpenLineage/blob/main/spec/release.sh). The resulting docs are placed into `static/apidocs/openapi`.
@@ -109,5 +109,5 @@ The automatic mechanism that occurs when the Java client changes is:
 2. This workflow invokes a collection of build tasks and tests, including a job that builds javadoc using `gradlew javadoc`.
 3. This workflow then executes the `publish-javadoc` job, which runs [`release-javadoc.sh`](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/release-javadoc.sh).
 4. This script compares the built docs against the version of them already existing inside `static/spec/javadoc/` in this repository. If there are any changes, it replaces the versions in `static/spec/javadoc/` with the newly built documentation set.
-5. The [Gatsby Publish GitHub action[(https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) detects the commit to `main` and publishes the site.
+5. The [Gatsby Publish GitHub action](https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) detects the commit to `main` and publishes the site.
 
