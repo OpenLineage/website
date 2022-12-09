@@ -3,10 +3,10 @@
 This repository contains content and resources used to build and deploy the openlineage.io website.
 
 The openlineage.io website is a statically-generated site containing the following:
-* blog (`/blog`) and landing pages (`/`) is powered by Gatsby, which can be found in this repository
+* Blogs (`/blog`) and landing pages (`/`), which are powered by Gatsby
 * OpenAPI documentation (`/apidocs/openapi`), which is generated automatically
 * Java client documentation (`/apidocs/javadoc`)
-* documentation (`/docs`) is powered by Docusaurus, which can be found in the [docs repo](https://github.com/OpenLineage/docs)
+* Documentation (`/docs`), which is powered by Docusaurus and can be found in the [docs repo](https://github.com/OpenLineage/docs)
 
 The first three of these are deployed into the `gh-pages` branch of the [org domain repo](https://github.com/OpenLineage/OpenLineage.github.io), where they are served by GitHub Pages. The doc site is served from the `gh-pages` branch in its own repo. 
 
