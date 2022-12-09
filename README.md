@@ -6,9 +6,9 @@ The openlineage.io website is a statically-generated site containing the followi
 * blog (`/blog`) and landing pages (`/`) is powered by Gatsby, which can be found in this repository
 * OpenAPI documentation (`/apidocs/openapi`), which is generated automatically
 * Java client documentation (`/apidocs/javadoc`)
-* documentation (`/docs`) is powered by Docusaurus, which can be found in the (docs repo)[https://github.com/OpenLineage/docs]
+* documentation (`/docs`) is powered by Docusaurus, which can be found in the [docs repo](https://github.com/OpenLineage/docs)
 
-The first three of these are deployed into the `gh-pages` branch of the (org domain repo)[https://github.com/OpenLineage/OpenLineage.github.io], where they are served by GitHub Pages. The doc site is served from the `gh-pages` branch in its own repo. 
+The first three of these are deployed into the `gh-pages` branch of the [org domain repo](https://github.com/OpenLineage/OpenLineage.github.io), where they are served by GitHub Pages. The doc site is served from the `gh-pages` branch in its own repo. 
 
 ## Contributing content
 
@@ -16,7 +16,7 @@ Thanks! Seriously, we appreciate your interest in contributing to the site. The 
 
 There are two kinds of content you might contribute to this repository: blog posts and basepages. Blog posts are, well, blog posts with dates and authors and all the blogposty stuff you expect. Basepages are all of the other landing pages - Ecosystem, Getting Started, and Resources.
 
-If you're looking to contribute to (docs)[https://github.com/OpenLineage/docs] or the (spec)[https://github.com/OpenLineage/OpenLineage], take a look at their corresponding repositories for more details. Otherwise, read on!
+If you're looking to contribute to [docs](https://github.com/OpenLineage/docs) or the [spec](https://github.com/OpenLineage/OpenLineage), take a look at their corresponding repositories for more details. Otherwise, read on!
 
 ### New posts
 
@@ -51,7 +51,7 @@ These basepages can be found in `contents/basepages`, and are formatted in markd
 
 ## Building the site locally
 
-To build the site locally, first install the latest version of Node 16. You can either do this manually, or you can use a tool like (nvm)[https://github.com/nvm-sh/nvm]:
+To build the site locally, first install the latest version of Node 16. You can either do this manually, or you can use a tool like [nvm](https://github.com/nvm-sh/nvm):
 
 ```
 % nvm install 16
@@ -86,28 +86,28 @@ To build the openapi docs using `redoc-cli`, run:
 ```
 
 ## Deploying the site
-The site is deployed using the (Gatsby Publish GitHub action)[https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml] whenever a change is merged into `main`. 
+The site is deployed using the [Gatsby Publish GitHub action)[https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) whenever a change is merged into `main`. 
 
 This GitHub Action will:
-* Execute `scripts/build-docs.sh`, which performs a build of the OpenAPI docs based on the latest version of the spec that has been published into `static/spec` by the (OpenLineage release script)[https://github.com/OpenLineage/OpenLineage/blob/main/spec/release.sh]. The resulting docs are placed into `static/apidocs/openapi`.
+* Execute `scripts/build-docs.sh`, which performs a build of the OpenAPI docs based on the latest version of the spec that has been published into `static/spec` by the [OpenLineage release script](https://github.com/OpenLineage/OpenLineage/blob/main/spec/release.sh). The resulting docs are placed into `static/apidocs/openapi`.
 * Execute `yarn run build`, which performs a build of the Gatsby landing pages and places them into `public/`. The `static/` directory, containing the OpenAPI and Java client documentation, is copied into `public/` during this step.
-* Replace the contents of the `gh-pages` branch of the (org domain repo)[https://github.com/OpenLineage/OpenLineage.github.io] with the contents of `public/`. This will cause that repo's GitHub Action to deploy the new content.
+* Replace the contents of the `gh-pages` branch of the [org domain repo](https://github.com/OpenLineage/OpenLineage.github.io) with the contents of `public/`. This will cause that repo's GitHub Action to deploy the new content.
 
 ## How specs are published
 Our design principles are:
-* documentation about the spec should be published when new versions of the spec are released in the (main OpenLineage repo)[https://github.com/OpenLineage/OpenLineage]
-* documentation about the Java client should be published when new versions of the (Java client)[https://github.com/OpenLineage/OpenLineage/tree/main/client/java] are released
+* documentation about the spec should be published when new versions of the spec are released in the [main OpenLineage repo](https://github.com/OpenLineage/OpenLineage)
+* documentation about the Java client should be published when new versions of the [Java client](https://github.com/OpenLineage/OpenLineage/tree/main/client/java) are released
 
 The automatic mechanism that occurs when the OpenLineage spec is released is:
-1. The (`new-version.sh`)[https://github.com/OpenLineage/OpenLineage/blob/main/new-version.sh] script is manually run, causing the version number of the spec to be bumped.
-2. CircleCI is triggered by the merge to `main`, calling the (`openlineage-integration-publish` workflow)[https://github.com/OpenLineage/OpenLineage/blob/main/.circleci/workflows/openlineage-integration-publish.yml]. This workflow executes the `publish-spec` job, which runs (`spec/release.sh` )[https://github.com/OpenLineage/OpenLineage/blob/main/spec/release.sh].
+1. The [`new-version.sh`](https://github.com/OpenLineage/OpenLineage/blob/main/new-version.sh) script is manually run, causing the version number of the spec to be bumped.
+2. CircleCI is triggered by the merge to `main`, calling the [`openlineage-integration-publish` workflow](https://github.com/OpenLineage/OpenLineage/blob/main/.circleci/workflows/openlineage-integration-publish.yml). This workflow executes the `publish-spec` job, which runs [`spec/release.sh`](https://github.com/OpenLineage/OpenLineage/blob/main/spec/release.sh).
 3. This script reviews the Git history to determine which files in the spec changed, and publishes a new version of them into `static/spec` in this repository.
-4. The (Gatsby Publish GitHub action)[https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml] detects the commit to `main` and publishes the site.
+4. The [Gatsby Publish GitHub action](https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) detects the commit to `main` and publishes the site.
 
 The automatic mechanism that occurs when the Java client changes is:
-1. CircleCI is triggered by a merge to `main`, calling the (`openlineage-java` workflow)[https://github.com/OpenLineage/OpenLineage/blob/main/.circleci/workflows/openlineage-java.yml]. 
+1. CircleCI is triggered by a merge to `main`, calling the [`openlineage-java` workflow](https://github.com/OpenLineage/OpenLineage/blob/main/.circleci/workflows/openlineage-java.yml). 
 2. This workflow invokes a collection of build tasks and tests, including a job that builds javadoc using `gradlew javadoc`.
-3. This workflow then executes the `publish-javadoc` job, which runs (`release-javadoc.sh` )[https://github.com/OpenLineage/OpenLineage/blob/main/client/java/release-javadoc.sh].
+3. This workflow then executes the `publish-javadoc` job, which runs [`release-javadoc.sh`](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/release-javadoc.sh).
 4. This script compares the built docs against the version of them already existing inside `static/spec/javadoc/` in this repository. If there are any changes, it replaces the versions in `static/spec/javadoc/` with the newly built documentation set.
-5. The (Gatsby Publish GitHub action)[https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml] detects the commit to `main` and publishes the site.
+5. The [Gatsby Publish GitHub action[(https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) detects the commit to `main` and publishes the site.
 
