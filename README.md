@@ -39,7 +39,7 @@ To match the artwork on the rest of the site, you can use sketchbeast.com to cre
 1. First, choose a source image to use as inspiration - perhaps something thematically related to your post, or an inside joke. It'll be our little secret.
 2. Then, upload the image to sketchbeast.com, change "mixed shapes" to "rectangles", and click the button. Feel free to play with the other settings as you like, but stick with rectangles.
 3. Download the resulting SVG using the button on the image in the film strip at the bottom of the screen, and crop to the proper size.
-4. Delight in being the only person who knows what the source image was, resolve to choose something more subversive/clever next time.
+4. Delight in being the only person who knows what the source image was; resolve to choose something more subversive/clever next time.
 
 (If you'd rather not go through all of this, feel free to submit your PR without artwork and we'll make something for you - we like doing it, it's fun!) 
 
@@ -85,7 +85,10 @@ To build the openapi docs using `redoc-cli`, run:
 % yarn run build:docs
 ```
 
+You should find the generated HTML file inside the `static/apidocs/` directory.
+
 ## Deploying the site
+
 The site is deployed using the [Gatsby Publish GitHub action](https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) whenever a change is merged into `main`. 
 
 This GitHub Action will:
@@ -95,8 +98,8 @@ This GitHub Action will:
 
 ## How specs are published
 Our design principles are:
-* documentation about the spec should be published when new versions of the spec are released in the [main OpenLineage repo](https://github.com/OpenLineage/OpenLineage)
-* documentation about the Java client should be published when new versions of the [Java client](https://github.com/OpenLineage/OpenLineage/tree/main/client/java) are released
+* Documentation about the spec should be published when new versions of the spec are released in the [main OpenLineage repo](https://github.com/OpenLineage/OpenLineage).
+* Documentation about the Java client should be published when new versions of the [Java client](https://github.com/OpenLineage/OpenLineage/tree/main/client/java) are released.
 
 The automatic mechanism that occurs when the OpenLineage spec is released is:
 1. The [`new-version.sh`](https://github.com/OpenLineage/OpenLineage/blob/main/new-version.sh) script is manually run, causing the version number of the spec to be bumped.
