@@ -197,6 +197,8 @@ Snowflake and Amazon’s serverless Athena warehouse service, which do not requi
 ```
 And so on. As you can see, the provenance of dataset namespaces is pretty straightforward: it’s the data source.
 
+That said, sometimes deriving the data source of a dataset is not a simple operation. Some datasets can be identified two different ways, for example. A Spark dataset can be written using a Hive metastore and table name but read using the physical location of the data. Before we added the [`SymlinksDatasetFacet`](https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/SymlinksDatasetFacet.json), this naming conflict could break the lineage graph. Symlinks both provide alternative dataset names as a workaround in such cases and contain extra information about the datasets.
+
 ### Job Namespaces 
 
 We’ve seen that for datasets the namespace is determined by the data source. But jobs are a different animal, so their namespaces are also different. How is a job’s namespace derived? 
