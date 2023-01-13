@@ -87,6 +87,15 @@ To build the openapi docs using `redoc-cli`, run:
 
 You should find the generated HTML file inside the `static/apidocs/` directory.
 
+## Developing locally
+
+For a development build of the site that will reflect your changes in real time, run:
+
+```
+% gatsby build 
+% gatsby develop
+```
+
 ## Deploying the site
 
 The site is deployed using the [Gatsby Publish GitHub action](https://github.com/OpenLineage/website/blob/main/.github/workflows/deploy.yml) whenever a change is merged into `main`. 
