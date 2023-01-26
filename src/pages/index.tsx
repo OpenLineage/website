@@ -99,7 +99,7 @@ const Wall = ({ data }) => {
             <span className="py-5">
                 <Button
                     title="Get Started"
-                    to='/getting-started'
+                    to='/docs/getting-started'
                     type="link"
                     iconRight={<ArrowRight />}
                     className="mx-5"
