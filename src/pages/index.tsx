@@ -9,20 +9,11 @@ import { Slack } from "react-feather"
 import Layout from "../components/layout"
 import { Button } from "../components/ui"
 
-import ItemIntegration from "../components/item-integration"
 import ItemBlog from "../components/item-blog"
 import { IndexPageQuery } from "./__generated__/IndexPageQuery"
 
 export default ({ data, location }: PageProps<IndexPageQuery>) => {
     const siteData = data.site.siteMetadata
-
-    const integrationList = data.integration.edges.map((item, _) => (
-        <ItemIntegration
-            data={item.node}
-            key={`p-item-index-${item.node.id}`}
-            even={(_ + 1) % 2 === 0}
-        />
-    ))
 
     const blogList = data.blog.edges.map(item => (
         <ItemBlog data={item.node} key={`b-item-index-${item.node.id}`} />
@@ -240,30 +231,6 @@ export const query = graphql`
                     name
                     url
                     icon
-                }
-            }
-        }
-        integration: allMdx(
-            filter: { fields: { sourceName: { eq: "integration" } } }
-            limit: 6
-        ) {
-            edges {
-                node {
-                    id
-                    frontmatter {
-                        title
-                        description
-                        image {
-                            childImageSharp {
-                                fluid(maxWidth: 1000) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                            }
-                        }
-                    }
-                    fields {
-                        slug
-                    }
                 }
             }
         }
