@@ -46,17 +46,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
                     }
                 }
             }
-            integration: allMdx(filter: { fields: { sourceName: { eq: "integration" } } }) {
-                edges {
-                    node {
-                        id
-                    }
-                }
-            }
             limitPost: site {
                 siteMetadata {
                     blogItemsPerPage
-                    integrationItemsPerPage
                 }
             }
         }
@@ -85,25 +77,6 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
                     limit: blogPostsPerPage,
                     skip: i * blogPostsPerPage,
                     numPages: numBlogPages,
-                    currentPage: i + 1,
-                },
-            })
-        })
-
-
-        const integrationItems = result.data.integration.edges
-        const integrationItemsPerPage =
-            result.data.limitPost.siteMetadata.integrationItemsPerPage
-        const numIntegrationItems = Math.ceil(integrationItems.length / integrationItemsPerPage)
-
-        Array.from({ length: numIntegrationItems }).forEach((_, i) => {
-            createPage({
-                path: i === 0 ? `/integration` : `/integration/${i + 1}`,
-                component: path.resolve("./src/templates/integration-list.tsx"),
-                context: {
-                    limit: integrationItemsPerPage,
-                    skip: i * integrationItemsPerPage,
-                    numPages: numIntegrationItems,
                     currentPage: i + 1,
                 },
             })

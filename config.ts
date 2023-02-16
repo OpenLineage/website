@@ -27,10 +27,6 @@ const siteMetadata = {
             url: "/docs/getting-started",
         },
         {
-            name: "Integrations",
-            url: "/integration",
-        },
-        {
             name: "Resources",
             url: "/resources",
         },

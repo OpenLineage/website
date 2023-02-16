@@ -19,13 +19,6 @@ const plugins = [
     {
         resolve: `gatsby-source-filesystem`,
         options: {
-            name: `integration`,
-            path: `${__dirname}/contents/integration/`,
-        },
-    },
-    {
-        resolve: `gatsby-source-filesystem`,
-        options: {
             name: `basepages`,
             path: `${__dirname}/contents/basepages`,
         },
