@@ -89,11 +89,10 @@ You should find the generated HTML file inside the `static/apidocs/` directory.
 
 ## Developing locally
 
-For a development build of the site that will reflect your changes in real time, run:
+To start a dev server, run:
 
 ```
-% gatsby build 
-% gatsby develop
+% yarn start
 ```
 
 ## Deploying the site
