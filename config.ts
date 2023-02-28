@@ -64,6 +64,16 @@ const siteMetadata = {
             url: "https://github.com/OpenLineage/OpenLineage",
             rel: "",
         },
+        {
+            name: "Wiki",
+            url: "https://bit.ly/OLwiki",
+            rel: ""
+        },
+        {
+            name: "YouTube",
+            url: "https://bit.ly/OLychannel",
+            rel: ""
+        },
     ],
     social: [
         {
@@ -82,7 +92,7 @@ const siteMetadata = {
             url: "#",
         },
         {
-            name: "Youtube",
+            name: "YouTube",
             icon: "/images/Youtube.svg",
             url: "#",
         },
