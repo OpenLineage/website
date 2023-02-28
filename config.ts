@@ -68,7 +68,12 @@ const siteMetadata = {
             name: "Wiki",
             url: "https://bit.ly/OLwiki",
             rel: ""
-        }
+        },
+        {
+            name: "YouTube",
+            url: "https://bit.ly/OLychannel",
+            rel: ""
+        },
     ],
     social: [
         {
