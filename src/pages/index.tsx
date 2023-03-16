@@ -3,7 +3,7 @@ import { graphql, PageProps } from "gatsby"
 import { Link } from "gatsby"
 
 import { ArrowRight } from "react-feather"
-import { GitHub } from "react-feather"
+import { Calendar } from "react-feather"
 import { Slack } from "react-feather"
 
 import Layout from "../components/layout"
@@ -31,6 +31,7 @@ export default ({ data, location }: PageProps<IndexPageQuery>) => {
         >
             <Wall data={siteData} />
             {siteData.about !== "" && <About data={siteData.about} />}
+            <Participate></Participate>
             <Blog>{blogList}</Blog>
         </Layout>
     )
@@ -93,20 +94,6 @@ const Wall = ({ data }) => {
                     to='/docs/getting-started'
                     type="link"
                     iconRight={<ArrowRight />}
-                    className="mx-5"
-                />
-                <Button
-                    title="GitHub"
-                    to='https://github.com/OpenLineage/OpenLineage'
-                    type="extbutton"
-                    iconRight={<GitHub />}
-                    className="mx-5"
-                />
-                <Button
-                    title="Slack"
-                    to='http://bit.ly/OpenLineageSlack'
-                    type="extbutton"
-                    iconRight={<Slack />}
                     className="mx-5"
                 />
             </span>
@@ -189,6 +176,38 @@ const About = ({ data }) => {
                     type="link"
                     iconRight={<ArrowRight />}
                 />
+            </div>
+        </div>
+    )
+}
+
+const Participate = () => {
+    return (
+        <div className="boxed bg-bgalt">
+            <div className="px-4 py-12 text-center lg:py-14">
+                <h2 className="text-color-1 text-3xl lg:text-4xl">
+                    How to Participate
+                </h2>
+                <p className="mt-5 text-lg py-3">
+                    OpenLineage is an open spec, and we welcome feedback from users and vendors alike. We have a Slack community where you can engage directly with members of the project, ask questions, and share your experiences. We also run a monthly open meeting of the Technical Steering Committee where we share project updates and engage in open discussion.
+                </p>
+
+                <Button
+                    title="Slack"
+                    to='http://bit.ly/OpenLineageSlack'
+                    type="extbutton"
+                    iconRight={<Slack />}
+                    className="mx-5"
+                />
+
+                <Button
+                    title="TSC Meetings"
+                    className="mx-3"
+                    to='/meetings'
+                    type="link"
+                    iconRight={<Calendar />}
+                />
+
             </div>
         </div>
     )
