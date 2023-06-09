@@ -261,21 +261,6 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="eventTime(java.time.ZonedDateTime)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>eventTime</h4>
-<pre class="methodSignature">public&nbsp;<a href="OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a>&nbsp;eventTime&#8203;(java.time.ZonedDateTime&nbsp;eventTime)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>eventTime</code> - the time the event occurred at</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>this</dd>
-</dl>
-</li>
-</ul>
 <a id="eventType(io.openlineage.client.OpenLineage.RunEvent.EventType)">
 <!--   -->
 </a>
@@ -286,6 +271,21 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>eventType</code> - the current transition of the run state. It is required to issue 1 START event and 1 of [ COMPLETE, ABORT, FAIL ] event per run. Additional events with OTHER eventType can be added to the same run. For example to send additional metadata after the run is complete</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this</dd>
+</dl>
+</li>
+</ul>
+<a id="eventTime(java.time.ZonedDateTime)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>eventTime</h4>
+<pre class="methodSignature">public&nbsp;<a href="OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a>&nbsp;eventTime&#8203;(java.time.ZonedDateTime&nbsp;eventTime)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>eventTime</code> - the time the event occurred at</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>this</dd>
 </dl>
